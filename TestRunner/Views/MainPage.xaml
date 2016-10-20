@@ -9,37 +9,14 @@
     d:DesignWidth="800"
     d:DesignHeight="600">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Left" Width="800">
-        <Pivot>
-            <PivotItem Header="PivotItem 0">
-                <Grid/>
-            </PivotItem>
-            <PivotItem Header="App Settings">
-                <StackPanel Orientation="Vertical" Height="100" VerticalAlignment="Top" Margin="0,10,0,0">
-                    <TextBlock x:Name="MSTestPathHelp" TextWrapping="Wrap" Text="Full path to MSTest.exe" HorizontalAlignment="Left" VerticalAlignment="Center" TextAlignment="Center" Margin="0,10,0,0" Width="194"/>
-                    <StackPanel Orientation="Horizontal" Height="70">
-                        <TextBox
-                                x:Name="MSTestPath" 
-                                TextAlignment="Left" 
-                                HorizontalAlignment="Left" 
-                                Margin="20,0,0,0" 
-                                Height="30"
-                                Text="{Binding MSTestPath, Mode=TwoWay}"
-                                TextWrapping="Wrap" 
-                                Width="635" 
-                                FontSize="14"
-                                ToolTipService.ToolTip="Running Microsoft Unit Tests requires the MSTest executable.  This is found in the Visual Studio install location."/>
-                        <Button 
-                                x:Name="BrowseForMSTest" 
-                                Content="Browse" 
-                                HorizontalAlignment="Right" 
-                                Margin="10,0,0,0" 
-                                Click="OpenFileBrowseDialog"
-                                Width="87"
-                                ToolTipService.ToolTip="Browse for the MSTest.exe file on your computer."/>
-                    </StackPanel>
-                </StackPanel>
-            </PivotItem>
-        </Pivot>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Frame Grid.Column="0">
+            <local:NavBar />
+        </Frame>
+        <Frame Grid.Column="1" />
     </Grid>
 </Page>

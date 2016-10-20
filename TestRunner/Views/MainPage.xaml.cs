@@ -19,17 +19,5 @@ namespace TestRunner.Views
         {
             InitializeComponent();
         }
-
-        private async void OpenFileBrowseDialog(object sender, RoutedEventArgs args)
-        {
-            FileOpenPicker filePicker = new FileOpenPicker();
-            filePicker.FileTypeFilter.Add(".exe");
-
-            StorageFile file = await filePicker.PickSingleFileAsync();
-            if (file != null)
-            {
-                MSTestPath.Text = file.Path;
-            }
-        }
     }
 }

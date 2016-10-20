@@ -132,21 +132,19 @@ namespace TestRunner.TestRunner_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[6];
-            _typeNameTable[0] = "TestRunner.AppSettingsViewModel";
-            _typeNameTable[1] = "Object";
-            _typeNameTable[2] = "String";
-            _typeNameTable[3] = "TestRunner.Views.MainPage";
-            _typeNameTable[4] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[5] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable = new string[5];
+            _typeNameTable[0] = "TestRunner.NavBar";
+            _typeNameTable[1] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[2] = "TestRunner.Views.AppSettingsView";
+            _typeNameTable[3] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[4] = "TestRunner.Views.MainPage";
 
-            _typeTable = new global::System.Type[6];
-            _typeTable[0] = typeof(global::TestRunner.AppSettingsViewModel);
-            _typeTable[1] = typeof(global::System.Object);
-            _typeTable[2] = typeof(global::System.String);
-            _typeTable[3] = typeof(global::TestRunner.Views.MainPage);
-            _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable = new global::System.Type[5];
+            _typeTable[0] = typeof(global::TestRunner.NavBar);
+            _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[2] = typeof(global::TestRunner.Views.AppSettingsView);
+            _typeTable[3] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[4] = typeof(global::TestRunner.Views.MainPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -181,8 +179,9 @@ namespace TestRunner.TestRunner_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_AppSettingsViewModel() { return new global::TestRunner.AppSettingsViewModel(); }
-        private object Activate_3_MainPage() { return new global::TestRunner.Views.MainPage(); }
+        private object Activate_0_NavBar() { return new global::TestRunner.NavBar(); }
+        private object Activate_2_AppSettingsView() { return new global::TestRunner.Views.AppSettingsView(); }
+        private object Activate_4_MainPage() { return new global::TestRunner.Views.MainPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -194,66 +193,44 @@ namespace TestRunner.TestRunner_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  TestRunner.AppSettingsViewModel
-                userType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_0_AppSettingsViewModel;
-                userType.AddMemberName("MSTestPath");
+            case 0:   //  TestRunner.NavBar
+                userType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_0_NavBar;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 1:   //  Object
+            case 1:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  String
-                xamlType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 3:   //  TestRunner.Views.MainPage
+            case 2:   //  TestRunner.Views.AppSettingsView
                 userType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_MainPage;
+                userType.Activator = Activate_2_AppSettingsView;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  Windows.UI.Xaml.Controls.Page
+            case 3:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 5:   //  Windows.UI.Xaml.Controls.UserControl
-                xamlType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+            case 4:   //  TestRunner.Views.MainPage
+                userType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_4_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
                 break;
             }
             return xamlType;
         }
 
 
-        private object get_0_AppSettingsViewModel_MSTestPath(object instance)
-        {
-            var that = (global::TestRunner.AppSettingsViewModel)instance;
-            return that.MSTestPath;
-        }
-        private void set_0_AppSettingsViewModel_MSTestPath(object instance, object Value)
-        {
-            var that = (global::TestRunner.AppSettingsViewModel)instance;
-            that.MSTestPath = (global::System.String)Value;
-        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
             global::TestRunner.TestRunner_XamlTypeInfo.XamlMember xamlMember = null;
-            global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType userType;
-
-            switch (longMemberName)
-            {
-            case "TestRunner.AppSettingsViewModel.MSTestPath":
-                userType = (global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType)GetXamlTypeByName("TestRunner.AppSettingsViewModel");
-                xamlMember = new global::TestRunner.TestRunner_XamlTypeInfo.XamlMember(this, "MSTestPath", "String");
-                xamlMember.Getter = get_0_AppSettingsViewModel_MSTestPath;
-                xamlMember.Setter = set_0_AppSettingsViewModel_MSTestPath;
-                break;
-            }
+            // No Local Properties
             return xamlMember;
         }
     }

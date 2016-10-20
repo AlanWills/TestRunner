@@ -6,6 +6,6 @@
     RequestedTheme="Light">
     
     <Application.Resources>
-        <local:AppSettingsViewModel x:Key="AppSettingsViewModel" />
+        <local:NavBar x:Key="NavBar" />
     </Application.Resources>
 </Application>

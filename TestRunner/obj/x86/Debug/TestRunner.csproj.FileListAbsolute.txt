@@ -190,3 +190,13 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x8
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\TestRunner.csprojResolveAssemblyReference.cache
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\bin\x86\Debug\UserControls\NavBar.xbf
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\bin\x86\Debug\Views\AppSettingsView.xbf
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\UserControls\NavBar.g.i.cs
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\UserControls\NavBar.g.cs
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\Views\AppSettingsView.g.i.cs
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\Views\AppSettingsView.g.cs
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\UserControls\NavBar.xaml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\Views\AppSettingsView.xaml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\UserControls\NavBar.xbf
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\Views\AppSettingsView.xbf
