@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="TestRunner.Views.MainPage"
+    x:Class="TestRunner.Views.AppSettingsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:TestRunner.UserControls"
@@ -17,6 +17,11 @@
         <Frame Grid.Column="0">
             <local:NavBar />
         </Frame>
-        <Frame Grid.Column="1" />
+        <Frame Grid.Column="1">
+            <StackPanel Orientation="Vertical" Height="100" VerticalAlignment="Top" Margin="0,10,0,0">
+                <TextBlock x:Name="MSTestPathHelp" TextWrapping="Wrap" Text="Full path to MSTest.exe" HorizontalAlignment="Left" VerticalAlignment="Center" TextAlignment="Center" Margin="0,10,0,0" Width="194"/>
+                <local:FilePicker x:Name="MSTestFilePicker" FilePath="{Binding MSTestPath, Mode=TwoWay}" FileExtension=".exe"/>
+            </StackPanel>
+        </Frame>
     </Grid>
 </Page>

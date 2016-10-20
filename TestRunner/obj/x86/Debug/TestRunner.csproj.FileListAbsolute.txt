@@ -200,3 +200,8 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x8
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\Views\AppSettingsView.xaml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\UserControls\NavBar.xbf
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\Views\AppSettingsView.xbf
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\UserControls\FilePicker.g.i.cs
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\UserControls\FilePicker.g.cs
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\UserControls\FilePicker.xaml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\obj\x86\Debug\UserControls\FilePicker.xbf
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\bin\x86\Debug\UserControls\FilePicker.xbf

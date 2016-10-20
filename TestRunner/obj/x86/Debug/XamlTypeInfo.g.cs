@@ -132,19 +132,23 @@ namespace TestRunner.TestRunner_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[5];
-            _typeNameTable[0] = "TestRunner.NavBar";
+            _typeNameTable = new string[7];
+            _typeNameTable[0] = "TestRunner.UserControls.NavBar";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[2] = "TestRunner.Views.AppSettingsView";
+            _typeNameTable[2] = "TestRunner.UserControls.FilePicker";
             _typeNameTable[3] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[4] = "TestRunner.Views.MainPage";
+            _typeNameTable[4] = "String";
+            _typeNameTable[5] = "TestRunner.Views.AppSettingsView";
+            _typeNameTable[6] = "TestRunner.Views.MainPage";
 
-            _typeTable = new global::System.Type[5];
-            _typeTable[0] = typeof(global::TestRunner.NavBar);
+            _typeTable = new global::System.Type[7];
+            _typeTable[0] = typeof(global::TestRunner.UserControls.NavBar);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[2] = typeof(global::TestRunner.Views.AppSettingsView);
+            _typeTable[2] = typeof(global::TestRunner.UserControls.FilePicker);
             _typeTable[3] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[4] = typeof(global::TestRunner.Views.MainPage);
+            _typeTable[4] = typeof(global::System.String);
+            _typeTable[5] = typeof(global::TestRunner.Views.AppSettingsView);
+            _typeTable[6] = typeof(global::TestRunner.Views.MainPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -179,9 +183,10 @@ namespace TestRunner.TestRunner_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_NavBar() { return new global::TestRunner.NavBar(); }
-        private object Activate_2_AppSettingsView() { return new global::TestRunner.Views.AppSettingsView(); }
-        private object Activate_4_MainPage() { return new global::TestRunner.Views.MainPage(); }
+        private object Activate_0_NavBar() { return new global::TestRunner.UserControls.NavBar(); }
+        private object Activate_2_FilePicker() { return new global::TestRunner.UserControls.FilePicker(); }
+        private object Activate_5_AppSettingsView() { return new global::TestRunner.Views.AppSettingsView(); }
+        private object Activate_6_MainPage() { return new global::TestRunner.Views.MainPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -193,7 +198,7 @@ namespace TestRunner.TestRunner_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  TestRunner.NavBar
+            case 0:   //  TestRunner.UserControls.NavBar
                 userType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
                 userType.Activator = Activate_0_NavBar;
                 userType.SetIsLocalType();
@@ -204,9 +209,11 @@ namespace TestRunner.TestRunner_XamlTypeInfo
                 xamlType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  TestRunner.Views.AppSettingsView
+            case 2:   //  TestRunner.UserControls.FilePicker
                 userType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_2_AppSettingsView;
+                userType.Activator = Activate_2_FilePicker;
+                userType.AddMemberName("FilePath");
+                userType.AddMemberName("FileExtension");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -215,9 +222,20 @@ namespace TestRunner.TestRunner_XamlTypeInfo
                 xamlType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 4:   //  TestRunner.Views.MainPage
+            case 4:   //  String
+                xamlType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 5:   //  TestRunner.Views.AppSettingsView
                 userType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_4_MainPage;
+                userType.Activator = Activate_5_AppSettingsView;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 6:   //  TestRunner.Views.MainPage
+                userType = new global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_6_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -226,11 +244,47 @@ namespace TestRunner.TestRunner_XamlTypeInfo
         }
 
 
+        private object get_0_FilePicker_FilePath(object instance)
+        {
+            var that = (global::TestRunner.UserControls.FilePicker)instance;
+            return that.FilePath;
+        }
+        private void set_0_FilePicker_FilePath(object instance, object Value)
+        {
+            var that = (global::TestRunner.UserControls.FilePicker)instance;
+            that.FilePath = (global::System.String)Value;
+        }
+        private object get_1_FilePicker_FileExtension(object instance)
+        {
+            var that = (global::TestRunner.UserControls.FilePicker)instance;
+            return that.FileExtension;
+        }
+        private void set_1_FilePicker_FileExtension(object instance, object Value)
+        {
+            var that = (global::TestRunner.UserControls.FilePicker)instance;
+            that.FileExtension = (global::System.String)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
             global::TestRunner.TestRunner_XamlTypeInfo.XamlMember xamlMember = null;
-            // No Local Properties
+            global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType userType;
+
+            switch (longMemberName)
+            {
+            case "TestRunner.UserControls.FilePicker.FilePath":
+                userType = (global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType)GetXamlTypeByName("TestRunner.UserControls.FilePicker");
+                xamlMember = new global::TestRunner.TestRunner_XamlTypeInfo.XamlMember(this, "FilePath", "String");
+                xamlMember.Getter = get_0_FilePicker_FilePath;
+                xamlMember.Setter = set_0_FilePicker_FilePath;
+                break;
+            case "TestRunner.UserControls.FilePicker.FileExtension":
+                userType = (global::TestRunner.TestRunner_XamlTypeInfo.XamlUserType)GetXamlTypeByName("TestRunner.UserControls.FilePicker");
+                xamlMember = new global::TestRunner.TestRunner_XamlTypeInfo.XamlMember(this, "FileExtension", "String");
+                xamlMember.Getter = get_1_FilePicker_FileExtension;
+                xamlMember.Setter = set_1_FilePicker_FileExtension;
+                break;
+            }
             return xamlMember;
         }
     }
