@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace TestRunnerService
+{
+    public enum TestingStatus
+    {
+
+    }
+
+    [ServiceContract]
+    public interface TestRunnerService
+    {
+        [OperationContract]
+        int StartTesting(string testConfigFilePath);
+
+        [OperationContract]
+        TestingStatus GetTestingStatus(string testConfigFilePath);
+
+        [OperationContract]
+        CompositeType GetDataUsingDataContract(CompositeType composite);
+    }
+}

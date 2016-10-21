@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TestRunnerService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/TestRunnerService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITestRunnerService_StartTesting_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartTesting" />
+  </wsdl:message>
+  <wsdl:message name="ITestRunnerService_StartTesting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartTestingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITestRunnerService_GetTestingStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTestingStatus" />
+  </wsdl:message>
+  <wsdl:message name="ITestRunnerService_GetTestingStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTestingStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITestRunnerService_GetTestingResultsFilePath_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTestingResultsFilePath" />
+  </wsdl:message>
+  <wsdl:message name="ITestRunnerService_GetTestingResultsFilePath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTestingResultsFilePathResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITestRunnerService">
+    <wsdl:operation name="StartTesting">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/StartTesting" message="tns:ITestRunnerService_StartTesting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/StartTestingResponse" message="tns:ITestRunnerService_StartTesting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTestingStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetTestingStatus" message="tns:ITestRunnerService_GetTestingStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetTestingStatusResponse" message="tns:ITestRunnerService_GetTestingStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTestingResultsFilePath">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetTestingResultsFilePath" message="tns:ITestRunnerService_GetTestingResultsFilePath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetTestingResultsFilePathResponse" message="tns:ITestRunnerService_GetTestingResultsFilePath_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ITestRunnerService" type="tns:ITestRunnerService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StartTesting">
+      <soap:operation soapAction="http://tempuri.org/ITestRunnerService/StartTesting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTestingStatus">
+      <soap:operation soapAction="http://tempuri.org/ITestRunnerService/GetTestingStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTestingResultsFilePath">
+      <soap:operation soapAction="http://tempuri.org/ITestRunnerService/GetTestingResultsFilePath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TestRunnerService">
+    <wsdl:port name="BasicHttpBinding_ITestRunnerService" binding="tns:BasicHttpBinding_ITestRunnerService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/TestRunnerService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

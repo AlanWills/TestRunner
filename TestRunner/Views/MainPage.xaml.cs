@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using TestRunner.TestRunnerService;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
@@ -18,6 +19,13 @@ namespace TestRunner.Views
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private async void button_Click(object sender, RoutedEventArgs e)
+        {
+            TestRunnerServiceClient client = new TestRunnerServiceClient();
+
+            int x = await client.StartTestingAsync("");
         }
     }
 }

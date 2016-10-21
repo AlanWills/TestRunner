@@ -96,6 +96,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\AppSettingsModel.cs" />
+    <Compile Include="Service References\TestRunnerService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FilePicker.xaml.cs">
       <DependentUpon>FilePicker.xaml</DependentUpon>
     </Compile>
@@ -115,6 +120,20 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+    <None Include="Service References\TestRunnerService\service.wsdl" />
+    <None Include="Service References\TestRunnerService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TestRunnerService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TestRunnerService\TestRunner.TestRunnerService.TestingStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TestRunnerService\TestRunnerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="TestRunner_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +145,12 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <None Include="Service References\TestRunnerService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\TestRunnerService\configuration.svcinfo" />
+    <None Include="Service References\TestRunnerService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -148,6 +173,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\TestRunnerService\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
