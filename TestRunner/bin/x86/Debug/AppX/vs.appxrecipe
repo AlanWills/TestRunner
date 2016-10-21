@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-21T21:55:48.300</Modified>
+      <Modified>2016-10-21T23:25:41.365</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\bin\x86\Debug\TestRunner.exe">
       <PackagePath>entrypoint\TestRunner.exe</PackagePath>
-      <Modified>2016-10-21T21:55:42.702</Modified>
+      <Modified>2016-10-21T23:25:37.919</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alan\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -501,7 +501,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\bin\x86\Debug\Core\TestRunner.exe">
       <PackagePath>TestRunner.exe</PackagePath>
-      <Modified>2016-10-21T21:55:48.290</Modified>
+      <Modified>2016-10-21T23:25:41.341</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
