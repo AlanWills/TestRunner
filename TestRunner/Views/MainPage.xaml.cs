@@ -3,8 +3,10 @@ using System.Diagnostics;
 using System.IO;
 using TestRunner.Models;
 using TestRunner.TestRunnerService;
+using Windows.Data.Xml.Dom;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -26,7 +28,9 @@ namespace TestRunner.Views
         {
             TestRunnerServiceClient client = new TestRunnerServiceClient();
 
-            int x = await client.StartTestingAsync("");
+            string path = @"C:\Users\Alan\Documents\Visual Studio 2015\Projects\OpenGL\OpenGL\Debug\TestKernel.dll";
+
+            int x = await client.StartTestingAsync(path);
         }
     }
 }
