@@ -1,6 +1,0 @@
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunnerService\bin\Debug\TestRunnerService.dll.config
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunnerService\bin\Debug\TestRunnerService.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunnerService\bin\Debug\TestRunnerService.pdb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunnerService\obj\Debug\TestRunnerService.csprojResolveAssemblyReference.cache
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunnerService\obj\Debug\TestRunnerService.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunnerService\obj\Debug\TestRunnerService.pdb
