@@ -10,23 +10,24 @@ namespace TestRunnerService
 {
     // Extension of the process class which reroutes output and povides extra custom functionality for running tests
     // Also wraps up all of the process logic for starting, reading output/error and writing to the output files
-    public class TestRunnerProcess : Process
+    // It should only be created from the TestRunnerProcessManager class
+    internal class TestRunnerProcess : Process
     {
         #region Properties and Fields
 
         /// <summary>
         /// Diverted output string for the Process Output so that we can write it to a file at the end without worrying about concurrency issues with the file
         /// </summary>
-        public StringBuilder Output { get; private set; }
+        private StringBuilder Output { get; set; }
 
         /// <summary>
         /// Diverted output string for the Process Error so that we can write it to a file at the end without worrying about concurrency issues with the file
         /// </summary>
-        public StringBuilder Error { get; private set; }
+        private StringBuilder Error { get; set; }
 
         #endregion
 
-        public TestRunnerProcess(string arguments = "")
+        internal TestRunnerProcess(string arguments = "")
         {
             EnableRaisingEvents = true;
             StartInfo = CreateCmdLineProcessStartInfo(arguments);

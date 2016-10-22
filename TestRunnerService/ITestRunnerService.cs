@@ -12,12 +12,12 @@ namespace TestRunnerService
     public interface ITestRunnerService
     {
         [OperationContract]
-        int StartTesting(string testConfigFilePath);
+        ulong StartTesting(string testConfigFilePath);
 
         [OperationContract]
         TestingStatus GetTestingStatus(string testConfigFilePath);
 
         [OperationContract]
-        string GetTestingResultsFilePath(int testingRunID);
+        string GetTestingResultsFilePath(ulong testingRunID);
     }
 }

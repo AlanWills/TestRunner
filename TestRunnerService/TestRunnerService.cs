@@ -7,11 +7,9 @@ namespace TestRunnerService
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class TestRunnerService : ITestRunnerService
     {
-        public int StartTesting(string testConfigFilePath)
+        public ulong StartTesting(string testConfigFilePath)
         {
-            TestRunnerProcess testRunnerProcess = new TestRunnerProcess("\"TestKernel.dll\"");
-            
-            return 0;
+            return TestRunnerProcessManager.CreateProcess("\"TestKernel.dll\"");
         }
 
         public TestingStatus GetTestingStatus(string testConfigFilePath)
@@ -19,7 +17,7 @@ namespace TestRunnerService
             return TestingStatus.kFinished;
         }
 
-        public string GetTestingResultsFilePath(int testingRunID)
+        public string GetTestingResultsFilePath(ulong testingRunID)
         {
             return "";
         }
