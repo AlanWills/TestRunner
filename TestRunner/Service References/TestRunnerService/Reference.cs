@@ -31,13 +31,16 @@ namespace TestRunner.TestRunnerService {
     public interface ITestRunnerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/StartTesting", ReplyAction="http://tempuri.org/ITestRunnerService/StartTestingResponse")]
-        System.Threading.Tasks.Task<int> StartTestingAsync(string testConfigFilePath);
+        System.Threading.Tasks.Task<ulong> StartTestingAsync(string testConfigFilePath);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetTestingStatus", ReplyAction="http://tempuri.org/ITestRunnerService/GetTestingStatusResponse")]
-        System.Threading.Tasks.Task<TestRunner.TestRunnerService.TestingStatus> GetTestingStatusAsync(string testConfigFilePath);
+        System.Threading.Tasks.Task<TestRunner.TestRunnerService.TestingStatus> GetTestingStatusAsync(ulong testingRunID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetTestingResultsFilePath", ReplyAction="http://tempuri.org/ITestRunnerService/GetTestingResultsFilePathResponse")]
-        System.Threading.Tasks.Task<string> GetTestingResultsFilePathAsync(int testingRunID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetOutputFilePath", ReplyAction="http://tempuri.org/ITestRunnerService/GetOutputFilePathResponse")]
+        System.Threading.Tasks.Task<string> GetOutputFilePathAsync(ulong testingRunID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetErrorFilePath", ReplyAction="http://tempuri.org/ITestRunnerService/GetErrorFilePathResponse")]
+        System.Threading.Tasks.Task<string> GetErrorFilePathAsync(ulong testingRunID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,16 +86,20 @@ namespace TestRunner.TestRunnerService {
                 base(binding, remoteAddress) {
         }
         
-        public System.Threading.Tasks.Task<int> StartTestingAsync(string testConfigFilePath) {
+        public System.Threading.Tasks.Task<ulong> StartTestingAsync(string testConfigFilePath) {
             return base.Channel.StartTestingAsync(testConfigFilePath);
         }
         
-        public System.Threading.Tasks.Task<TestRunner.TestRunnerService.TestingStatus> GetTestingStatusAsync(string testConfigFilePath) {
-            return base.Channel.GetTestingStatusAsync(testConfigFilePath);
+        public System.Threading.Tasks.Task<TestRunner.TestRunnerService.TestingStatus> GetTestingStatusAsync(ulong testingRunID) {
+            return base.Channel.GetTestingStatusAsync(testingRunID);
         }
         
-        public System.Threading.Tasks.Task<string> GetTestingResultsFilePathAsync(int testingRunID) {
-            return base.Channel.GetTestingResultsFilePathAsync(testingRunID);
+        public System.Threading.Tasks.Task<string> GetOutputFilePathAsync(ulong testingRunID) {
+            return base.Channel.GetOutputFilePathAsync(testingRunID);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetErrorFilePathAsync(ulong testingRunID) {
+            return base.Channel.GetErrorFilePathAsync(testingRunID);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

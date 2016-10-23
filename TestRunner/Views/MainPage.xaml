@@ -18,7 +18,8 @@
             <local:NavBar />
         </Frame>
         <Frame Grid.Column="1" >
-            <Button x:Name="button" Content="Test" HorizontalAlignment="Center" VerticalAlignment="Center" Height="36" Width="155" Click="button_Click"/>
+            <StackPanel>
+            </StackPanel>
         </Frame>
     </Grid>
 </Page>

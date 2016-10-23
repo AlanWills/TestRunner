@@ -27,12 +27,17 @@ namespace TestRunner.UserControls
 
         private void NavigateToMainPage(object sender, RoutedEventArgs args)
         {
-            bool result = (Window.Current.Content as Frame).Navigate(typeof(MainPage));
+            (Window.Current.Content as Frame).Navigate(typeof(MainPage));
+        }
+
+        private void NavigateToNewConfigurationPage(object sender, RoutedEventArgs args)
+        {
+            (Window.Current.Content as Frame).Navigate(typeof(NewConfigurationView));
         }
 
         private void NavigateToAppSettingsView(object sender, RoutedEventArgs args)
         {
-            bool result = (Window.Current.Content as Frame).Navigate(typeof(AppSettingsView));
+            (Window.Current.Content as Frame).Navigate(typeof(AppSettingsView));
         }
     }
 }

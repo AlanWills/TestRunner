@@ -11,14 +11,14 @@
   <xs:element name="StartTestingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="StartTestingResult" type="xs:int" />
+        <xs:element minOccurs="0" name="StartTestingResult" type="xs:unsignedLong" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTestingStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="testConfigFilePath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="testingRunID" type="xs:unsignedLong" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -29,17 +29,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTestingResultsFilePath">
+  <xs:element name="GetOutputFilePath">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="testingRunID" type="xs:int" />
+        <xs:element minOccurs="0" name="testingRunID" type="xs:unsignedLong" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTestingResultsFilePathResponse">
+  <xs:element name="GetOutputFilePathResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetTestingResultsFilePathResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GetOutputFilePathResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetErrorFilePath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="testingRunID" type="xs:unsignedLong" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetErrorFilePathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetErrorFilePathResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
