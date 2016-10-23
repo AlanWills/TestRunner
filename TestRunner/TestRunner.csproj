@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\TestRunConfigDataExtensions.cs" />
     <Compile Include="Models\AppSettingsModel.cs" />
     <Compile Include="Service References\TestRunnerService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -179,6 +180,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\TestRunnerService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestRunnerLibrary\TestRunnerLibrary.csproj">
+      <Project>{3E7DA3E3-3A64-46C5-A191-0E670A44B4BE}</Project>
+      <Name>TestRunnerLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

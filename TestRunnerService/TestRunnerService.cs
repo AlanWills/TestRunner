@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Diagnostics;
 
 namespace TestRunnerService
 {
@@ -9,17 +7,24 @@ namespace TestRunnerService
     {
         public ulong StartTesting(string testConfigFilePath)
         {
-            return TestRunnerProcessManager.CreateProcess("\"TestKernel.dll\"");
+            //C:\\Users\\Alan\\AppData\\Local\\Packages\\TestRunner_cxt6mtc0m2z7c\\LocalState\\Test.xml
+            Debug.Assert(testConfigFilePath != null && testConfigFilePath.Length > 0);
+            return TestRunnerProcessManager.CreateProcess(testConfigFilePath);
         }
 
-        public TestingStatus GetTestingStatus(string testConfigFilePath)
+        public TestingStatus GetTestingStatus(ulong testingRunID)
         {
-            return TestingStatus.kFinished;
+            return TestRunnerProcessManager.GetProcessStatus(testingRunID);
         }
 
-        public string GetTestingResultsFilePath(ulong testingRunID)
+        public string GetOutputFilePath(ulong testingRunID)
         {
-            return "";
+            return TestRunnerProcessManager.GetProcessOutputFilePath(testingRunID);
+        }
+
+        public string GetErrorFilePath(ulong testingRunID)
+        {
+            return TestRunnerProcessManager.GetProcessOutputFilePath(testingRunID);
         }
     }
 }

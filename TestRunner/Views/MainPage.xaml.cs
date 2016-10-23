@@ -1,12 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using TestRunner.Models;
+﻿using System.IO;
 using TestRunner.TestRunnerService;
-using Windows.Data.Xml.Dom;
+using TestRunnerLibrary;
 using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -28,7 +23,15 @@ namespace TestRunner.Views
         {
             TestRunnerServiceClient client = new TestRunnerServiceClient();
 
-            string path = @"C:\Users\Alan\Documents\Visual Studio 2015\Projects\OpenGL\OpenGL\Debug\TestKernel.dll";
+            TestRunConfigData configData = new TestRunConfigData()
+            {
+                FullPathToDll = @"C:\Users\Alan\Documents\Visual Studio 2015\Projects\OpenGL\OpenGL\Debug\TestKernel.dll",
+                OutputFileFullPath = Directory.GetCurrentDirectory() + "\\Output.txt",
+                ErrorFileFullPath = Directory.GetCurrentDirectory() + "\\Error.txt",
+            };
+
+            string path = ApplicationData.Current.LocalFolder.Path + "\\Test.xml";
+            await configData.SerializeAsync(path);
 
             int x = await client.StartTestingAsync(path);
         }

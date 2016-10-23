@@ -50,10 +50,17 @@
     <Compile Include="TestRunnerProcess.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TestRunnerProcessManager.cs" />
     <Compile Include="TestRunnerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestRunnerLibrary\TestRunnerLibrary.csproj">
+      <Project>{3e7da3e3-3a64-46c5-a191-0e670a44b4be}</Project>
+      <Name>TestRunnerLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

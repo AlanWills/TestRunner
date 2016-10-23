@@ -15,9 +15,12 @@ namespace TestRunnerService
         ulong StartTesting(string testConfigFilePath);
 
         [OperationContract]
-        TestingStatus GetTestingStatus(string testConfigFilePath);
+        TestingStatus GetTestingStatus(ulong testingRunID);
 
         [OperationContract]
-        string GetTestingResultsFilePath(ulong testingRunID);
+        string GetOutputFilePath(ulong testingRunID);
+
+        [OperationContract]
+        string GetErrorFilePath(ulong testingRunID);
     }
 }
