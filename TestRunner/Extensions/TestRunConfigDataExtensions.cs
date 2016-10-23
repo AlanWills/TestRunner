@@ -13,19 +13,13 @@ namespace TestRunner
 {
     public static class TestRunConfigDataExtensions
     {
-        public static Task SerializeAsync(this TestRunConfigData data, string configDataFilePath)
+        public static async void SerializeAsync(this TestRunConfigData data, StorageFile fileToSaveInto)
         {
-            Task task = new Task(() =>
+            using (StorageStreamTransaction stream = await fileToSaveInto.OpenTransactedWriteAsync())
             {
-               using (FileStream fileStream = new FileStream(configDataFilePath, FileMode.Create))
-               {
-                   XmlSerializer serializer = new XmlSerializer(typeof(TestRunConfigData));
-                   serializer.Serialize(fileStream, data);
-               }
-            });
-
-            task.Start();
-            return task;
+                XmlSerializer serializer = new XmlSerializer(typeof(TestRunConfigData));
+                serializer.Serialize(stream.Stream.AsStream(), data);
+            }
         }
     }
 }

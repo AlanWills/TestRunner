@@ -19,8 +19,8 @@
         </Frame>
         <Frame Grid.Column="1">
             <StackPanel Orientation="Vertical" Height="100" VerticalAlignment="Top" Margin="0,10,0,0">
-                <TextBlock x:Name="MSTestPathHelp" TextWrapping="Wrap" Text="Full path to MSTest.exe" HorizontalAlignment="Left" VerticalAlignment="Center" TextAlignment="Center" Margin="0,10,0,0" Width="194"/>
-                <local:FilePicker x:Name="MSTestFilePicker" FilePath="{Binding MSTestPath, Mode=TwoWay}" FileExtension=".exe"/>
+                <TextBlock x:Name="VSTestPathHelp" TextWrapping="Wrap" Text="Full path to VSTest.console.exe" HorizontalAlignment="Left" VerticalAlignment="Center" TextAlignment="Center" Margin="0,10,0,0" Width="240"/>
+                <local:FileOpen x:Name="VSTestFileOpen" FilePath="{Binding VSTestPath, Mode=TwoWay}" FileExtension=".exe"/>
             </StackPanel>
         </Frame>
     </Grid>

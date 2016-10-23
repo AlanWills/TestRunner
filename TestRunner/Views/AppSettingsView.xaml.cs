@@ -31,7 +31,7 @@ namespace TestRunner.Views
             InitializeComponent();
             AppSettingsViewModel = new AppSettingsViewModel();
             DataContext = AppSettingsViewModel;
-            MSTestFilePicker.FilePath = AppSettingsViewModel.MSTestPath;
+            VSTestFileOpen.FilePath = AppSettingsViewModel.VSTestPath;
         }
     }
 }

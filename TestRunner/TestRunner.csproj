@@ -96,19 +96,22 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\TestRunConfigDataExtensions.cs" />
-    <Compile Include="Models\AppSettingsModel.cs" />
     <Compile Include="Service References\TestRunnerService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FilePicker.xaml.cs">
-      <DependentUpon>FilePicker.xaml</DependentUpon>
+    <Compile Include="UserControls\FileOpen.xaml.cs">
+      <DependentUpon>FileOpen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FileSave.xaml.cs">
+      <DependentUpon>FileSave.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NavBar.xaml.cs">
       <DependentUpon>NavBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AppSettingsViewModel.cs" />
+    <Compile Include="ViewModels\NewConfigurationViewModel.cs" />
     <Compile Include="Views\AppSettingsView.xaml.cs">
       <DependentUpon>AppSettingsView.xaml</DependentUpon>
     </Compile>
@@ -161,7 +164,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="UserControls\FilePicker.xaml">
+    <Page Include="UserControls\FileOpen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FileSave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,6 +200,9 @@
       <Project>{3E7DA3E3-3A64-46C5-A191-0E670A44B4BE}</Project>
       <Name>TestRunnerLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -1,4 +1,4 @@
-﻿using TestRunner.Models;
+﻿using TestRunnerLibrary;
 
 namespace TestRunner
 {
@@ -6,14 +6,14 @@ namespace TestRunner
     {
         #region Properties and Fields
 
-        private string msTestPath = AppSettingsModel.MSTestPath;
-        public string MSTestPath
+        private string vsTestPath = ServiceSettings.VSTestPath;
+        public string VSTestPath
         {
-            get { return msTestPath; }
+            get { return vsTestPath; }
             set
             {
-                msTestPath = value;
-                AppSettingsModel.MSTestPath = msTestPath;
+                vsTestPath = value;
+                ServiceSettings.VSTestPath = vsTestPath;
             }
         }
 

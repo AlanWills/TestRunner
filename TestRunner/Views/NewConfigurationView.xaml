@@ -20,19 +20,21 @@
         <Frame Grid.Column="1" >
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Test Project Dll" Margin="20,10,0,0"></TextBlock>
-                <local:FilePicker x:Name="DllPathPicker" FileExtension=".dll"></local:FilePicker>
+                <local:FileOpen x:Name="DllPathOpen" FilePath="{Binding FullPathToDll, Mode=TwoWay}" FileExtension=".dll"></local:FileOpen>
                 <TextBlock Text="Output Log File Path" Margin="20,10,0,0"></TextBlock>
-                <local:FilePicker x:Name="OutputFilePicker" FileExtension=".txt"></local:FilePicker>
+                <local:FileOpen x:Name="OutputFileOpen" FilePath="{Binding OutputFileFullPath, Mode=TwoWay}" FileExtension=".txt"></local:FileOpen>
                 <TextBlock Text="Error Log File Path" Margin="20,10,0,0"></TextBlock>
-                <local:FilePicker x:Name="ErrorFilePicker" FileExtension=".txt"></local:FilePicker>
+                <local:FileOpen x:Name="ErrorFileOpen" FilePath="{Binding ErrorFileFullPath, Mode=TwoWay}" FileExtension=".txt"></local:FileOpen>
                 <Button 
-                    x:Name="CreateButton" 
-                    Content="Create" 
+                    x:Name="StartButton" 
+                    Content="Start" 
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Stretch" 
                     Width="100" 
                     Margin="0, 20, 20, 0"
-                    Click="CreateTestRunProcess"/>
+                    Click="CreateTestRunProcess"
+                    IsEnabled="False"
+                    ToolTipService.ToolTip="Launch a Test Run process on the service with these configurations."/>
             </StackPanel>
         </Frame>
     </Grid>

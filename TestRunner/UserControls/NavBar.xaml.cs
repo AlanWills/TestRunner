@@ -22,7 +22,7 @@ namespace TestRunner.UserControls
     {
         public NavBar()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void NavigateToMainPage(object sender, RoutedEventArgs args)
@@ -33,6 +33,11 @@ namespace TestRunner.UserControls
         private void NavigateToNewConfigurationPage(object sender, RoutedEventArgs args)
         {
             (Window.Current.Content as Frame).Navigate(typeof(NewConfigurationView));
+        }
+
+        private void NavigateToProcessesPage(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void NavigateToAppSettingsView(object sender, RoutedEventArgs args)

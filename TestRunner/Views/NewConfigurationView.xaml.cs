@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using TestRunner.TestRunnerService;
 using TestRunnerLibrary;
 using Windows.Foundation;
@@ -25,26 +27,36 @@ namespace TestRunner.Views
     /// </summary>
     public sealed partial class NewConfigurationView : Page
     {
+        #region Properties and Fields
+
+        private NewConfigurationViewModel NewConfig { get; set; }
+
+        #endregion
+
         public NewConfigurationView()
         {
+            NewConfig = new NewConfigurationViewModel();
+            NewConfig.PropertyChanged += NewConfig_PropertyChanged;
+            DataContext = NewConfig;
             InitializeComponent();
         }
 
-        private async void CreateTestRunProcess(object sender, RoutedEventArgs e)
+        private async void NewConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            TestRunnerServiceClient client = new TestRunnerServiceClient();
-            TestRunConfigData configData = new TestRunConfigData()
+            if (e.PropertyName == "FullPathToDll" ||
+                e.PropertyName == "OutputFileFullPath" ||
+                e.PropertyName == "ErrorFileFullPath")
             {
-                FullPathToDll = DllPathPicker.FilePath,
-                OutputFileFullPath = OutputFilePicker.FilePath,
-                ErrorFileFullPath = ErrorFilePicker.FilePath,
-            };
+                StartButton.IsEnabled = await Task.Run(() =>
+                {
+                    return NewConfig.IsConfigurationValid;
+                });
+            }
+        }
 
-            string path = ApplicationData.Current.LocalFolder.Path + "\\Test.xml";
-            await configData.SerializeAsync(path);
-
-            ulong x = await client.StartTestingAsync(path);
-            TestingStatus result = await client.GetTestingStatusAsync(x);
+        private void CreateTestRunProcess(object sender, RoutedEventArgs e)
+        {
+            NewConfig.CreateTestRunProcess();
         }
     }
 }
