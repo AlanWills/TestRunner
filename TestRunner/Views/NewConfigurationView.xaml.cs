@@ -43,9 +43,10 @@ namespace TestRunner.Views
 
         private async void NewConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "FullPathToDll" ||
-                e.PropertyName == "OutputFileFullPath" ||
-                e.PropertyName == "ErrorFileFullPath")
+            if (e.PropertyName == FullPathToDll.Name ||
+                e.PropertyName == OutputFileFullPath.Name ||
+                e.PropertyName == ErrorFileFullPath.Name ||
+                e.PropertyName == ProcessName.Name)
             {
                 if (e.PropertyName == FullPathToDll.Name)
                 {
@@ -58,6 +59,10 @@ namespace TestRunner.Views
                 else if (e.PropertyName == ErrorFileFullPath.Name)
                 {
                     ErrorFileFullPath.FilePath = NewConfig.ErrorFileFullPath;
+                }
+                else if (e.PropertyName == ProcessName.Name)
+                {
+                    ProcessName.Text = NewConfig.ProcessName;
                 }
 
                 StartButton.IsEnabled = await Task.Run(() =>

@@ -20,6 +20,16 @@ namespace TestRunner
         private TestRunConfigData Data { get; set; }
         private TestRunnerServiceClient Client { get; set; }
 
+        public string ProcessName
+        {
+            get { return Data.ProcessName; }
+            set
+            {
+                Data.ProcessName = value;
+                OnPropertyChanged("ProcessName");
+            }
+        }
+
         public string FullPathToDll
         {
             get
@@ -104,6 +114,8 @@ namespace TestRunner
             if (file != null)
             {
                 TestRunConfigData data = await TestRunConfigDataExtensions.DeserializeAsync(file);
+
+                ProcessName = data.ProcessName;
                 FullPathToDll = data.FullPathToDll;
                 OutputFileFullPath = data.OutputFileFullPath;
                 ErrorFileFullPath = data.ErrorFileFullPath;

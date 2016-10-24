@@ -17,6 +17,8 @@ namespace TestRunnerService
     {
         #region Properties and Fields
 
+        public string ProcessName { get; private set; }
+
         /// <summary>
         /// Diverted output string for the Process Output so that we can write it to a file at the end without worrying about concurrency issues with the file
         /// </summary>
@@ -44,6 +46,7 @@ namespace TestRunnerService
 
             TestRunConfigData data = task.Result;
 
+            ProcessName = data.ProcessName;
             OutputFilePath = data.OutputFileFullPath;
             ErrorFilePath = data.ErrorFileFullPath;
 

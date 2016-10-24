@@ -27,7 +27,7 @@ namespace TestRunnerService
             return TestRunnerProcessManager.GetProcessOutput(testingRunID);
         }
 
-        public List<ulong> GetAllProcesses()
+        public List<string> GetAllProcesses()
         {
             return TestRunnerProcessManager.GetAllProcesses();
         }

@@ -25,8 +25,8 @@ namespace TestRunner
             }
         }
 
-        private ObservableCollection<ulong> processes;
-        public ObservableCollection<ulong> Processes
+        private ObservableCollection<string> processes;
+        public ObservableCollection<string> Processes
         {
             get { return processes; }
             private set
@@ -47,13 +47,12 @@ namespace TestRunner
         {
             //outputTimer = new Timer(GetProcessOutput, null, 0, 5000);
             client = new TestRunnerServiceClient();
-            GetProcessOutput(null);
             GetProcesses();
         }
 
-        private async void GetProcessOutput(object state)
+        public async void GetProcessOutput(ulong processId)
         {
-            SelectedProcessOutput = (await client.GetProcessOutputAsync(0));
+            SelectedProcessOutput = (await client.GetProcessOutputAsync(processId));
         }
 
         private async void GetProcesses()

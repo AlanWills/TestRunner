@@ -43,7 +43,7 @@ namespace TestRunner.TestRunnerService {
         System.Threading.Tasks.Task<string> GetProcessErrorAsync(ulong testingRunID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetAllProcesses", ReplyAction="http://tempuri.org/ITestRunnerService/GetAllProcessesResponse")]
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ulong>> GetAllProcessesAsync();
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> GetAllProcessesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -105,7 +105,7 @@ namespace TestRunner.TestRunnerService {
             return base.Channel.GetProcessErrorAsync(testingRunID);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<ulong>> GetAllProcessesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> GetAllProcessesAsync() {
             return base.Channel.GetAllProcessesAsync();
         }
         

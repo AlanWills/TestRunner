@@ -25,6 +25,6 @@ namespace TestRunnerService
         string GetProcessError(ulong testingRunID);
 
         [OperationContract]
-        List<ulong> GetAllProcesses();
+        List<string> GetAllProcesses();
     }
 }

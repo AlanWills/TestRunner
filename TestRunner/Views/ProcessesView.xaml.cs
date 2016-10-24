@@ -45,11 +45,20 @@ namespace TestRunner.Views
             }
             else if (e.PropertyName == Processes.Name)
             {
-                foreach (ulong item in ProcessesViewModel.Processes)
+                foreach (string item in ProcessesViewModel.Processes)
                 {
                     Processes.Items.Add(item);
                 }
             }
+        }
+
+        private void Processes_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string clickedItem = e.ClickedItem as string;
+            string[] splitStr = clickedItem.Split(' ');
+            string id = splitStr.Last();
+
+            ProcessesViewModel.GetProcessOutput(ulong.Parse(id.Substring(1, id.Length - 2)));
         }
     }
 }

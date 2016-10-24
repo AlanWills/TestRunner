@@ -13,6 +13,8 @@ namespace TestRunnerLibrary
 {
     public class TestRunConfigData
     {
+        public string ProcessName { get; set; }
+
         public string FullPathToDll { get; set; }
 
         public string OutputFileFullPath { get; set; }
