@@ -1,4 +1,4 @@
-﻿<Window
+﻿<Page
     x:Class="TestRunner.Views.AppSettingsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -20,4 +20,4 @@
             <local:FileOpen x:Name="VSTestFileOpen" FilePath="{Binding VSTestPath, Mode=TwoWay}" FileExtension=".exe"/>
         </StackPanel>
     </Grid>
-</Window>
+</Page>

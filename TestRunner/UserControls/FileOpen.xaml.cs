@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Microsoft.Win32;
+using System.Windows;
 using System.Windows.Controls;
 using Windows.Storage.Pickers;
 
@@ -41,16 +42,16 @@ namespace TestRunner.UserControls
             InitializeComponent();
         }
 
-        private async void OpenFileBrowseDialog(object sender, RoutedEventArgs args)
+        private void OpenFileBrowseDialog(object sender, RoutedEventArgs args)
         {
-            FileOpenPicker filePicker = new FileOpenPicker();
-            filePicker.FileTypeFilter.Add(FileExtension);
+            OpenFileDialog filePicker = new OpenFileDialog();
+            filePicker.DefaultExt = FileExtension;
+            bool? result = filePicker.ShowDialog();
 
-            //StorageFile file = await filePicker.PickSingleFileAsync();
-            //if (file != null)
-            //{
-            //    FilePath = file.Path;
-            //}
+            if (result.HasValue && result.Value)
+            {
+                FilePath = filePicker.FileName;
+            }
         }
 
         private void Path_TextChanged(object sender, TextChangedEventArgs e)
