@@ -9,6 +9,7 @@ using TestRunner.TestRunnerService;
 using TestRunnerLibrary;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.UI.Popups;
 
 namespace TestRunner
 {
@@ -87,6 +88,9 @@ namespace TestRunner
             {
                 Data.SerializeAsync(file);
                 await Client.StartTestingAsync(file.Path);
+
+                MessageDialog dialog = new MessageDialog("Test Process started");
+                await dialog.ShowAsync();
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace TestRunnerService
 {
@@ -24,6 +25,11 @@ namespace TestRunnerService
         public string GetProcessError(ulong testingRunID)
         {
             return TestRunnerProcessManager.GetProcessOutput(testingRunID);
+        }
+
+        public List<ulong> GetAllProcesses()
+        {
+            return TestRunnerProcessManager.GetAllProcesses();
         }
     }
 }

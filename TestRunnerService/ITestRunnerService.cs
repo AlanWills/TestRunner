@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System.Collections.Generic;
+using System.ServiceModel;
 
 namespace TestRunnerService
 {
@@ -22,5 +23,8 @@ namespace TestRunnerService
 
         [OperationContract]
         string GetProcessError(ulong testingRunID);
+
+        [OperationContract]
+        List<ulong> GetAllProcesses();
     }
 }

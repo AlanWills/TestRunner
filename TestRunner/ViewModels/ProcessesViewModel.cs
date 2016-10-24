@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,17 @@ namespace TestRunner
             }
         }
 
+        private ObservableCollection<ulong> processes;
+        public ObservableCollection<ulong> Processes
+        {
+            get { return processes; }
+            private set
+            {
+                processes = value;
+                OnPropertyChanged("Processes");
+            }
+        }
+
         private Timer outputTimer;
         private TestRunnerServiceClient client;
 
@@ -36,11 +48,17 @@ namespace TestRunner
             //outputTimer = new Timer(GetProcessOutput, null, 0, 5000);
             client = new TestRunnerServiceClient();
             GetProcessOutput(null);
+            GetProcesses();
         }
 
         private async void GetProcessOutput(object state)
         {
             SelectedProcessOutput = (await client.GetProcessOutputAsync(0));
+        }
+
+        private async void GetProcesses()
+        {
+            Processes = await client.GetAllProcessesAsync();
         }
 
         private void OnPropertyChanged(string propertyName)

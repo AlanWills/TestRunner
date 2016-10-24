@@ -132,6 +132,9 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+    <None Include="Service References\TestRunnerService\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\TestRunnerService\service.wsdl" />
     <None Include="Service References\TestRunnerService\service.xsd">
       <SubType>Designer</SubType>

@@ -19,14 +19,25 @@
         </Frame>
         <Frame Grid.Column="1" >
             <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="11*"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="200" />
                 </Grid.ColumnDefinitions>
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0" Margin="10">
+                <StackPanel Grid.Column="0" Margin="10" Grid.Row="0" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Status: " />
+                        <TextBlock x:Name="Status" Text="Passed" Margin="20,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0" Margin="10" Grid.Row="1">
                     <TextBlock x:Name="SelectedProcessOutput" Text="{Binding SelectedProcessOutput}" TextWrapping="Wrap"/>
                 </ScrollViewer>
-                <TextBlock Text="Put processes here" Grid.Column="1"/>
+                <ListView x:Name="Processes" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                          ItemsSource="{Binding Processes}"/>
             </Grid>
         </Frame>
     </Grid>

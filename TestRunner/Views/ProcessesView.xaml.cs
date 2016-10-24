@@ -25,23 +25,30 @@ namespace TestRunner.Views
     {
         #region Properties and Fields
 
-        private ProcessesViewModel Processes { get; set; }
+        private ProcessesViewModel ProcessesViewModel { get; set; }
 
         #endregion
 
         public ProcessesView()
         {
-            Processes = new ProcessesViewModel();
+            ProcessesViewModel = new ProcessesViewModel();
             DataContext = Processes;
             InitializeComponent();
-            Processes.PropertyChanged += UpdateBuildResults;
+            ProcessesViewModel.PropertyChanged += UpdateBuildResults;
         }
 
         private void UpdateBuildResults(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == SelectedProcessOutput.Name)
             {
-                SelectedProcessOutput.Text = Processes.SelectedProcessOutput;
+                SelectedProcessOutput.Text = ProcessesViewModel.SelectedProcessOutput;
+            }
+            else if (e.PropertyName == Processes.Name)
+            {
+                foreach (ulong item in ProcessesViewModel.Processes)
+                {
+                    Processes.Items.Add(item);
+                }
             }
         }
     }

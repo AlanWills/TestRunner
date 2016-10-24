@@ -46,6 +46,11 @@ namespace TestRunnerService
             return GetProcess(processID).Error.ToString();
         }
 
+        public static List<ulong> GetAllProcesses()
+        {
+            return Processes.Keys.ToList();
+        }
+
         private static TestRunnerProcess GetProcess(ulong processID)
         {
             // Make sure the requested process exists in our dictionary, otherwise we are in trouble!
