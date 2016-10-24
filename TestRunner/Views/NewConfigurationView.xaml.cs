@@ -47,6 +47,19 @@ namespace TestRunner.Views
                 e.PropertyName == "OutputFileFullPath" ||
                 e.PropertyName == "ErrorFileFullPath")
             {
+                if (e.PropertyName == FullPathToDll.Name)
+                {
+                    FullPathToDll.FilePath = NewConfig.FullPathToDll;
+                }
+                else if (e.PropertyName == OutputFileFullPath.Name)
+                {
+                    OutputFileFullPath.FilePath = NewConfig.OutputFileFullPath;
+                }
+                else if (e.PropertyName == ErrorFileFullPath.Name)
+                {
+                    ErrorFileFullPath.FilePath = NewConfig.ErrorFileFullPath;
+                }
+
                 StartButton.IsEnabled = await Task.Run(() =>
                 {
                     return NewConfig.IsConfigurationValid;

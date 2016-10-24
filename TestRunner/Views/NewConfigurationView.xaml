@@ -20,11 +20,11 @@
         <Frame Grid.Column="1" >
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Test Project Dll" Margin="20,10,0,0"></TextBlock>
-                <local:FileOpen x:Name="DllPathOpen" FilePath="{Binding FullPathToDll, Mode=TwoWay}" FileExtension=".dll"></local:FileOpen>
+                <local:FileOpen x:Name="FullPathToDll" FilePath="{Binding FullPathToDll, Mode=TwoWay}" FileExtension=".dll"></local:FileOpen>
                 <TextBlock Text="Output Log File Path" Margin="20,10,0,0"></TextBlock>
-                <local:FileOpen x:Name="OutputFileOpen" FilePath="{Binding OutputFileFullPath, Mode=TwoWay}" FileExtension=".txt"></local:FileOpen>
+                <local:FileOpen x:Name="OutputFileFullPath" FilePath="{Binding OutputFileFullPath, Mode=TwoWay}" FileExtension=".txt"></local:FileOpen>
                 <TextBlock Text="Error Log File Path" Margin="20,10,0,0"></TextBlock>
-                <local:FileOpen x:Name="ErrorFileOpen" FilePath="{Binding ErrorFileFullPath, Mode=TwoWay}" FileExtension=".txt"></local:FileOpen>
+                <local:FileOpen x:Name="ErrorFileFullPath" FilePath="{Binding ErrorFileFullPath, Mode=TwoWay}" FileExtension=".txt"></local:FileOpen>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment ="Center" Width="215">
                     <Button 
                         x:Name="StartButton" 

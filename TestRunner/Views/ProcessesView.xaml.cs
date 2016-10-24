@@ -39,7 +39,10 @@ namespace TestRunner.Views
 
         private void UpdateBuildResults(object sender, PropertyChangedEventArgs e)
         {
-            BuildOutputText.Text = Processes.SelectedProcessOutput;
+            if (e.PropertyName == SelectedProcessOutput.Name)
+            {
+                SelectedProcessOutput.Text = Processes.SelectedProcessOutput;
+            }
         }
     }
 }

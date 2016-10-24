@@ -40,7 +40,7 @@ namespace TestRunner
 
         private async void GetProcessOutput(object state)
         {
-            SelectedProcessOutput = (await client.GetProcessOutputAsync(0)).Substring(0, 20);
+            SelectedProcessOutput = (await client.GetProcessOutputAsync(0));
         }
 
         private void OnPropertyChanged(string propertyName)

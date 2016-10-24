@@ -18,13 +18,16 @@
             <local:NavBar />
         </Frame>
         <Frame Grid.Column="1" >
-            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Height="325">
-                <TextBlock Text="Build Output"/>
-                <TextBlock x:Name="BuildOutputText" Text="{Binding SelectedProcessOutput, UpdateSourceTrigger=PropertyChanged}" Height="305"/>
-                <!--<ScrollViewer Height="100">
-                    
-                </ScrollViewer>-->
-            </StackPanel>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="200" />
+                </Grid.ColumnDefinitions>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0" Margin="10">
+                    <TextBlock x:Name="SelectedProcessOutput" Text="{Binding SelectedProcessOutput}" TextWrapping="Wrap"/>
+                </ScrollViewer>
+                <TextBlock Text="Put processes here" Grid.Column="1"/>
+            </Grid>
         </Frame>
     </Grid>
 </Page>
