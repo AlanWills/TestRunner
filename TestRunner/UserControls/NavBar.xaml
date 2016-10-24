@@ -12,8 +12,8 @@
     <Grid>
         <StackPanel x:Name="NavigationPart" Orientation="Vertical">
             <Button Content="Home" HorizontalAlignment="Stretch" Background="RoyalBlue" Foreground="White" Click="NavigateToMainPage"/>
-            <Button Content="New" HorizontalAlignment="Stretch" Background="RoyalBlue" Foreground="White" Click="NavigateToNewConfigurationPage"/>
-            <Button Content="Processes" HorizontalAlignment="Stretch" Background="RoyalBlue" Foreground="White" Click="NavigateToProcessesPage"/>
+            <Button Content="New" HorizontalAlignment="Stretch" Background="RoyalBlue" Foreground="White" Click="NavigateToNewConfigurationView"/>
+            <Button Content="Processes" HorizontalAlignment="Stretch" Background="RoyalBlue" Foreground="White" Click="NavigateToProcessesView"/>
             <Button Content="Settings" HorizontalAlignment="Stretch" Background="RoyalBlue" Foreground="White" Click="NavigateToAppSettingsView"/>
         </StackPanel>
     </Grid>

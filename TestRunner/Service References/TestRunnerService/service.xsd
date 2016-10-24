@@ -10,9 +10,7 @@
   </xs:element>
   <xs:element name="StartTestingResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="StartTestingResult" type="xs:unsignedLong" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTestingStatus">
@@ -29,31 +27,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetOutputFilePath">
+  <xs:element name="GetProcessOutput">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="testingRunID" type="xs:unsignedLong" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetOutputFilePathResponse">
+  <xs:element name="GetProcessOutputResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetOutputFilePathResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GetProcessOutputResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetErrorFilePath">
+  <xs:element name="GetProcessError">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="testingRunID" type="xs:unsignedLong" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetErrorFilePathResponse">
+  <xs:element name="GetProcessErrorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetErrorFilePathResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GetProcessErrorResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

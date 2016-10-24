@@ -36,14 +36,14 @@ namespace TestRunnerService
             return GetProcess(processID).Status;
         }
 
-        public static string GetProcessOutputFilePath(ulong processID)
+        public static string GetProcessOutput(ulong processID)
         {
-            return GetProcess(processID).OutputFilePath;
+            return GetProcess(processID).Output.ToString();
         }
 
-        public static string GetProcessErrorFilePath(ulong processID)
+        public static string GetProcessError(ulong processID)
         {
-            return GetProcess(processID).ErrorFilePath;
+            return GetProcess(processID).Error.ToString();
         }
 
         private static TestRunnerProcess GetProcess(ulong processID)

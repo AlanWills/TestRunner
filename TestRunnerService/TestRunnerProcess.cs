@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestRunnerLibrary;
+using Windows.Storage;
 
 namespace TestRunnerService
 {
@@ -19,18 +20,18 @@ namespace TestRunnerService
         /// <summary>
         /// Diverted output string for the Process Output so that we can write it to a file at the end without worrying about concurrency issues with the file
         /// </summary>
-        private StringBuilder Output { get; set; }
+        public StringBuilder Output { get; set; }
 
         /// <summary>
         /// Diverted output string for the Process Error so that we can write it to a file at the end without worrying about concurrency issues with the file
         /// </summary>
-        private StringBuilder Error { get; set; }
+        public StringBuilder Error { get; set; }
 
         public TestingStatus Status { get; private set; }
 
-        public string OutputFilePath { get; private set; }
+        private string OutputFilePath { get; set; }
 
-        public string ErrorFilePath { get; private set; }
+        private string ErrorFilePath { get; set; }
 
         #endregion
 
@@ -38,7 +39,10 @@ namespace TestRunnerService
         {
             Status = TestingStatus.kRunning;
 
-            TestRunConfigData data = TestRunConfigData.Deserialize(configDataFilePath);
+            Task<TestRunConfigData> task = TestRunConfigData.DeserializeAsync(configDataFilePath);
+            task.Wait();
+
+            TestRunConfigData data = task.Result;
 
             OutputFilePath = data.OutputFileFullPath;
             ErrorFilePath = data.ErrorFileFullPath;

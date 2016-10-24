@@ -54,9 +54,14 @@ namespace TestRunner.Views
             }
         }
 
-        private void CreateTestRunProcess(object sender, RoutedEventArgs e)
+        private void CreateTestRunConfiguration(object sender, RoutedEventArgs e)
         {
-            NewConfig.CreateTestRunProcess();
+            NewConfig.CreateTestRunConfiguration();
+        }
+
+        private void LoadTestRunConfiguration(object sender, RoutedEventArgs e)
+        {
+            NewConfig.LoadTestRunConfiguration();
         }
     }
 }

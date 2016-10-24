@@ -25,16 +25,24 @@
                 <local:FileOpen x:Name="OutputFileOpen" FilePath="{Binding OutputFileFullPath, Mode=TwoWay}" FileExtension=".txt"></local:FileOpen>
                 <TextBlock Text="Error Log File Path" Margin="20,10,0,0"></TextBlock>
                 <local:FileOpen x:Name="ErrorFileOpen" FilePath="{Binding ErrorFileFullPath, Mode=TwoWay}" FileExtension=".txt"></local:FileOpen>
-                <Button 
-                    x:Name="StartButton" 
-                    Content="Start" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Stretch" 
-                    Width="100" 
-                    Margin="0, 20, 20, 0"
-                    Click="CreateTestRunProcess"
-                    IsEnabled="False"
-                    ToolTipService.ToolTip="Launch a Test Run process on the service with these configurations."/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment ="Center" Width="215">
+                    <Button 
+                        x:Name="StartButton" 
+                        Content="Start" 
+                        HorizontalAlignment="Left" 
+                        Width="100"
+                        Margin="0,0,7.5,0"
+                        Click="CreateTestRunConfiguration"
+                        ToolTipService.ToolTip="Launch a Test Run process on the service with these configurations."/>
+                    <Button 
+                        x:Name="LoadButton" 
+                        Content="Load" 
+                        HorizontalAlignment="Right" 
+                        Width="100"
+                        Margin="7.5,0,0,0"
+                        Click="LoadTestRunConfiguration"
+                        ToolTipService.ToolTip="Load a configuration file."/>
+                </StackPanel>
             </StackPanel>
         </Frame>
     </Grid>

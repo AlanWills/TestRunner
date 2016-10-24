@@ -30,14 +30,14 @@ namespace TestRunner.UserControls
             (Window.Current.Content as Frame).Navigate(typeof(MainPage));
         }
 
-        private void NavigateToNewConfigurationPage(object sender, RoutedEventArgs args)
+        private void NavigateToNewConfigurationView(object sender, RoutedEventArgs args)
         {
             (Window.Current.Content as Frame).Navigate(typeof(NewConfigurationView));
         }
 
-        private void NavigateToProcessesPage(object sender, RoutedEventArgs e)
+        private void NavigateToProcessesView(object sender, RoutedEventArgs e)
         {
-
+            (Window.Current.Content as Frame).Navigate(typeof(ProcessesView));
         }
 
         private void NavigateToAppSettingsView(object sender, RoutedEventArgs args)

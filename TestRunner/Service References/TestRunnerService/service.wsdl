@@ -19,17 +19,17 @@
   <wsdl:message name="ITestRunnerService_GetTestingStatus_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTestingStatusResponse" />
   </wsdl:message>
-  <wsdl:message name="ITestRunnerService_GetOutputFilePath_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetOutputFilePath" />
+  <wsdl:message name="ITestRunnerService_GetProcessOutput_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcessOutput" />
   </wsdl:message>
-  <wsdl:message name="ITestRunnerService_GetOutputFilePath_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetOutputFilePathResponse" />
+  <wsdl:message name="ITestRunnerService_GetProcessOutput_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcessOutputResponse" />
   </wsdl:message>
-  <wsdl:message name="ITestRunnerService_GetErrorFilePath_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetErrorFilePath" />
+  <wsdl:message name="ITestRunnerService_GetProcessError_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcessError" />
   </wsdl:message>
-  <wsdl:message name="ITestRunnerService_GetErrorFilePath_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetErrorFilePathResponse" />
+  <wsdl:message name="ITestRunnerService_GetProcessError_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcessErrorResponse" />
   </wsdl:message>
   <wsdl:portType name="ITestRunnerService">
     <wsdl:operation name="StartTesting">
@@ -40,13 +40,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetTestingStatus" message="tns:ITestRunnerService_GetTestingStatus_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetTestingStatusResponse" message="tns:ITestRunnerService_GetTestingStatus_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetOutputFilePath">
-      <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetOutputFilePath" message="tns:ITestRunnerService_GetOutputFilePath_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetOutputFilePathResponse" message="tns:ITestRunnerService_GetOutputFilePath_OutputMessage" />
+    <wsdl:operation name="GetProcessOutput">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetProcessOutput" message="tns:ITestRunnerService_GetProcessOutput_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetProcessOutputResponse" message="tns:ITestRunnerService_GetProcessOutput_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetErrorFilePath">
-      <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetErrorFilePath" message="tns:ITestRunnerService_GetErrorFilePath_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetErrorFilePathResponse" message="tns:ITestRunnerService_GetErrorFilePath_OutputMessage" />
+    <wsdl:operation name="GetProcessError">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetProcessError" message="tns:ITestRunnerService_GetProcessError_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetProcessErrorResponse" message="tns:ITestRunnerService_GetProcessError_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITestRunnerService" type="tns:ITestRunnerService">
@@ -69,8 +69,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOutputFilePath">
-      <soap:operation soapAction="http://tempuri.org/ITestRunnerService/GetOutputFilePath" style="document" />
+    <wsdl:operation name="GetProcessOutput">
+      <soap:operation soapAction="http://tempuri.org/ITestRunnerService/GetProcessOutput" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -78,8 +78,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetErrorFilePath">
-      <soap:operation soapAction="http://tempuri.org/ITestRunnerService/GetErrorFilePath" style="document" />
+    <wsdl:operation name="GetProcessError">
+      <soap:operation soapAction="http://tempuri.org/ITestRunnerService/GetProcessError" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
