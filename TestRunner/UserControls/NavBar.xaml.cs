@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 using TestRunner.Views;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -27,22 +17,22 @@ namespace TestRunner.UserControls
 
         private void NavigateToMainPage(object sender, RoutedEventArgs args)
         {
-            (Window.Current.Content as Frame).Navigate(typeof(MainPage));
+            //(Application.Current.MainWindow.Content as Frame).Navigate(typeof(MainWindow));
         }
 
         private void NavigateToNewConfigurationView(object sender, RoutedEventArgs args)
         {
-            (Window.Current.Content as Frame).Navigate(typeof(NewConfigurationView));
+            (Application.Current.MainWindow.Content as Frame).Navigate(new Uri("Views\\NewConfigurationView.xaml", UriKind.Relative));
         }
 
         private void NavigateToProcessesView(object sender, RoutedEventArgs e)
         {
-            (Window.Current.Content as Frame).Navigate(typeof(ProcessesView));
+            (Application.Current.MainWindow.Content as Frame).Navigate(new Uri("Views\\ProcessesView.xaml", UriKind.Relative));
         }
 
         private void NavigateToAppSettingsView(object sender, RoutedEventArgs args)
         {
-            (Window.Current.Content as Frame).Navigate(typeof(AppSettingsView));
+            (Application.Current.MainWindow.Content as Frame).Navigate(new Uri("Views\\AppSettingsView.xaml", UriKind.Relative));
         }
     }
 }

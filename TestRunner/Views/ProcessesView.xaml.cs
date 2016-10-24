@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+using System.Windows;
+using System.Windows.Input;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,7 +11,7 @@ namespace TestRunner.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ProcessesView : Page
+    public sealed partial class ProcessesView : Window
     {
         #region Properties and Fields
 
@@ -52,9 +42,9 @@ namespace TestRunner.Views
             }
         }
 
-        private void Processes_ItemClick(object sender, ItemClickEventArgs e)
+        private void Processes_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            string clickedItem = e.ClickedItem as string;
+            string clickedItem = e.Source as string;
             string[] splitStr = clickedItem.Split(' ');
             string id = splitStr.Last();
 

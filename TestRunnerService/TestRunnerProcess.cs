@@ -17,7 +17,7 @@ namespace TestRunnerService
     {
         #region Properties and Fields
 
-        public string ProcessName { get; private set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Diverted output string for the Process Output so that we can write it to a file at the end without worrying about concurrency issues with the file
@@ -29,8 +29,6 @@ namespace TestRunnerService
         /// </summary>
         public StringBuilder Error { get; set; }
 
-        public TestingStatus Status { get; private set; }
-
         private string OutputFilePath { get; set; }
 
         private string ErrorFilePath { get; set; }
@@ -39,14 +37,12 @@ namespace TestRunnerService
 
         internal TestRunnerProcess(string configDataFilePath)
         {
-            Status = TestingStatus.kRunning;
-
             Task<TestRunConfigData> task = TestRunConfigData.DeserializeAsync(configDataFilePath);
             task.Wait();
 
             TestRunConfigData data = task.Result;
 
-            ProcessName = data.ProcessName;
+            Name = data.ProcessName;
             OutputFilePath = data.OutputFileFullPath;
             ErrorFilePath = data.ErrorFileFullPath;
 
@@ -100,8 +96,6 @@ namespace TestRunnerService
 
         private void WriteErrorAndOutputToFiles(object sender, EventArgs e)
         {
-            Status = TestingStatus.kFinished;
-
             using (FileStream fileStream = new FileStream(OutputFilePath, FileMode.OpenOrCreate))
             {
                 // Blocking write the output

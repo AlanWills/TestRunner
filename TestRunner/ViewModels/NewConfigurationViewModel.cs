@@ -93,15 +93,15 @@ namespace TestRunner
             filePicker.CommitButtonText = "Create Configuration File";
             filePicker.FileTypeChoices.Add("Test Runner Configuration File", new List<string> { ".xml" });
 
-            StorageFile file = await filePicker.PickSaveFileAsync();
-            if (file != null)
-            {
-                Data.SerializeAsync(file);
-                await Client.StartTestingAsync(file.Path);
+            //StorageFile file = await filePicker.PickSaveFileAsync();
+            //if (file != null)
+            //{
+            //    Data.SerializeAsync(file);
+            //    await Client.StartTestingAsync(file.Path);
 
-                MessageDialog dialog = new MessageDialog("Test Process started");
-                await dialog.ShowAsync();
-            }
+            //    MessageDialog dialog = new MessageDialog("Test Process started");
+            //    await dialog.ShowAsync();
+            //}
         }
 
         public async void LoadTestRunConfiguration()
@@ -110,16 +110,16 @@ namespace TestRunner
             filePicker.FileTypeFilter.Add(".xml");
             filePicker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
 
-            StorageFile file = await filePicker.PickSingleFileAsync();
-            if (file != null)
-            {
-                TestRunConfigData data = await TestRunConfigDataExtensions.DeserializeAsync(file);
+            //StorageFile file = await filePicker.PickSingleFileAsync();
+            //if (file != null)
+            //{
+            //    TestRunConfigData data = await TestRunConfigDataExtensions.DeserializeAsync(file);
 
-                ProcessName = data.ProcessName;
-                FullPathToDll = data.FullPathToDll;
-                OutputFileFullPath = data.OutputFileFullPath;
-                ErrorFileFullPath = data.ErrorFileFullPath;
-            }
+            //    ProcessName = data.ProcessName;
+            //    FullPathToDll = data.FullPathToDll;
+            //    OutputFileFullPath = data.OutputFileFullPath;
+            //    ErrorFileFullPath = data.ErrorFileFullPath;
+            //}
         }
 
         private void OnPropertyChanged(string propertyName)

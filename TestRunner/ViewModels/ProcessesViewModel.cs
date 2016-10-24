@@ -57,7 +57,11 @@ namespace TestRunner
 
         private async void GetProcesses()
         {
-            Processes = await client.GetAllProcessesAsync();
+            string[] processes = await client.GetAllProcessesAsync();
+            foreach (string proc in processes)
+            {
+                Processes.Add(proc);
+            }
         }
 
         private void OnPropertyChanged(string propertyName)

@@ -1,14 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.ServiceModel;
 
 namespace TestRunnerService
 {
-    public enum TestingStatus
-    {
-        kRunning,
-        kFinished,
-    }
-
     [ServiceContract]
     public interface ITestRunnerService
     {
@@ -16,7 +12,7 @@ namespace TestRunnerService
         void StartTesting(string testConfigFilePath);
 
         [OperationContract]
-        TestingStatus GetTestingStatus(ulong testingRunID);
+        bool GetTestingStatus(ulong testingRunID);
 
         [OperationContract]
         string GetProcessOutput(ulong testingRunID);

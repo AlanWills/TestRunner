@@ -19,12 +19,12 @@ namespace TestRunner
         /// </summary>
         /// <param name="configDataFile"></param>
         /// <returns></returns>
-        public static async Task<TestRunConfigData> DeserializeAsync(StorageFile configDataFile)
+        public static async Task<TestRunConfigData> DeserializeAsync(string configDataFileString)
         {
             // Oh sweet mother of god.  Just follow the compiler, shut your eyes and hope to god this works
-            return await Task.Run(async () =>
+            return await Task.Run(() =>
             {
-                using (Stream stream = await configDataFile.OpenStreamForReadAsync())
+                using (FileStream stream = new FileStream(configDataFileString, FileMode.Create))
                 {
                     using (XmlReader reader = XmlReader.Create(stream))
                     {
@@ -35,9 +35,9 @@ namespace TestRunner
             });
         }
 
-        public static async void SerializeAsync(this TestRunConfigData data, StorageFile fileToSaveInto)
+        public static void SerializeAsync(this TestRunConfigData data, string fileToSaveInto)
         {
-            using (Stream stream = await fileToSaveInto.OpenStreamForWriteAsync())
+            using (FileStream stream = new FileStream(fileToSaveInto, FileMode.Create))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(TestRunConfigData));
                 serializer.Serialize(stream, data);

@@ -12,7 +12,7 @@ namespace TestRunnerService
             TestRunnerProcessManager.CreateProcess(testConfigFilePath);
         }
 
-        public TestingStatus GetTestingStatus(ulong testingRunID)
+        public bool GetTestingStatus(ulong testingRunID)
         {
             return TestRunnerProcessManager.GetProcessStatus(testingRunID);
         }

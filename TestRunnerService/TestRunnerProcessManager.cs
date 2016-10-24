@@ -31,9 +31,9 @@ namespace TestRunnerService
             return IDCounter++;
         }
 
-        public static TestingStatus GetProcessStatus(ulong processID)
+        public static bool GetProcessStatus(ulong processID)
         {
-            return GetProcess(processID).Status;
+            return GetProcess(processID).HasExited;
         }
 
         public static string GetProcessOutput(ulong processID)
@@ -51,7 +51,7 @@ namespace TestRunnerService
             List<string> processInfo = new List<string>(Processes.Count);
             foreach (KeyValuePair<ulong, TestRunnerProcess> procs in Processes)
             {
-                processInfo.Add(procs.Value.ProcessName + " (" + procs.Key.ToString() + ")");
+                processInfo.Add(procs.Value.Name + " (" + procs.Key.ToString() + ")");
             }
 
             return processInfo;
