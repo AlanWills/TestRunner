@@ -26,16 +26,13 @@ namespace TestRunnerLibrary
         /// </summary>
         /// <param name="configDataFile"></param>
         /// <returns></returns>
-        public static Task<TestRunConfigData> DeserializeAsync(string configDataFilePath)
+        public static TestRunConfigData Deserialize(string configDataFilePath)
         {
-            return Task.Run(() =>
+            using (XmlReader reader = XmlReader.Create(configDataFilePath))
             {
-                using (XmlReader reader = XmlReader.Create(configDataFilePath))
-                {
-                    XmlSerializer serializer = new XmlSerializer(typeof(TestRunConfigData));
-                    return (TestRunConfigData)serializer.Deserialize(reader);
-                }
-            });
+                XmlSerializer serializer = new XmlSerializer(typeof(TestRunConfigData));
+                return (TestRunConfigData)serializer.Deserialize(reader);
+            }
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TestRunner.TestRunnerService;
 using TestRunnerLibrary;
 using Windows.Storage;
@@ -89,37 +91,36 @@ namespace TestRunner
 
         public async void CreateTestRunConfiguration()
         {
-            FileSavePicker filePicker = new FileSavePicker();
-            filePicker.CommitButtonText = "Create Configuration File";
-            filePicker.FileTypeChoices.Add("Test Runner Configuration File", new List<string> { ".xml" });
+            OpenFileDialog filePicker = new OpenFileDialog();
+            filePicker.DefaultExt = ".xml";
 
-            //StorageFile file = await filePicker.PickSaveFileAsync();
-            //if (file != null)
-            //{
-            //    Data.SerializeAsync(file);
-            //    await Client.StartTestingAsync(file.Path);
+            bool? result = filePicker.ShowDialog();
 
-            //    MessageDialog dialog = new MessageDialog("Test Process started");
-            //    await dialog.ShowAsync();
-            //}
+            if (result.HasValue && result.Value)
+            {
+                Data.Serialize(filePicker.FileName);
+                await Client.StartTestingAsync(filePicker.FileName);
+
+                MessageBox.Show("Test Process started");
+            }
         }
 
-        public async void LoadTestRunConfiguration()
+        public void LoadTestRunConfiguration()
         {
-            FileOpenPicker filePicker = new FileOpenPicker();
-            filePicker.FileTypeFilter.Add(".xml");
-            filePicker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
+            OpenFileDialog filePicker = new OpenFileDialog();
+            filePicker.DefaultExt = ".xml";
 
-            //StorageFile file = await filePicker.PickSingleFileAsync();
-            //if (file != null)
-            //{
-            //    TestRunConfigData data = await TestRunConfigDataExtensions.DeserializeAsync(file);
+            bool? result = filePicker.ShowDialog();
 
-            //    ProcessName = data.ProcessName;
-            //    FullPathToDll = data.FullPathToDll;
-            //    OutputFileFullPath = data.OutputFileFullPath;
-            //    ErrorFileFullPath = data.ErrorFileFullPath;
-            //}
+            if (result.HasValue && result.Value)
+            {
+                TestRunConfigData data = TestRunConfigData.Deserialize(filePicker.FileName);
+
+                ProcessName = data.ProcessName;
+                FullPathToDll = data.FullPathToDll;
+                OutputFileFullPath = data.OutputFileFullPath;
+                ErrorFileFullPath = data.ErrorFileFullPath;
+            }
         }
 
         private void OnPropertyChanged(string propertyName)

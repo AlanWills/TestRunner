@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Microsoft.Win32;
+using System.Windows;
 using System.Windows.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -12,7 +13,7 @@ namespace TestRunner.UserControls
     {
         #region Properties and Fields
 
-        private readonly DependencyProperty filePathProperty;
+        private static DependencyProperty filePathProperty = DependencyProperty.Register("FilePath", typeof(string), typeof(FileSave), new PropertyMetadata(""));
         public string FilePath
         {
             get { return (string)GetValue(filePathProperty); }
@@ -23,7 +24,7 @@ namespace TestRunner.UserControls
             }
         }
 
-        private readonly DependencyProperty fileExtensionProperty;
+        private readonly DependencyProperty fileExtensionProperty = DependencyProperty.Register("FileExtension", typeof(string), typeof(FileSave), new PropertyMetadata(""));
         public string FileExtension
         {
             get { return (string)GetValue(fileExtensionProperty); }
@@ -38,21 +39,22 @@ namespace TestRunner.UserControls
         public FileSave()
         {
             InitializeComponent();
-            filePathProperty = DependencyProperty.Register("FilePath", typeof(string), typeof(FileOpen), new PropertyMetadata(""));
-            fileExtensionProperty = DependencyProperty.Register("FileExtension", typeof(string), typeof(FileOpen), new PropertyMetadata(""));
         }
 
-        private async void OpenFileBrowseDialog(object sender, RoutedEventArgs args)
+        private void OpenFileBrowseDialog(object sender, RoutedEventArgs args)
         {
-            //FileSavePicker filePicker = new FileSavePicker();
-            //filePicker.FileTypeChoices.Add("Test Runner Configuration File", new List<string> { FileExtension });
-            //filePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            SaveFileDialog fileSaver = new SaveFileDialog();
+            fileSaver.CreatePrompt = true;
+            fileSaver.AddExtension = true;
+            fileSaver.OverwritePrompt = true;
+            fileSaver.DefaultExt = FileExtension;
 
-            //StorageFile file = await filePicker.PickSaveFileAsync();
-            //if (file != null)
-            //{
-            //    FilePath = file.Path;
-            //}
+            bool? result = fileSaver.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                FilePath = fileSaver.FileName;
+            }
         }
     }
 }

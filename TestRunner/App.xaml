@@ -7,7 +7,7 @@
     <Application.Resources>
         <local:FileOpen x:Key="FileOpen" />
         <local:NavBar x:Key="NavBar" />
-        <!--<local:FileSave x:Key="FileSave" />-->
+        <local:FileSave x:Key="FileSave" />
     </Application.Resources>
     
 </Application>

@@ -37,10 +37,7 @@ namespace TestRunnerService
 
         internal TestRunnerProcess(string configDataFilePath)
         {
-            Task<TestRunConfigData> task = TestRunConfigData.DeserializeAsync(configDataFilePath);
-            task.Wait();
-
-            TestRunConfigData data = task.Result;
+            TestRunConfigData data = TestRunConfigData.Deserialize(configDataFilePath);
 
             Name = data.ProcessName;
             OutputFilePath = data.OutputFileFullPath;

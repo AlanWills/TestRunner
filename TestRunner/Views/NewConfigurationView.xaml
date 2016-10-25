@@ -17,13 +17,13 @@
         <local:NavBar Grid.Column="0" />
         <StackPanel Orientation="Vertical" Grid.Column="1" >
             <TextBlock Text="Process Name" Margin="20,10,0,0"/>
-                <TextBox x:Name="ProcessName" Margin="20,10,242,20" Text="{Binding ProcessName, Mode=TwoWay}"/>
+                <TextBox x:Name="ProcessName" Margin="20,10,242,20" Text="{Binding ProcessName, Mode=OneWay}"/>
                 <TextBlock Text="Test Project Dll" Margin="20,10,0,0" />
-                <local:FileOpen x:Name="FullPathToDll" FilePath="{Binding FullPathToDll, Mode=TwoWay}" FileExtension=".dll"></local:FileOpen>
+            <local:FileOpen x:Name="FullPathToDll" FilePath="{Binding FullPathToDll, Mode=OneWay}" FileExtension=".dll"></local:FileOpen>
                 <TextBlock Text="Output Log File Path" Margin="20,10,0,0" />
-                <local:FileOpen x:Name="OutputFileFullPath" FilePath="{Binding OutputFileFullPath, Mode=TwoWay}" FileExtension=".txt"></local:FileOpen>
+            <local:FileOpen x:Name="OutputFileFullPath" FilePath="{Binding OutputFileFullPath, Mode=OneWay}" FileExtension=".txt"></local:FileOpen>
                 <TextBlock Text="Error Log File Path" Margin="20,10,0,0" />
-                <local:FileOpen x:Name="ErrorFileFullPath" FilePath="{Binding ErrorFileFullPath, Mode=TwoWay}" FileExtension=".txt"></local:FileOpen>
+            <local:FileOpen x:Name="ErrorFileFullPath" FilePath="{Binding ErrorFileFullPath, Mode=OneWay}" FileExtension=".txt"></local:FileOpen>
             <StackPanel Orientation="Horizontal" HorizontalAlignment ="Center" Width="215">
                 <Button 
                         x:Name="StartButton" 

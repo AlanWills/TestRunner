@@ -13,29 +13,12 @@ namespace TestRunner
 {
     public static class TestRunConfigDataExtensions
     {
-
         /// <summary>
-        /// Use this when you do not have permissions to read the file using ordinary IO
+        /// Serializes the data out into the file path
         /// </summary>
-        /// <param name="configDataFile"></param>
-        /// <returns></returns>
-        public static async Task<TestRunConfigData> DeserializeAsync(string configDataFileString)
-        {
-            // Oh sweet mother of god.  Just follow the compiler, shut your eyes and hope to god this works
-            return await Task.Run(() =>
-            {
-                using (FileStream stream = new FileStream(configDataFileString, FileMode.Create))
-                {
-                    using (XmlReader reader = XmlReader.Create(stream))
-                    {
-                        XmlSerializer serializer = new XmlSerializer(typeof(TestRunConfigData));
-                        return (TestRunConfigData)serializer.Deserialize(reader);
-                    }
-                }
-            });
-        }
-
-        public static void SerializeAsync(this TestRunConfigData data, string fileToSaveInto)
+        /// <param name="data"></param>
+        /// <param name="fileToSaveInto"></param>
+        public static void Serialize(this TestRunConfigData data, string fileToSaveInto)
         {
             using (FileStream stream = new FileStream(fileToSaveInto, FileMode.Create))
             {

@@ -26,7 +26,7 @@ namespace TestRunner.Views
             InitializeComponent();
         }
 
-        private async void NewConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void NewConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == FullPathToDll.Name ||
                 e.PropertyName == OutputFileFullPath.Name ||
@@ -50,10 +50,7 @@ namespace TestRunner.Views
                     ProcessName.Text = NewConfig.ProcessName;
                 }
 
-                StartButton.IsEnabled = await Task.Run(() =>
-                {
-                    return NewConfig.IsConfigurationValid;
-                });
+                StartButton.IsEnabled = NewConfig.IsConfigurationValid;
             }
         }
 
