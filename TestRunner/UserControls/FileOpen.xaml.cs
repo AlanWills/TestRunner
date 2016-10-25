@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using Windows.Storage.Pickers;
@@ -20,8 +21,17 @@ namespace TestRunner.UserControls
             get { return (string)GetValue(filePathProperty); }
             set
             {
-                SetValue(filePathProperty, value);
-                Path.Text = value;
+                string shortenedPath = value;
+                if (shortenedPath.Length > 50)
+                {
+                    shortenedPath = shortenedPath.Substring(shortenedPath.Length - 50);
+
+                    int delimIndex = Math.Max(shortenedPath.IndexOf('\\'), 0);
+                    shortenedPath = "..." + shortenedPath.Substring(delimIndex);
+                }
+
+                SetValue(filePathProperty, shortenedPath);
+                Path.Text = shortenedPath;
             }
         }
 

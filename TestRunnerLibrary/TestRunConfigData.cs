@@ -11,9 +11,18 @@ using Windows.Storage;
 
 namespace TestRunnerLibrary
 {
+    public enum TestRunFrequency
+    {
+        kDaily
+    }
+
     public class TestRunConfigData
     {
         public string ProcessName { get; set; }
+
+        public DateTime StartTime { get; set; }
+
+        public TestRunFrequency Frequency { get; set; }
 
         public string FullPathToDll { get; set; }
 

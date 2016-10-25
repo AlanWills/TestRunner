@@ -21,11 +21,11 @@ namespace TestRunner.Views
         public ProcessesView()
         {
             ProcessesViewModel = new ProcessesViewModel();
-            DataContext = Processes;
+            DataContext = ProcessesViewModel;
             InitializeComponent();
             ProcessesViewModel.PropertyChanged += UpdateBuildResults;
         }
-
+        
         private void UpdateBuildResults(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == SelectedProcessOutput.Name)

@@ -7,16 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignWidth="700"
-    d:DesignHeight="70">
+    d:DesignHeight="50">
 
     <Grid>
-        <StackPanel Orientation="Horizontal" Height="70">
+        <StackPanel Orientation="Horizontal" Height="50">
             <TextBox
                 x:Name="Path" 
                 TextAlignment="Left" 
                 HorizontalAlignment="Left" 
-                Margin="20,19,0,19" 
-                Height="30"
+                Height="20"
                 TextChanged="Path_TextChanged"
                 TextWrapping="Wrap" 
                 Width="563" 
@@ -27,8 +26,8 @@
                 HorizontalAlignment="Right" 
                 Margin="10,0,0,0" 
                 Click="OpenFileBrowseDialog"
-                Width="87"
-                Height="30"
+                Width="80"
+                Height="20"
                 ToolTipService.ToolTip="Browse for the file on your computer."/>
         </StackPanel>
     </Grid>

@@ -2,43 +2,66 @@
     x:Class="TestRunner.Views.NewConfigurationView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:TestRunner.UserControls"
+    xmlns:controls="clr-namespace:TestRunner.UserControls"
+    xmlns:converters="clr-namespace:TestRunner.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignWidth="800"
     d:DesignHeight="600">
-
+    
+    <Page.Resources>
+        <converters:TestRunFrequencyValueConverter x:Key="FrequencyConverter"/>
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <local:NavBar Grid.Column="0" />
-        <StackPanel Orientation="Vertical" Grid.Column="1" >
-            <TextBlock Text="Process Name" Margin="20,10,0,0"/>
-                <TextBox x:Name="ProcessName" Margin="20,10,242,20" Text="{Binding ProcessName, Mode=OneWay}"/>
-                <TextBlock Text="Test Project Dll" Margin="20,10,0,0" />
-            <local:FileOpen x:Name="FullPathToDll" FilePath="{Binding FullPathToDll, Mode=OneWay}" FileExtension=".dll"></local:FileOpen>
-                <TextBlock Text="Output Log File Path" Margin="20,10,0,0" />
-            <local:FileOpen x:Name="OutputFileFullPath" FilePath="{Binding OutputFileFullPath, Mode=OneWay}" FileExtension=".txt"></local:FileOpen>
-                <TextBlock Text="Error Log File Path" Margin="20,10,0,0" />
-            <local:FileOpen x:Name="ErrorFileFullPath" FilePath="{Binding ErrorFileFullPath, Mode=OneWay}" FileExtension=".txt"></local:FileOpen>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment ="Center" Width="215">
+        <controls:NavBar Grid.Column="0" />
+        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="20,10,0,10">
+            <Grid HorizontalAlignment="Stretch" Height="50" Margin="0,0,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Process Name" HorizontalAlignment="Center" />
+                <TextBox Grid.Column="0" Grid.Row="1" x:Name="ProcessName" Text="{Binding ProcessName, Mode=OneWay}"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Text="StartTime" />
+                <TextBlock Grid.Column="1" Grid.Row="1" x:Name="StartTime" Text="Midnight" TextAlignment="Center" />
+                <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Text="Frequency" />
+                <ComboBox Grid.Column="2" Grid.Row="1" x:Name="Frequency" 
+                          ItemsSource="{Binding Frequencies, Mode=OneTime}" SelectedItem="{Binding Frequency, Mode=TwoWay, Converter={StaticResource FrequencyConverter}}"
+                          Width="115" Text="Frequency"/>
+            </Grid>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Test Project Dll" Margin="0,10,0,0" />
+                <controls:FileOpen x:Name="FullPathToDll" FilePath="{Binding FullPathToDll, Mode=OneWay}" FileExtension=".dll"/>
+                <TextBlock Text="Output Log File Path" Margin="0,10,0,0" />
+                <controls:FileOpen x:Name="OutputFileFullPath" FilePath="{Binding OutputFileFullPath, Mode=OneWay}" FileExtension=".txt"/>
+                <TextBlock Text="Error Log File Path" Margin="0,10,0,0" />
+                <controls:FileOpen x:Name="ErrorFileFullPath" FilePath="{Binding ErrorFileFullPath, Mode=OneWay}" FileExtension=".txt"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="180" Margin="0,30,0,0">
                 <Button 
                         x:Name="StartButton" 
                         Content="Start" 
                         HorizontalAlignment="Left" 
-                        Width="100"
-                        Margin="0,0,7.5,0"
+                        Width="80"
+                        Margin="0,0,10,0"
                         Click="CreateTestRunConfiguration"
                         ToolTipService.ToolTip="Launch a Test Run process on the service with these configurations."/>
                 <Button 
                         x:Name="LoadButton" 
                         Content="Load" 
                         HorizontalAlignment="Right" 
-                        Width="100"
-                        Margin="7.5,0,0,0"
+                        Width="80"
+                        Margin="10,0,0,0"
                         Click="LoadTestRunConfiguration"
                         ToolTipService.ToolTip="Load a configuration file."/>
             </StackPanel>

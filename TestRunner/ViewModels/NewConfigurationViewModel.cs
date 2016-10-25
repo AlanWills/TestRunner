@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using TestRunner.Extensions;
 using TestRunner.TestRunnerService;
 using TestRunnerLibrary;
 using Windows.Storage;
@@ -71,6 +72,23 @@ namespace TestRunner
             }
         }
 
+        public List<string> Frequencies
+        {
+            get
+            {
+                List<string> freqList = new List<string>();
+
+                foreach (TestRunFrequency f in Enum.GetValues(typeof(TestRunFrequency)))
+                {
+                    freqList.Add(f.ToDisplayString());
+                }
+
+                return freqList;
+            }
+        }
+
+        public TestRunFrequency Frequency { get; set; }
+
         public bool IsConfigurationValid
         {
             get
@@ -87,6 +105,7 @@ namespace TestRunner
         {
             Data = new TestRunConfigData();
             Client = new TestRunnerServiceClient();
+            Frequency = TestRunFrequency.kDaily;
         }
 
         public async void CreateTestRunConfiguration()
@@ -117,6 +136,7 @@ namespace TestRunner
                 TestRunConfigData data = TestRunConfigData.Deserialize(filePicker.FileName);
 
                 ProcessName = data.ProcessName;
+                Frequency = data.Frequency;
                 FullPathToDll = data.FullPathToDll;
                 OutputFileFullPath = data.OutputFileFullPath;
                 ErrorFileFullPath = data.ErrorFileFullPath;

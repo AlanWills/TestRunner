@@ -5,9 +5,10 @@
              StartupUri="Views/MainWindow.xaml">
 
     <Application.Resources>
-        <local:FileOpen x:Key="FileOpen" />
-        <local:NavBar x:Key="NavBar" />
-        <local:FileSave x:Key="FileSave" />
+        <local:NavBar x:Key="NavBar"/>
+        <local:FileOpen x:Key="FileOpen"/>
+        <local:FileSave x:Key="FileSave"/>
+        <ResourceDictionary x:Key="Styles" Source="ResourceDictionaries/TestRunnerStyles.xaml"/>
     </Application.Resources>
-    
+
 </Application>

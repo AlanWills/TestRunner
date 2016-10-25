@@ -6,7 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TestRunner.Extensions;
 using TestRunner.TestRunnerService;
+using TestRunnerLibrary;
 
 namespace TestRunner
 {
@@ -36,7 +38,29 @@ namespace TestRunner
             }
         }
 
-        private Timer outputTimer;
+        public List<string> Frequencies
+        {
+            get
+            {
+                List<string> freqList = new List<string>();
+
+                foreach (TestRunFrequency f in Enum.GetValues(typeof(TestRunFrequency)))
+                {
+                    freqList.Add(f.ToDisplayString());
+                }
+
+                return freqList;
+            }
+        }
+
+        public string DefaultFrequency
+        {
+            get
+            {
+                return TestRunFrequency.kDaily.ToDisplayString();
+            }
+        }
+
         private TestRunnerServiceClient client;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -45,7 +69,6 @@ namespace TestRunner
 
         public ProcessesViewModel()
         {
-            //outputTimer = new Timer(GetProcessOutput, null, 0, 5000);
             client = new TestRunnerServiceClient();
             GetProcesses();
         }

@@ -20,10 +20,10 @@ namespace TestRunner.Views
 
         public NewConfigurationView()
         {
+            InitializeComponent();
             NewConfig = new NewConfigurationViewModel();
             NewConfig.PropertyChanged += NewConfig_PropertyChanged;
             DataContext = NewConfig;
-            InitializeComponent();
         }
 
         private void NewConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -31,11 +31,16 @@ namespace TestRunner.Views
             if (e.PropertyName == FullPathToDll.Name ||
                 e.PropertyName == OutputFileFullPath.Name ||
                 e.PropertyName == ErrorFileFullPath.Name ||
-                e.PropertyName == ProcessName.Name)
+                e.PropertyName == ProcessName.Name ||
+                e.PropertyName == Frequency.Name)
             {
                 if (e.PropertyName == FullPathToDll.Name)
                 {
                     FullPathToDll.FilePath = NewConfig.FullPathToDll;
+                }
+                else if (e.PropertyName == Frequency.Name)
+                {
+                    Frequency.SelectedValue = NewConfig.Frequency;
                 }
                 else if (e.PropertyName == OutputFileFullPath.Name)
                 {
