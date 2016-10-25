@@ -15,7 +15,7 @@ namespace TestRunner.UserControls
 
         private void NavigateToMainPage(object sender, RoutedEventArgs args)
         {
-            //(Application.Current.MainWindow.Content as Frame).Navigate(typeof(MainWindow));
+            (Application.Current.MainWindow.Content as Frame).Navigate(new Uri("Views\\HomeView.xaml", UriKind.Relative));
         }
 
         private void NavigateToNewConfigurationView(object sender, RoutedEventArgs args)

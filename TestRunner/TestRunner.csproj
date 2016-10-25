@@ -96,12 +96,19 @@
     <Compile Include="Views\AppSettingsView.xaml.cs">
       <DependentUpon>AppSettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewConfigurationView.xaml.cs">
       <DependentUpon>NewConfigurationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProcessesView.xaml.cs">
       <DependentUpon>ProcessesView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

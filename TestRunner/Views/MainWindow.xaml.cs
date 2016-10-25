@@ -11,7 +11,7 @@ namespace TestRunner
         public MainWindow()
         {
             InitializeComponent();
-            Frame.Navigate(new NewConfigurationView());
+            Frame.Navigate(new HomeView());
         }
     }
 }
