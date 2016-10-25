@@ -31,11 +31,17 @@
   <wsdl:message name="ITestRunnerService_GetProcessError_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProcessErrorResponse" />
   </wsdl:message>
-  <wsdl:message name="ITestRunnerService_GetAllProcesses_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllProcesses" />
+  <wsdl:message name="ITestRunnerService_GetProcessConfigFilePath_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcessConfigFilePath" />
   </wsdl:message>
-  <wsdl:message name="ITestRunnerService_GetAllProcesses_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllProcessesResponse" />
+  <wsdl:message name="ITestRunnerService_GetProcessConfigFilePath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcessConfigFilePathResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITestRunnerService_GetAllConfigFilePaths_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllConfigFilePaths" />
+  </wsdl:message>
+  <wsdl:message name="ITestRunnerService_GetAllConfigFilePaths_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllConfigFilePathsResponse" />
   </wsdl:message>
   <wsdl:portType name="ITestRunnerService">
     <wsdl:operation name="StartTesting">
@@ -54,9 +60,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetProcessError" message="tns:ITestRunnerService_GetProcessError_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetProcessErrorResponse" message="tns:ITestRunnerService_GetProcessError_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllProcesses">
-      <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetAllProcesses" message="tns:ITestRunnerService_GetAllProcesses_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetAllProcessesResponse" message="tns:ITestRunnerService_GetAllProcesses_OutputMessage" />
+    <wsdl:operation name="GetProcessConfigFilePath">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetProcessConfigFilePath" message="tns:ITestRunnerService_GetProcessConfigFilePath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetProcessConfigFilePathResponse" message="tns:ITestRunnerService_GetProcessConfigFilePath_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllConfigFilePaths">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITestRunnerService/GetAllConfigFilePaths" message="tns:ITestRunnerService_GetAllConfigFilePaths_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITestRunnerService/GetAllConfigFilePathsResponse" message="tns:ITestRunnerService_GetAllConfigFilePaths_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITestRunnerService" type="tns:ITestRunnerService">
@@ -97,8 +107,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllProcesses">
-      <soap:operation soapAction="http://tempuri.org/ITestRunnerService/GetAllProcesses" style="document" />
+    <wsdl:operation name="GetProcessConfigFilePath">
+      <soap:operation soapAction="http://tempuri.org/ITestRunnerService/GetProcessConfigFilePath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllConfigFilePaths">
+      <soap:operation soapAction="http://tempuri.org/ITestRunnerService/GetAllConfigFilePaths" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

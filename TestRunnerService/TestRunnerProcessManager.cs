@@ -46,15 +46,20 @@ namespace TestRunnerService
             return GetProcess(processID).Error.ToString();
         }
 
-        public static List<string> GetAllProcesses()
+        public static List<string> GetAllConfigFilePaths()
         {
             List<string> processInfo = new List<string>(Processes.Count);
             foreach (KeyValuePair<ulong, TestRunnerProcess> procs in Processes)
             {
-                processInfo.Add(procs.Value.Name + " (" + procs.Key.ToString() + ")");
+                processInfo.Add(procs.Value.ConfigFilePath);
             }
 
             return processInfo;
+        }
+
+        public static string GetProcessConfigFilePath(ulong processID)
+        {
+            return GetProcess(processID).ConfigFilePath;
         }
 
         private static TestRunnerProcess GetProcess(ulong processID)

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace TestRunnerService
@@ -12,15 +10,18 @@ namespace TestRunnerService
         void StartTesting(string testConfigFilePath);
 
         [OperationContract]
-        bool GetTestingStatus(ulong testingRunID);
+        bool GetTestingStatus(ulong testingProcessID);
 
         [OperationContract]
-        string GetProcessOutput(ulong testingRunID);
+        string GetProcessOutput(ulong testingProcessID);
 
         [OperationContract]
-        string GetProcessError(ulong testingRunID);
+        string GetProcessError(ulong testingProcessID);
 
         [OperationContract]
-        List<string> GetAllProcesses();
+        string GetProcessConfigFilePath(ulong testingProcessID);
+
+        [OperationContract]
+        List<string> GetAllConfigFilePaths();
     }
 }

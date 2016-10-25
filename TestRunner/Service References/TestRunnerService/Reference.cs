@@ -22,28 +22,34 @@ namespace TestRunner.TestRunnerService {
         System.Threading.Tasks.Task StartTestingAsync(string testConfigFilePath);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetTestingStatus", ReplyAction="http://tempuri.org/ITestRunnerService/GetTestingStatusResponse")]
-        bool GetTestingStatus(ulong testingRunID);
+        bool GetTestingStatus(ulong testingProcessID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetTestingStatus", ReplyAction="http://tempuri.org/ITestRunnerService/GetTestingStatusResponse")]
-        System.Threading.Tasks.Task<bool> GetTestingStatusAsync(ulong testingRunID);
+        System.Threading.Tasks.Task<bool> GetTestingStatusAsync(ulong testingProcessID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetProcessOutput", ReplyAction="http://tempuri.org/ITestRunnerService/GetProcessOutputResponse")]
-        string GetProcessOutput(ulong testingRunID);
+        string GetProcessOutput(ulong testingProcessID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetProcessOutput", ReplyAction="http://tempuri.org/ITestRunnerService/GetProcessOutputResponse")]
-        System.Threading.Tasks.Task<string> GetProcessOutputAsync(ulong testingRunID);
+        System.Threading.Tasks.Task<string> GetProcessOutputAsync(ulong testingProcessID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetProcessError", ReplyAction="http://tempuri.org/ITestRunnerService/GetProcessErrorResponse")]
-        string GetProcessError(ulong testingRunID);
+        string GetProcessError(ulong testingProcessID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetProcessError", ReplyAction="http://tempuri.org/ITestRunnerService/GetProcessErrorResponse")]
-        System.Threading.Tasks.Task<string> GetProcessErrorAsync(ulong testingRunID);
+        System.Threading.Tasks.Task<string> GetProcessErrorAsync(ulong testingProcessID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetAllProcesses", ReplyAction="http://tempuri.org/ITestRunnerService/GetAllProcessesResponse")]
-        string[] GetAllProcesses();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetProcessConfigFilePath", ReplyAction="http://tempuri.org/ITestRunnerService/GetProcessConfigFilePathResponse")]
+        string GetProcessConfigFilePath(ulong testingProcessID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetAllProcesses", ReplyAction="http://tempuri.org/ITestRunnerService/GetAllProcessesResponse")]
-        System.Threading.Tasks.Task<string[]> GetAllProcessesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetProcessConfigFilePath", ReplyAction="http://tempuri.org/ITestRunnerService/GetProcessConfigFilePathResponse")]
+        System.Threading.Tasks.Task<string> GetProcessConfigFilePathAsync(ulong testingProcessID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetAllConfigFilePaths", ReplyAction="http://tempuri.org/ITestRunnerService/GetAllConfigFilePathsResponse")]
+        string[] GetAllConfigFilePaths();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITestRunnerService/GetAllConfigFilePaths", ReplyAction="http://tempuri.org/ITestRunnerService/GetAllConfigFilePathsResponse")]
+        System.Threading.Tasks.Task<string[]> GetAllConfigFilePathsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -81,36 +87,44 @@ namespace TestRunner.TestRunnerService {
             return base.Channel.StartTestingAsync(testConfigFilePath);
         }
         
-        public bool GetTestingStatus(ulong testingRunID) {
-            return base.Channel.GetTestingStatus(testingRunID);
+        public bool GetTestingStatus(ulong testingProcessID) {
+            return base.Channel.GetTestingStatus(testingProcessID);
         }
         
-        public System.Threading.Tasks.Task<bool> GetTestingStatusAsync(ulong testingRunID) {
-            return base.Channel.GetTestingStatusAsync(testingRunID);
+        public System.Threading.Tasks.Task<bool> GetTestingStatusAsync(ulong testingProcessID) {
+            return base.Channel.GetTestingStatusAsync(testingProcessID);
         }
         
-        public string GetProcessOutput(ulong testingRunID) {
-            return base.Channel.GetProcessOutput(testingRunID);
+        public string GetProcessOutput(ulong testingProcessID) {
+            return base.Channel.GetProcessOutput(testingProcessID);
         }
         
-        public System.Threading.Tasks.Task<string> GetProcessOutputAsync(ulong testingRunID) {
-            return base.Channel.GetProcessOutputAsync(testingRunID);
+        public System.Threading.Tasks.Task<string> GetProcessOutputAsync(ulong testingProcessID) {
+            return base.Channel.GetProcessOutputAsync(testingProcessID);
         }
         
-        public string GetProcessError(ulong testingRunID) {
-            return base.Channel.GetProcessError(testingRunID);
+        public string GetProcessError(ulong testingProcessID) {
+            return base.Channel.GetProcessError(testingProcessID);
         }
         
-        public System.Threading.Tasks.Task<string> GetProcessErrorAsync(ulong testingRunID) {
-            return base.Channel.GetProcessErrorAsync(testingRunID);
+        public System.Threading.Tasks.Task<string> GetProcessErrorAsync(ulong testingProcessID) {
+            return base.Channel.GetProcessErrorAsync(testingProcessID);
         }
         
-        public string[] GetAllProcesses() {
-            return base.Channel.GetAllProcesses();
+        public string GetProcessConfigFilePath(ulong testingProcessID) {
+            return base.Channel.GetProcessConfigFilePath(testingProcessID);
         }
         
-        public System.Threading.Tasks.Task<string[]> GetAllProcessesAsync() {
-            return base.Channel.GetAllProcessesAsync();
+        public System.Threading.Tasks.Task<string> GetProcessConfigFilePathAsync(ulong testingProcessID) {
+            return base.Channel.GetProcessConfigFilePathAsync(testingProcessID);
+        }
+        
+        public string[] GetAllConfigFilePaths() {
+            return base.Channel.GetAllConfigFilePaths();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetAllConfigFilePathsAsync() {
+            return base.Channel.GetAllConfigFilePathsAsync();
         }
     }
 }

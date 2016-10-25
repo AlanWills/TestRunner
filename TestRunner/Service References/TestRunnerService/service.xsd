@@ -16,7 +16,7 @@
   <xs:element name="GetTestingStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="testingRunID" type="xs:unsignedLong" />
+        <xs:element minOccurs="0" name="testingProcessID" type="xs:unsignedLong" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -30,7 +30,7 @@
   <xs:element name="GetProcessOutput">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="testingRunID" type="xs:unsignedLong" />
+        <xs:element minOccurs="0" name="testingProcessID" type="xs:unsignedLong" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -44,7 +44,7 @@
   <xs:element name="GetProcessError">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="testingRunID" type="xs:unsignedLong" />
+        <xs:element minOccurs="0" name="testingProcessID" type="xs:unsignedLong" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -55,15 +55,29 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllProcesses">
+  <xs:element name="GetProcessConfigFilePath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="testingProcessID" type="xs:unsignedLong" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProcessConfigFilePathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProcessConfigFilePathResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllConfigFilePaths">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllProcessesResponse">
+  <xs:element name="GetAllConfigFilePathsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllProcessesResult" nillable="true" type="q1:ArrayOfstring" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllConfigFilePathsResult" nillable="true" type="q1:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

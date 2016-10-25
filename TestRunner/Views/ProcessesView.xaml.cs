@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
-using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -41,13 +40,10 @@ namespace TestRunner.Views
             }
         }
 
-        private void Processes_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Process_Selected(object sender, RoutedEventArgs e)
         {
-            string clickedItem = e.Source as string;
-            string[] splitStr = clickedItem.Split(' ');
-            string id = splitStr.Last();
-
-            ProcessesViewModel.GetProcessOutput(ulong.Parse(id.Substring(1, id.Length - 2)));
+            string clickedProcessName = (e.Source as ListView).SelectedItem as string;
+            ProcessesViewModel.UpdateUIWithProcessData(0);
         }
     }
 }

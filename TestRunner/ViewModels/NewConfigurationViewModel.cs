@@ -2,17 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using TestRunner.Extensions;
 using TestRunner.TestRunnerService;
 using TestRunnerLibrary;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.UI.Popups;
 
 namespace TestRunner
 {
@@ -110,7 +103,9 @@ namespace TestRunner
 
         public async void CreateTestRunConfiguration()
         {
-            OpenFileDialog filePicker = new OpenFileDialog();
+            SaveFileDialog filePicker = new SaveFileDialog();
+            filePicker.CreatePrompt = true;
+            filePicker.OverwritePrompt = true;
             filePicker.DefaultExt = ".xml";
 
             bool? result = filePicker.ShowDialog();
@@ -120,7 +115,7 @@ namespace TestRunner
                 Data.Serialize(filePicker.FileName);
                 await Client.StartTestingAsync(filePicker.FileName);
 
-                MessageBox.Show("Test Process started");
+                MessageBox.Show("Test Process started", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

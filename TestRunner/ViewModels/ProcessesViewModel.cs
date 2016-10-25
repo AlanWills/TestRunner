@@ -27,7 +27,7 @@ namespace TestRunner
             }
         }
 
-        private ObservableCollection<string> processes;
+        private ObservableCollection<string> processes = new ObservableCollection<string>();
         public ObservableCollection<string> Processes
         {
             get { return processes; }
@@ -53,14 +53,8 @@ namespace TestRunner
             }
         }
 
-        public string DefaultFrequency
-        {
-            get
-            {
-                return TestRunFrequency.kDaily.ToDisplayString();
-            }
-        }
-
+        public TestRunFrequency Frequency { get; set; }
+        
         private TestRunnerServiceClient client;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -73,17 +67,23 @@ namespace TestRunner
             GetProcesses();
         }
 
-        public async void GetProcessOutput(ulong processId)
+        public void UpdateUIWithProcessData(ulong processId)
         {
-            SelectedProcessOutput = (await client.GetProcessOutputAsync(processId));
+            // How do we use the name to get the process ID - store a map in the Service - it will have to generate a name if one does not exist;  Or maybe we could enforce a name is provided
+            SelectedProcessOutput = client.GetProcessOutput(processId);
+
+            string selectedProcessConfigDataPath = client.GetProcessConfigFilePath(processId);
+            TestRunConfigData data = TestRunConfigData.Deserialize(selectedProcessConfigDataPath);
+            Frequency = data.Frequency;
         }
 
-        private async void GetProcesses()
+        private void GetProcesses()
         {
-            string[] processes = await client.GetAllProcessesAsync();
-            foreach (string proc in processes)
+            string[] processesFiles = client.GetAllConfigFilePaths();
+            foreach (string procConfigFile in processesFiles)
             {
-                Processes.Add(proc);
+                TestRunConfigData data = TestRunConfigData.Deserialize(procConfigFile);
+                Processes.Add(data.ProcessName != null ? data.ProcessName : "Unidentified Test Process");
             }
         }
 

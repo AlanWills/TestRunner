@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using TestRunnerLibrary;
-using Windows.Storage;
 
 namespace TestRunnerService
 {
@@ -16,6 +12,8 @@ namespace TestRunnerService
     internal class TestRunnerProcess : Process
     {
         #region Properties and Fields
+
+        public string ConfigFilePath { get; private set; }
 
         public string Name { get; private set; }
 
@@ -37,6 +35,7 @@ namespace TestRunnerService
 
         internal TestRunnerProcess(string configDataFilePath)
         {
+            ConfigFilePath = configDataFilePath;
             TestRunConfigData data = TestRunConfigData.Deserialize(configDataFilePath);
 
             Name = data.ProcessName;
@@ -46,7 +45,6 @@ namespace TestRunnerService
             EnableRaisingEvents = true;
 
             StartInfo = CreateCmdLineProcessStartInfo(Path.GetDirectoryName(data.FullPathToDll), Path.GetFileName(data.FullPathToDll));
-            StartInfo.FileName = ServiceSettings.VSTestPath;
 
             Output = new StringBuilder();
             Error = new StringBuilder();
@@ -77,6 +75,7 @@ namespace TestRunnerService
             cmdInfo.UseShellExecute = false;
             cmdInfo.Arguments = dllName;
             cmdInfo.WorkingDirectory = workingDirectory;
+            cmdInfo.FileName = ServiceSettings.VSTestPath;
 
             return cmdInfo;
         }

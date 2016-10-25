@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace TestRunnerService
@@ -12,24 +13,29 @@ namespace TestRunnerService
             TestRunnerProcessManager.CreateProcess(testConfigFilePath);
         }
 
-        public bool GetTestingStatus(ulong testingRunID)
+        public bool GetTestingStatus(ulong testingProcessID)
         {
-            return TestRunnerProcessManager.GetProcessStatus(testingRunID);
+            return TestRunnerProcessManager.GetProcessStatus(testingProcessID);
         }
 
-        public string GetProcessOutput(ulong testingRunID)
+        public string GetProcessOutput(ulong testingProcessID)
         {
-            return TestRunnerProcessManager.GetProcessOutput(testingRunID);
+            return TestRunnerProcessManager.GetProcessOutput(testingProcessID);
         }
 
-        public string GetProcessError(ulong testingRunID)
+        public string GetProcessError(ulong testingProcessID)
         {
-            return TestRunnerProcessManager.GetProcessOutput(testingRunID);
+            return TestRunnerProcessManager.GetProcessOutput(testingProcessID);
         }
 
-        public List<string> GetAllProcesses()
+        public List<string> GetAllConfigFilePaths()
         {
-            return TestRunnerProcessManager.GetAllProcesses();
+            return TestRunnerProcessManager.GetAllConfigFilePaths();
+        }
+
+        public string GetProcessConfigFilePath(ulong testingProcessID)
+        {
+            return TestRunnerProcessManager.GetProcessConfigFilePath(testingProcessID);
         }
     }
 }

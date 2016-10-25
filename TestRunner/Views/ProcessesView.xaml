@@ -4,17 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:TestRunner.UserControls"
+    xmlns:controls="clr-namespace:TestRunner.UserControls"
+    xmlns:converters="clr-namespace:TestRunner.Converters"
     mc:Ignorable="d"
     d:DesignWidth="800"
     d:DesignHeight="600">
 
+    <Page.Resources>
+        <converters:TestRunFrequencyValueConverter x:Key="FrequencyConverter"/>
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <local:NavBar Grid.Column="0"/>
+        <controls:NavBar Grid.Column="0"/>
         <Grid Grid.Column="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -42,7 +46,7 @@
                     </StackPanel>
                     <StackPanel Grid.Column="2" Orientation="Vertical">
                         <TextBlock HorizontalAlignment="Center" Text="Frequency" />
-                        <ComboBox x:Name="Frequency" ItemsSource="{Binding Frequencies, Mode=OneTime}" SelectedItem="{Binding DefaultFrequency, Mode=OneTime}"
+                        <ComboBox x:Name="Frequency" ItemsSource="{Binding Frequencies, Mode=OneTime}" SelectedItem="{Binding Frequency, Mode=TwoWay, Converter={StaticResource FrequencyConverter}}"
                                   Margin="20,0,20,0" Text="Frequency"/>
                     </StackPanel>
                 </Grid>
@@ -52,7 +56,7 @@
             </ScrollViewer>
             <GridSplitter Grid.Column="1" Width="5" Grid.RowSpan="2" HorizontalAlignment="Stretch"/>
             <ListView x:Name="Processes" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                          ItemsSource="{Binding Processes}" MouseLeftButtonDown="Processes_MouseLeftButtonDown"/>
+                          ItemsSource="{Binding Processes}" SelectionChanged="Process_Selected"/>
         </Grid>
     </Grid>
 </Page>
