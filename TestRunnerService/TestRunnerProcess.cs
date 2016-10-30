@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
 using TestRunnerLibrary;
 
 namespace TestRunnerService
@@ -12,6 +13,11 @@ namespace TestRunnerService
     internal class TestRunnerProcess : Process
     {
         #region Properties and Fields
+
+        /// <summary>
+        /// The timer which will ensure the process repeats itself based on the value we gave it
+        /// </summary>
+        private Timer Timer { get; set; }
 
         public string ConfigFilePath { get; private set; }
 
@@ -27,24 +33,19 @@ namespace TestRunnerService
         /// </summary>
         public StringBuilder Error { get; set; }
 
-        private string OutputFilePath { get; set; }
-
-        private string ErrorFilePath { get; set; }
+        private TestRunConfigData Data { get; set; }
 
         #endregion
 
         internal TestRunnerProcess(string configDataFilePath)
         {
             ConfigFilePath = configDataFilePath;
-            TestRunConfigData data = TestRunConfigData.Deserialize(configDataFilePath);
+            Data = TestRunConfigData.Deserialize(configDataFilePath);
 
-            Name = data.ProcessName;
-            OutputFilePath = data.OutputFileFullPath;
-            ErrorFilePath = data.ErrorFileFullPath;
-
+            Name = Data.ProcessName;
             EnableRaisingEvents = true;
 
-            StartInfo = CreateCmdLineProcessStartInfo(Path.GetDirectoryName(data.FullPathToDll), Path.GetFileName(data.FullPathToDll));
+            StartInfo = CreateCmdLineProcessStartInfo(Path.GetDirectoryName(Data.FullPathToDll), Path.GetFileName(Data.FullPathToDll));
 
             Output = new StringBuilder();
             Error = new StringBuilder();
@@ -53,15 +54,23 @@ namespace TestRunnerService
             ErrorDataReceived += TestRunnerProcess_ErrorDataReceived;
             Exited += WriteErrorAndOutputToFiles;
 
+            Timer = new Timer(RerunTestProcess, 0, TimeSpan.FromMilliseconds(0), Data.Frequency.ToTimeSpan());
+        }
+
+        private void RerunTestProcess(object state)
+        {
+            Output.Clear();
+            Error.Clear();
+
             bool startResult = Start();
             Debug.Assert(startResult);
 
-            BeginErrorReadLine();
             BeginOutputReadLine();
+            BeginErrorReadLine();
         }
 
         /// <summary>
-        /// Creates the process start info for running a command in a windowless process in the current working directory with the inputted arguments.
+        /// Creates the process start info for running the test command in a windowless process in the inputted working directory with the inputted arguments.
         /// StdError and StdOutput are redirected since it is windowless.
         /// </summary>
         /// <param name="arguments"></param>
@@ -92,17 +101,20 @@ namespace TestRunnerService
 
         private void WriteErrorAndOutputToFiles(object sender, EventArgs e)
         {
-            using (FileStream fileStream = new FileStream(OutputFilePath, FileMode.OpenOrCreate))
+            using (FileStream fileStream = new FileStream(Data.OutputFileFullPath, FileMode.OpenOrCreate))
             {
                 // Blocking write the output
                 fileStream.Write(Encoding.ASCII.GetBytes(Output.ToString()), 0, Output.Length);
             }
 
-            using (FileStream fileStream = new FileStream(ErrorFilePath, FileMode.OpenOrCreate))
+            using (FileStream fileStream = new FileStream(Data.ErrorFileFullPath, FileMode.OpenOrCreate))
             {
                 // Blocking write the error
                 fileStream.Write(Encoding.ASCII.GetBytes(Error.ToString()), 0, Error.Length);
             }
+
+            CancelOutputRead();
+            CancelErrorRead();
         }
     }
 }

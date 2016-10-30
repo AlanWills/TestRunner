@@ -2,7 +2,6 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using Windows.Storage.Pickers;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 

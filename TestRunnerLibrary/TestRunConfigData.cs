@@ -13,7 +13,7 @@ namespace TestRunnerLibrary
 {
     public enum TestRunFrequency
     {
-        kDaily
+        kDaily,
     }
 
     public class TestRunConfigData

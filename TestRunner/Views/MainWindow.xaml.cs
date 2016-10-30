@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.ServiceProcess;
+using System.Windows;
 using TestRunner.Views;
 
 namespace TestRunner
@@ -10,6 +12,14 @@ namespace TestRunner
     {
         public MainWindow()
         {
+            try
+            {
+                ServiceController service = new ServiceController("TestRunnerService");
+                service.Start();
+                service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromMilliseconds(3000));
+            }
+            catch { }
+
             WindowState = WindowState.Maximized;
             InitializeComponent();
             Frame.Navigate(new HomeView());

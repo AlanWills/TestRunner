@@ -14,6 +14,7 @@ namespace TestRunner
         #region Properties and Fields
 
         private TestRunConfigData Data { get; set; }
+
         private TestRunnerServiceClient Client { get; set; }
 
         public string ProcessName
