@@ -3,10 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TestRunner.UserControls"
+        xmlns:controls="clr-namespace:TestRunner.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow"
+        d:DesignWidth="1920"
+        d:DesignHeight="1080">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:NavBar Grid.Row="0" />
+        <Frame x:Name="Frame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+    </Grid>
 
-    <Frame x:Name="Frame" NavigationUIVisibility="Hidden" />
-    
 </Window>

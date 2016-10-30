@@ -7,44 +7,51 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignWidth="800"
-    d:DesignHeight="600">
+    d:DesignWidth="1920"
+    d:DesignHeight="1080">
     
     <Page.Resources>
         <converters:TestRunFrequencyValueConverter x:Key="FrequencyConverter"/>
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <controls:NavBar Grid.Column="0" />
-        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="20,10,0,10">
-            <Grid HorizontalAlignment="Stretch" Height="50" Margin="0,0,0,10">
+        <StackPanel Orientation="Vertical" Grid.Column="0" Margin="20,30,0,10">
+            <Grid HorizontalAlignment="Stretch">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="Process Name" HorizontalAlignment="Center" />
-                <TextBox Grid.Column="0" Grid.Row="1" x:Name="ProcessName" Text="{Binding ProcessName, Mode=OneWay}"/>
-                <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Text="StartTime" />
-                <TextBlock Grid.Column="1" Grid.Row="1" x:Name="StartTime" Text="Midnight" TextAlignment="Center" />
-                <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Text="Frequency" />
-                <ComboBox Grid.Column="2" Grid.Row="1" x:Name="Frequency" 
+                <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Text="Process Name" Margin="0,10,0,10"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Text="StartTime" Margin="0,10,0,10"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Text="Frequency" Margin="0,10,0,10"/>
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="ProcessName" Text="{Binding ProcessName, Mode=OneWay}" Width="150" Margin="0,10,0,10"/>
+                <TextBlock Grid.Column="1" Grid.Row="1" x:Name="StartTime" Text="Midnight" TextAlignment="Center" Margin="0,10,0,10"/>
+                <ComboBox Grid.Column="1" Grid.Row="2" x:Name="Frequency" 
                           ItemsSource="{Binding Frequencies, Mode=OneTime}" SelectedItem="{Binding Frequency, Mode=TwoWay, Converter={StaticResource FrequencyConverter}}"
-                          Width="115" Text="Frequency"/>
+                          Width="150" Text="Frequency"
+                          Margin="0,10,0,10"/>
             </Grid>
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Test Project Dll" Margin="0,10,0,0" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="20,22,0,10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Test Project Dll" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,80,0"/>
                 <controls:FileOpen x:Name="FullPathToDll" FilePath="{Binding FullPathToDll, Mode=OneWay}" FileExtension=".dll"/>
-                <TextBlock Text="Output Log File Path" Margin="0,10,0,0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Output Log File Path" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,50,0"/>
                 <controls:FileOpen x:Name="OutputFileFullPath" FilePath="{Binding OutputFileFullPath, Mode=OneWay}" FileExtension=".txt"/>
-                <TextBlock Text="Error Log File Path" Margin="0,10,0,0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Error Log File Path" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,62,0"/>
                 <controls:FileOpen x:Name="ErrorFileFullPath" FilePath="{Binding ErrorFileFullPath, Mode=OneWay}" FileExtension=".txt"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="180" Margin="0,30,0,0">

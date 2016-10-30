@@ -10,6 +10,7 @@ namespace TestRunner
     {
         public MainWindow()
         {
+            WindowState = WindowState.Maximized;
             InitializeComponent();
             Frame.Navigate(new HomeView());
         }

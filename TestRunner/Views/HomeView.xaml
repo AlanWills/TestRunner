@@ -5,14 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TestRunner.UserControls"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="600">
-
+      d:DesignWidth="1920"
+      d:DesignHeight="1040">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <local:NavBar Grid.Column="0" />
-        <StackPanel Orientation="Vertical" Grid.Column="1" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" />
     </Grid>
 </Page>

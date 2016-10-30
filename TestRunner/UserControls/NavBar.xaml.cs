@@ -12,25 +12,5 @@ namespace TestRunner.UserControls
         {
             InitializeComponent();
         }
-
-        private void NavigateToMainPage(object sender, RoutedEventArgs args)
-        {
-            (Application.Current.MainWindow.Content as Frame).Navigate(new Uri("Views\\HomeView.xaml", UriKind.Relative));
-        }
-
-        private void NavigateToNewConfigurationView(object sender, RoutedEventArgs args)
-        {
-            (Application.Current.MainWindow.Content as Frame).Navigate(new Uri("Views\\NewConfigurationView.xaml", UriKind.Relative));
-        }
-
-        private void NavigateToProcessesView(object sender, RoutedEventArgs e)
-        {
-            (Application.Current.MainWindow.Content as Frame).Navigate(new Uri("Views\\ProcessesView.xaml", UriKind.Relative));
-        }
-
-        private void NavigateToAppSettingsView(object sender, RoutedEventArgs args)
-        {
-            (Application.Current.MainWindow.Content as Frame).Navigate(new Uri("Views\\AppSettingsView.xaml", UriKind.Relative));
-        }
     }
 }

@@ -5,10 +5,11 @@
              StartupUri="Views/MainWindow.xaml">
 
     <Application.Resources>
-        <local:NavBar x:Key="NavBar"/>
-        <local:FileOpen x:Key="FileOpen"/>
-        <local:FileSave x:Key="FileSave"/>
-        <ResourceDictionary x:Key="Styles" Source="ResourceDictionaries/TestRunnerStyles.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionaries/TestRunnerStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 
 </Application>

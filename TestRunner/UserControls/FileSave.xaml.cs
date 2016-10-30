@@ -24,7 +24,7 @@ namespace TestRunner.UserControls
             }
         }
 
-        private readonly DependencyProperty fileExtensionProperty = DependencyProperty.Register("FileExtension", typeof(string), typeof(FileSave), new PropertyMetadata(""));
+        private static DependencyProperty fileExtensionProperty = DependencyProperty.Register("FileExtension", typeof(string), typeof(FileSave), new PropertyMetadata(""));
         public string FileExtension
         {
             get { return (string)GetValue(fileExtensionProperty); }

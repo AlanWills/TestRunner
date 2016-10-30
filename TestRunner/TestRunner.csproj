@@ -92,6 +92,9 @@
     <Compile Include="UserControls\NavBar.xaml.cs">
       <DependentUpon>NavBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\NavBarButton.xaml.cs">
+      <DependentUpon>NavBarButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AppSettingsViewModel.cs" />
     <Compile Include="ViewModels\NewConfigurationViewModel.cs" />
     <Compile Include="ViewModels\ProcessesViewModel.cs" />
@@ -108,6 +111,10 @@
       <DependentUpon>ProcessesView.xaml</DependentUpon>
     </Compile>
     <Page Include="ResourceDictionaries\TestRunnerStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\NavBarButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
