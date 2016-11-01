@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
 
-namespace TestRunnerService
+namespace TestRunnerServiceLibrary
 {
     [ServiceContract]
     public interface ITestRunnerService

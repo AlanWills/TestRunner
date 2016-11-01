@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using TestRunner.Extensions;
 using TestRunner.TestRunnerService;
 using TestRunnerLibrary;
@@ -63,7 +64,20 @@ namespace TestRunner
 
         public ProcessesViewModel()
         {
-            client = new TestRunnerServiceClient();
+            try
+            {
+                client = new TestRunnerServiceClient();
+            }
+            catch (Exception e)
+            {
+                if (client != null)
+                {
+                    client.Abort();
+                }
+
+                MessageBox.Show(e.ToString());
+            }
+
             GetProcesses();
         }
 

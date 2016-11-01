@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestRunnerService
+namespace TestRunnerServiceLibrary
 {
     /// <summary>
     /// Static class which looks after all of the currently running testing process

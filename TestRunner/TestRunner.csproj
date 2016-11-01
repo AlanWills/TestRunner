@@ -193,16 +193,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\TestRunnerService\Arrays.xsd">
+    <None Include="Service References\TestRunnerService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TestRunnerService\service.wsdl" />
-    <None Include="Service References\TestRunnerService\service.xsd">
+    <None Include="Service References\TestRunnerService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TestRunnerService\service1.xsd">
+    <None Include="Service References\TestRunnerService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\TestRunnerService\TestRunnerService.wsdl" />
     <None Include="TestRunner_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -216,9 +216,9 @@
       <Project>{3e7da3e3-3a64-46c5-a191-0e670a44b4be}</Project>
       <Name>TestRunnerLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestRunnerService\TestRunnerService.csproj">
+    <ProjectReference Include="..\TestRunnerServiceLibrary\TestRunnerServiceLibrary.csproj">
       <Project>{e803e4dc-a82d-4e89-aa3f-7801a9d90b44}</Project>
-      <Name>TestRunnerService</Name>
+      <Name>TestRunnerServiceLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +237,9 @@
     <WCFMetadataStorage Include="Service References\TestRunnerService\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\TestRunnerService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Service References\TestRunnerService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -248,7 +251,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using TestRunnerLibrary;
 
-namespace TestRunnerService
+namespace TestRunnerServiceLibrary
 {
     // Extension of the process class which reroutes output and povides extra custom functionality for running tests
     // Also wraps up all of the process logic for starting, reading output/error and writing to the output files
@@ -101,6 +101,9 @@ namespace TestRunnerService
 
         private void WriteErrorAndOutputToFiles(object sender, EventArgs e)
         {
+            CancelOutputRead();
+            CancelErrorRead();
+
             using (FileStream fileStream = new FileStream(Data.OutputFileFullPath, FileMode.OpenOrCreate))
             {
                 // Blocking write the output
@@ -112,9 +115,6 @@ namespace TestRunnerService
                 // Blocking write the error
                 fileStream.Write(Encoding.ASCII.GetBytes(Error.ToString()), 0, Error.Length);
             }
-
-            CancelOutputRead();
-            CancelErrorRead();
         }
     }
 }
