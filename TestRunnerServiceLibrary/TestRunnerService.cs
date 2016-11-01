@@ -9,7 +9,6 @@ namespace TestRunnerServiceLibrary
     {
         public void StartTesting(string testConfigFilePath)
         {
-            Debug.Assert(testConfigFilePath != null && testConfigFilePath.Length > 0);
             TestRunnerProcessManager.CreateProcess(testConfigFilePath);
         }
 

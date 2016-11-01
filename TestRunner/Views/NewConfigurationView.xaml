@@ -44,15 +44,15 @@
         <StackPanel Orientation="Vertical" Grid.Column="1" Margin="20,22,0,10">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Test Project Dll" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,80,0"/>
-                <controls:FileOpen x:Name="FullPathToDll" FilePath="{Binding FullPathToDll, Mode=OneWay}" FileExtension=".dll"/>
+                <controls:FileOpen x:Name="FullPathToDll" FilePath="{Binding FullPathToDll, Mode=TwoWay}" FileExtension=".dll"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Output Log File Path" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,50,0"/>
-                <controls:FileOpen x:Name="OutputFileFullPath" FilePath="{Binding OutputFileFullPath, Mode=OneWay}" FileExtension=".txt"/>
+                <controls:FileOpen x:Name="OutputFileFullPath" FilePath="{Binding OutputFileFullPath, Mode=TwoWay}" FileExtension=".txt"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Error Log File Path" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,62,0"/>
-                <controls:FileOpen x:Name="ErrorFileFullPath" FilePath="{Binding ErrorFileFullPath, Mode=OneWay}" FileExtension=".txt"/>
+                <controls:FileOpen x:Name="ErrorFileFullPath" FilePath="{Binding ErrorFileFullPath, Mode=TwoWay}" FileExtension=".txt"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="180" Margin="0,30,0,0">
                 <Button 

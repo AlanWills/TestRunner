@@ -6,6 +6,7 @@ using System.Windows;
 using TestRunner.Extensions;
 using TestRunner.TestRunnerService;
 using TestRunnerLibrary;
+using TestRunnerServiceLibrary;
 
 namespace TestRunner
 {
@@ -15,15 +16,18 @@ namespace TestRunner
 
         private TestRunConfigData Data { get; set; }
 
-        private TestRunnerServiceClient Client { get; set; }
-
         public string ProcessName
         {
             get { return Data.ProcessName; }
             set
             {
+                bool changed = Data.ProcessName != value;
                 Data.ProcessName = value;
-                OnPropertyChanged("ProcessName");
+
+                if (changed)
+                {
+                    OnPropertyChanged("ProcessName");
+                }
             }
         }
 
@@ -35,8 +39,13 @@ namespace TestRunner
             }
             set
             {
+                bool changed = Data.FullPathToDll != value;
                 Data.FullPathToDll = value;
-                OnPropertyChanged("FullPathToDll");
+
+                if (changed)
+                {
+                    OnPropertyChanged("FullPathToDll");
+                }
             }
         }
 
@@ -48,8 +57,13 @@ namespace TestRunner
             }
             set
             {
+                bool changed = Data.OutputFileFullPath != value;
                 Data.OutputFileFullPath = value;
-                OnPropertyChanged("OutputFileFullPath");
+
+                if (changed)
+                {
+                    OnPropertyChanged("OutputFileFullPath");
+                }
             }
         }
 
@@ -61,8 +75,13 @@ namespace TestRunner
             }
             set
             {
+                bool changed = Data.ErrorFileFullPath != value;
                 Data.ErrorFileFullPath = value;
-                OnPropertyChanged("ErrorFileFullPath");
+
+                if (changed)
+                {
+                    OnPropertyChanged("ErrorFileFullPath");
+                }
             }
         }
 
@@ -98,11 +117,10 @@ namespace TestRunner
         public NewConfigurationViewModel()
         {
             Data = new TestRunConfigData();
-            Client = new TestRunnerServiceClient();
             Frequency = TestRunFrequency.kDaily;
         }
 
-        public async void CreateTestRunConfiguration()
+        public void CreateTestRunConfiguration()
         {
             SaveFileDialog filePicker = new SaveFileDialog();
             filePicker.CreatePrompt = true;
@@ -114,7 +132,7 @@ namespace TestRunner
             if (result.HasValue && result.Value)
             {
                 Data.Serialize(filePicker.FileName);
-                await Client.StartTestingAsync(filePicker.FileName);
+                TestRunnerProcessManager.CreateProcess(filePicker.FileName);
 
                 MessageBox.Show("Test Process started", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }

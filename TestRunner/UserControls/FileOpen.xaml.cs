@@ -29,8 +29,9 @@ namespace TestRunner.UserControls
                     shortenedPath = "..." + shortenedPath.Substring(delimIndex);
                 }
 
-                SetValue(filePathProperty, shortenedPath);
-                Path.Text = shortenedPath;
+                // Set the value of the property to be the full path, but only display the shortened path
+                SetValue(filePathProperty, value);
+                Path.Text = value;
             }
         }
 

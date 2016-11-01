@@ -23,6 +23,8 @@ namespace TestRunnerServiceLibrary
 
         public static ulong CreateProcess(string configDataFilePath)
         {
+            Debug.Assert(configDataFilePath != null && configDataFilePath.Length > 0);
+
             // We should never be creating a process with an ID that already exists in our running processes
             Debug.Assert(!Processes.ContainsKey(IDCounter));
 

@@ -10,6 +10,7 @@ using System.Windows;
 using TestRunner.Extensions;
 using TestRunner.TestRunnerService;
 using TestRunnerLibrary;
+using TestRunnerServiceLibrary;
 
 namespace TestRunner
 {
@@ -55,8 +56,6 @@ namespace TestRunner
         }
 
         public TestRunFrequency Frequency { get; set; }
-        
-        private TestRunnerServiceClient client;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -64,37 +63,22 @@ namespace TestRunner
 
         public ProcessesViewModel()
         {
-            try
-            {
-                client = new TestRunnerServiceClient();
-            }
-            catch (Exception e)
-            {
-                if (client != null)
-                {
-                    client.Abort();
-                }
-
-                MessageBox.Show(e.ToString());
-            }
-
             GetProcesses();
         }
 
         public void UpdateUIWithProcessData(ulong processId)
         {
             // How do we use the name to get the process ID - store a map in the Service - it will have to generate a name if one does not exist;  Or maybe we could enforce a name is provided
-            SelectedProcessOutput = client.GetProcessOutput(processId);
+            SelectedProcessOutput = TestRunnerProcessManager.GetProcessOutput(processId);
 
-            string selectedProcessConfigDataPath = client.GetProcessConfigFilePath(processId);
+            string selectedProcessConfigDataPath = TestRunnerProcessManager.GetProcessConfigFilePath(processId);
             TestRunConfigData data = TestRunConfigData.Deserialize(selectedProcessConfigDataPath);
             Frequency = data.Frequency;
         }
 
         private void GetProcesses()
         {
-            string[] processesFiles = client.GetAllConfigFilePaths();
-            foreach (string procConfigFile in processesFiles)
+            foreach (string procConfigFile in TestRunnerProcessManager.GetAllConfigFilePaths())
             {
                 TestRunConfigData data = TestRunConfigData.Deserialize(procConfigFile);
                 Processes.Add(data.ProcessName != null ? data.ProcessName : "Unidentified Test Process");
