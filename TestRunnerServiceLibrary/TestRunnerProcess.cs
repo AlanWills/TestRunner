@@ -82,7 +82,7 @@ namespace TestRunnerServiceLibrary
             cmdInfo.RedirectStandardError = true;
             cmdInfo.RedirectStandardOutput = true;
             cmdInfo.UseShellExecute = false;
-            cmdInfo.Arguments = dllName;
+            cmdInfo.Arguments = dllName;            // TODO: Change this to use platform, logger etc.
             cmdInfo.WorkingDirectory = workingDirectory;
             cmdInfo.FileName = ServiceSettings.VSTestPath;
 

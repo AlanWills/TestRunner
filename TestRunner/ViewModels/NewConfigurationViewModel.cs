@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
+using TestRunner.Converters;
 using TestRunner.Extensions;
 using TestRunner.TestRunnerService;
 using TestRunnerLibrary;
@@ -100,7 +101,58 @@ namespace TestRunner
             }
         }
 
-        public TestRunFrequency Frequency { get; set; }
+        public TestRunFrequency Frequency
+        {
+            get
+            {
+                return Data.Frequency;
+            }
+            set
+            {
+                bool changed = Data.Frequency != value;
+                Data.Frequency = value;
+
+                if (changed)
+                {
+                    OnPropertyChanged("Frequency");
+                }
+            }
+        }
+
+        public List<string> Platforms
+        {
+            get
+            {
+                DefaultEnumConverter converter = new DefaultEnumConverter();
+                List<string> platformList = new List<string>();
+
+                foreach (Platform platform in Enum.GetValues(typeof(Platform)))
+                {
+                    platformList.Add(converter.Convert(platform, typeof(string), null, null) as string);
+                }
+
+
+                return platformList;
+            }
+        }
+
+        public Platform Platform
+        {
+            get
+            {
+                return Data.Platform;
+            }
+            set
+            {
+                bool changed = Data.Platform != value;
+                Data.Platform = value;
+
+                if (changed)
+                {
+                    OnPropertyChanged("Platform");
+                }
+            }
+        }
 
         public bool IsConfigurationValid
         {
@@ -151,6 +203,7 @@ namespace TestRunner
 
                 ProcessName = data.ProcessName;
                 Frequency = data.Frequency;
+                Platform = data.Platform;
                 FullPathToDll = data.FullPathToDll;
                 OutputFileFullPath = data.OutputFileFullPath;
                 ErrorFileFullPath = data.ErrorFileFullPath;

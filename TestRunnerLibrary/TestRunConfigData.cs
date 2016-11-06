@@ -1,19 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using TestRunnerLibrary;
-using Windows.Storage;
 
 namespace TestRunnerLibrary
 {
     public enum TestRunFrequency
     {
         kDaily,
+    }
+
+    public enum Platform
+    {
+        kx86,
+        kx64,
+        kARM,
+        kAnyCPU
     }
 
     public class TestRunConfigData
@@ -25,6 +26,8 @@ namespace TestRunnerLibrary
         public TestRunFrequency Frequency { get; set; }
 
         public string FullPathToDll { get; set; }
+
+        public Platform Platform { get; set; }
 
         public string OutputFileFullPath { get; set; }
 

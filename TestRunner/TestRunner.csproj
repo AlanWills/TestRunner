@@ -86,6 +86,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\DefaultEnumConverter.cs" />
     <Compile Include="Converters\TestRunFrequencyValueConverter.cs" />
     <Compile Include="Extensions\TestRunConfigDataExtensions.cs" />
     <Compile Include="Extensions\TestRunFrequencyExtensions.cs" />

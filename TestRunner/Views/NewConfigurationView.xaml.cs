@@ -31,8 +31,8 @@ namespace TestRunner.Views
             if (e.PropertyName == FullPathToDll.Name ||
                 e.PropertyName == OutputFileFullPath.Name ||
                 e.PropertyName == ErrorFileFullPath.Name ||
-                e.PropertyName == ProcessName.Name ||
-                e.PropertyName == Frequency.Name)
+                e.PropertyName == Frequency.Name ||
+                e.PropertyName == Platform.Name)
             {
                 if (e.PropertyName == FullPathToDll.Name)
                 {
@@ -40,7 +40,7 @@ namespace TestRunner.Views
                 }
                 else if (e.PropertyName == Frequency.Name)
                 {
-                    Frequency.SelectedValue = NewConfig.Frequency;
+                    Frequency.SelectedIndex = (int)NewConfig.Frequency;
                 }
                 else if (e.PropertyName == OutputFileFullPath.Name)
                 {
@@ -50,9 +50,9 @@ namespace TestRunner.Views
                 {
                     ErrorFileFullPath.FilePath = NewConfig.ErrorFileFullPath;
                 }
-                else if (e.PropertyName == ProcessName.Name)
+                else if (e.PropertyName == Platform.Name)
                 {
-                    ProcessName.Text = NewConfig.ProcessName;
+                    Platform.SelectedIndex = (int)NewConfig.Platform;
                 }
 
                 StartButton.IsEnabled = NewConfig.IsConfigurationValid;

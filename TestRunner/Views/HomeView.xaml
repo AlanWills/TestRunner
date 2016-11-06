@@ -11,6 +11,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" />
+        <DockPanel Grid.Row="0">
+            <StackPanel Height="1040" VerticalAlignment="Top" DockPanel.Dock="Right" Width="400">
+                <Button x:Name="button" Content="Button"/>
+            </StackPanel>
+            <GridSplitter x:Name="gridSplitter" VerticalAlignment="Stretch" ResizeDirection="Columns" DockPanel.Dock="Right" Width="5"/>
+            <StackPanel Height="1040" VerticalAlignment="Top" DockPanel.Dock="Left">
+                <Button x:Name="button1" Content="Button" Width="75"/>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </Page>
