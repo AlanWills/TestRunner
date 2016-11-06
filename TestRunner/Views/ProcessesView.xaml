@@ -14,47 +14,23 @@
         <converters:TestRunFrequencyValueConverter x:Key="FrequencyConverter"/>
     </Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Margin="0,30,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="13*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Margin="10" Grid.Row="0" Orientation="Vertical">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Orientation="Vertical">
-                        <TextBlock HorizontalAlignment="Center" Text="Status" />
-                        <TextBlock x:Name="Status" Text="Passed" TextAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Orientation="Vertical">
-                        <TextBlock HorizontalAlignment="Center" Text="StartTime" />
-                        <TextBlock x:Name="StartTime" Text="Passed" TextAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Grid.Column="2" Orientation="Vertical">
-                        <TextBlock HorizontalAlignment="Center" Text="Frequency" />
-                        <ComboBox x:Name="Frequency" ItemsSource="{Binding Frequencies, Mode=OneTime}" SelectedItem="{Binding Frequency, Mode=TwoWay, Converter={StaticResource FrequencyConverter}}"
-                                  Margin="20,0,20,0" Text="Frequency"/>
-                    </StackPanel>
-                </Grid>
-            </StackPanel>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0" Margin="10" Grid.Row="1">
-                <TextBlock x:Name="SelectedProcessOutput" Text="{Binding SelectedProcessOutput}" TextWrapping="Wrap"/>
-            </ScrollViewer>
-            <GridSplitter Grid.Column="1" Width="5" Grid.RowSpan="2" HorizontalAlignment="Stretch"/>
-            <ListView x:Name="Processes" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+        <TabControl x:Name="BuildFileTabControl" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Visibility="Hidden"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="1">
+            <TextBlock x:Name="SelectedProcessOutput" Text="{Binding SelectedProcessOutput}" TextWrapping="Wrap"
+                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </ScrollViewer>
+        <GridSplitter Grid.Column="1" Grid.RowSpan="2" Width="5" HorizontalAlignment="Stretch"/>
+        <ListView x:Name="Processes" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                           ItemsSource="{Binding Processes}" SelectionChanged="Process_Selected"/>
-        </Grid>
     </Grid>
 </Page>

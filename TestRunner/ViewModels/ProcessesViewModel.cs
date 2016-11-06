@@ -57,6 +57,7 @@ namespace TestRunner
 
         public TestRunFrequency Frequency { get; set; }
 
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion

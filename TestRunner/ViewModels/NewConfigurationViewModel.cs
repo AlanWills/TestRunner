@@ -169,7 +169,7 @@ namespace TestRunner
         public NewConfigurationViewModel()
         {
             Data = new TestRunConfigData();
-            Frequency = TestRunFrequency.kDaily;
+            Frequency = TestRunFrequency.Daily;
         }
 
         public void CreateTestRunConfiguration()

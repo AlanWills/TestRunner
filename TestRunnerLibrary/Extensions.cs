@@ -13,7 +13,7 @@ namespace TestRunnerLibrary
         {
             switch (frequency)
             {
-                case TestRunFrequency.kDaily:
+                case TestRunFrequency.Daily:
                     return TimeSpan.FromDays(1);
 
                 default:

@@ -1,0 +1,16 @@
+﻿<TabItem x:Class="TestRunner.UserControls.CustomTabItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestRunner.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="100"
+             Width="100"
+             Height="20"/>
+<!--Add a view model which binds the background and text colour to be different depending on whether it is selected or not-->
+<!--Also, we need to bind the name of the build file-->
+<!--<TabItem Header="TabItem" Background="Transparent" BorderThickness="0" BorderBrush="RoyalBlue">
+        <Image x:Name="CloseTabButton" MouseLeftButtonDown="CloseTab"/>
+    </TabItem>-->
+<!--How do I get rid of the weird bit underneath the tab too?-->

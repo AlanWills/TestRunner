@@ -6,9 +6,8 @@ namespace TestRunner.Converters
 {
 
     /// <summary>
-    /// A class which assumes an enum is of the form kValue1, kValue2 etc.
-    /// Will convert to a string by removing the k and back by adding the k.
-    /// Therefore, kValue1 -> "Value1" & "Value1" -> kValue1
+    /// A class which assumes an enum is of the form Value1, Value2 etc.
+    /// Will convert to a string by calling ToString().
     /// </summary>
     public class DefaultEnumConverter : IValueConverter
     {
@@ -22,8 +21,7 @@ namespace TestRunner.Converters
         /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // Convert to a string, but miss off the first letter which we assume to be 'k'
-            return value.ToString().Substring(1);
+            return value.ToString();
         }
 
         /// <summary>
@@ -36,7 +34,7 @@ namespace TestRunner.Converters
         /// <returns></returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Enum.Parse(targetType, "k" + (value as string));
+            return Enum.Parse(targetType, (value as string));
         }
     }
 }

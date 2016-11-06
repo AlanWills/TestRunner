@@ -95,6 +95,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\CustomTabItem.xaml.cs">
+      <DependentUpon>CustomTabItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FileOpen.xaml.cs">
       <DependentUpon>FileOpen.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <DependentUpon>ProcessesView.xaml</DependentUpon>
     </Compile>
     <Page Include="ResourceDictionaries\TestRunnerStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CustomTabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

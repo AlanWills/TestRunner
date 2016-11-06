@@ -6,15 +6,13 @@ namespace TestRunnerLibrary
 {
     public enum TestRunFrequency
     {
-        kDaily,
+        Daily,
     }
 
     public enum Platform
     {
-        kx86,
-        kx64,
-        kARM,
-        kAnyCPU
+        x86,
+        x64,
     }
 
     public class TestRunConfigData

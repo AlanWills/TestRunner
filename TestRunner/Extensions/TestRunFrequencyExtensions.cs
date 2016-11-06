@@ -9,7 +9,7 @@ namespace TestRunner.Extensions
         {
             switch (frequency)
             {
-                case TestRunFrequency.kDaily:
+                case TestRunFrequency.Daily:
                     return "Daily";
                 default:
                     Debug.Fail("Unhandled frequency type");
@@ -22,10 +22,10 @@ namespace TestRunner.Extensions
             switch (frequency)
             {
                 case "Daily":
-                    return TestRunFrequency.kDaily;
+                    return TestRunFrequency.Daily;
                 default:
                     Debug.Fail("Unhandled frequency type");
-                    return TestRunFrequency.kDaily;
+                    return TestRunFrequency.Daily;
             }
         }
     }
