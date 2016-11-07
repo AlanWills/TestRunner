@@ -59,5 +59,14 @@ namespace TestRunner.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;C:\Users\Alan\Documents\Visual Studio 2015\Projects\TestRunner\TestRunner\Images\Logo.ico&quot;.
+        /// </summary>
+        internal static string Icon {
+            get {
+                return ResourceManager.GetString("Icon", resourceCulture);
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:controls="clr-namespace:TestRunner.UserControls"
         mc:Ignorable="d"
         Title="MainWindow"
@@ -15,6 +16,7 @@
         </Grid.RowDefinitions>
         <controls:NavBar Grid.Row="0" />
         <Frame x:Name="Frame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+        <tb:TaskbarIcon x:Name="SystemTrayIcon" TrayLeftMouseDown="SystemTrayIcon_TrayLeftMouseDown"/>
     </Grid>
 
 </Window>

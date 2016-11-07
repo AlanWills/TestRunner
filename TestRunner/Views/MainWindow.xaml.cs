@@ -1,8 +1,8 @@
 ﻿using System;
-using System.ServiceModel;
-using System.ServiceModel.Description;
+using System.ComponentModel;
 using System.Windows;
-using TestRunner.TestRunnerService;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using TestRunner.Views;
 
 namespace TestRunner
@@ -39,8 +39,26 @@ namespace TestRunner
             WindowState = WindowState.Maximized;
             InitializeComponent();
             Frame.Navigate(new HomeView());
+
+            string iconFile = Properties.Resources.Icon.Substring(1, Properties.Resources.Icon.Length - 2);     // Remove escaped characters
+            Icon = new BitmapImage(new Uri(iconFile));
+            SystemTrayIcon.Icon = new System.Drawing.Icon(iconFile);
         }
-        
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            e.Cancel = true;
+
+            Hide();
+
+            base.OnClosing(e);
+        }
+
+        private void SystemTrayIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
+        {
+            Show();
+        }
+
         //~MainWindow()
         //{
         //    // Close the ServiceHost.
