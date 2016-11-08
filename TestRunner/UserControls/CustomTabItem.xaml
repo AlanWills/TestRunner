@@ -5,9 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TestRunner.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="20" d:DesignWidth="100"
-             Width="100"
-             Height="20"/>
+             d:DesignHeight="20" d:DesignWidth="100">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <TextBlock x:Name="BuildFileContents" Text="{Binding SelectedProcessOutput}" TextWrapping="Wrap"
+                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    </ScrollViewer>
+</TabItem>
+    
+    
+    
 <!--Add a view model which binds the background and text colour to be different depending on whether it is selected or not-->
 <!--Also, we need to bind the name of the build file-->
 <!--<TabItem Header="TabItem" Background="Transparent" BorderThickness="0" BorderBrush="RoyalBlue">

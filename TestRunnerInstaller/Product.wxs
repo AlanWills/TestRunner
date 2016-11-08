@@ -11,14 +11,17 @@
 		<MediaTemplate EmbedCab="yes" />
 
 		<Feature Id="ProductFeature" Title="Test Runner Installer" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="ProductComponents"/>
+      <ComponentGroupRef Id="Resources"/>
 		</Feature>
 	</Product>
 
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFiles64Folder">
-				<Directory Id="INSTALLFOLDER" Name="Test Runner" />
+        <Directory Id="INSTALLFOLDER" Name="Test Runner">
+          <Directory Id="ImagesFolder" Name="Images"/>
+        </Directory>
 			</Directory>
 		</Directory>
 	</Fragment>
@@ -37,6 +40,9 @@
         <File Id="TestRunnerServiceLibrary.dll" Source="$(var.TestRunnerServiceLibrary.TargetPath)" KeyPath="yes" />
         <File Id="TestRunnerServiceLibrary.dll.config" Source="$(var.TestRunnerServiceLibrary.TargetDir)TestRunnerServiceLibrary.dll.config"/>
       </Component>
+      <Component Id="TaskbarNotification.dll" Win64="yes">
+        <File Id="TaskbarNotification.dll" Source="$(var.TestRunner.ProjectDir)..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll" KeyPath="yes" />
+      </Component>
       <!--<Component Id="TestRunnerServiceHost.exe" Win64="yes">
         <File Id="TestRunnerServiceHost.exe" Source="$(var.TestRunnerServiceHost.TargetPath)" KeyPath="yes" />
         <File Id="TestRunnerServiceHost.exe.config" Source="$(var.TestRunnerServiceHost.TargetDir)TestRunnerServiceHost.exe.config" KeyPath="no"/>
@@ -54,5 +60,10 @@
         <ServiceControl Id="TestRunnerService" Start="install" Stop="both" Remove="uninstall" Name="TestRunnerService" Wait="yes" />
       </Component>-->
 		</ComponentGroup>
+    <ComponentGroup Id="Resources" Directory="ImagesFolder">
+      <Component Id="Logo.ico" Win64="yes">
+        <File Id="Logo.exe" Source="$(var.TestRunner.ProjectDir)Images\Logo.ico" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
 	</Fragment>
 </Wix>

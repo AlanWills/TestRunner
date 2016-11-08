@@ -14,6 +14,8 @@ namespace TestRunner
     {
         //private ServiceHost Host { get; set; }
 
+        private bool ForceClose { get; set; }
+
         public MainWindow()
         {
             //Host = new ServiceHost(typeof(TestRunnerServiceLibrary.TestRunnerService), new Uri("http://localhost:8733/Design_Time_Addresses/TestRunnerService/"));
@@ -47,9 +49,12 @@ namespace TestRunner
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            e.Cancel = true;
+            if (!ForceClose)
+            {
+                e.Cancel = true;
 
-            Hide();
+                Hide();
+            }
 
             base.OnClosing(e);
         }
@@ -57,6 +62,13 @@ namespace TestRunner
         private void SystemTrayIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
             Show();
+        }
+
+        private void SystemTrayIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
+        {
+            ForceClose = true;
+
+            Close();
         }
 
         //~MainWindow()

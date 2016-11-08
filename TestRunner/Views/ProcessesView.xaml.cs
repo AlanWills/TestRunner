@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using TestRunner.UserControls;
+using System.Windows.Media;
+using System.Linq;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,23 +23,39 @@ namespace TestRunner.Views
             ProcessesViewModel = new ProcessesViewModel();
             DataContext = ProcessesViewModel;
             InitializeComponent();
+
+            Processes.AddHandler(Control.MouseDoubleClickEvent, new RoutedEventHandler(HandleDoubleClick));
         }
         
-        private void Process_Selected(object sender, RoutedEventArgs e)
+        private void ProcessSelected(string selectedProcessName)
         {
-            string clickedProcessName = (e.Source as ListView).SelectedItem as string;
+            // Need to get process ID somehow
+            ProcessesViewModel.UpdateUIWithProcessData(0, selectedProcessName);
+        }
 
-            CustomTabItem newItem = new CustomTabItem();
-            newItem.Header = clickedProcessName;
-
-            // Bind items from ViewModel and so move all of this there instead
-            // Then we can also encapsulate the visibility shit with a binding?
-
-            BuildFileTabControl.Visibility = Visibility.Visible;
-            BuildFileTabControl.Items.Add(newItem);
-            BuildFileTabControl.SelectedIndex = BuildFileTabControl.Items.Count - 1;
-
-            ProcessesViewModel.UpdateUIWithProcessData(0);
+        private void HandleDoubleClick(object sender, RoutedEventArgs e)
+        {
+            DependencyObject depObj = e.OriginalSource as DependencyObject;
+            if (depObj != null)
+            {
+                // go up the visual hierarchy until we find the list view item the click came from  
+                // the click might have been on the grid or column headers so we need to cater for this  
+                DependencyObject current = depObj;
+                while (current != null && current != Processes)
+                {
+                    ListViewItem lvi = current as ListViewItem;
+                    if (lvi != null)
+                    {
+                        // this is the list view item  
+                        // do something with it here
+                        ProcessSelected(lvi.DataContext as string);
+      
+                        // break out of loop  
+                        return;
+                    }
+                    current = VisualTreeHelper.GetParent(current);
+                }
+            }
         }
     }
 }
