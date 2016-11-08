@@ -4,3 +4,4 @@ Release/
 *.TMP
 *.tmp
 .vs/
+*.suo
