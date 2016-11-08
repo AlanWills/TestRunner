@@ -6,9 +6,9 @@ using System.Windows.Controls;
 
 namespace TestRunner.UserControls
 {
-    public sealed partial class NavBar : UserControl
+    public sealed partial class MainMenu : UserControl
     {
-        public NavBar()
+        public MainMenu()
         {
             InitializeComponent();
         }

@@ -45,13 +45,15 @@ namespace TestRunner
 
         protected override void OnClosing(CancelEventArgs e)
         {
+#if !DEBUG
             if (!ForceClose)
+
             {
                 e.Cancel = true;
 
                 Hide();
             }
-
+#endif
             base.OnClosing(e);
         }
 

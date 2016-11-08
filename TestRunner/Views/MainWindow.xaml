@@ -15,7 +15,7 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <controls:NavBar Grid.Row="0" />
+        <controls:MainMenu Grid.Row="0" />
         <Frame x:Name="Frame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
         <tb:TaskbarIcon x:Name="SystemTrayIcon"
                         IconSource="pack://application:,,,/TestRunner;component/Images/Logo.ico"

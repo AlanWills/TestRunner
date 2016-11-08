@@ -115,11 +115,8 @@
     <Compile Include="UserControls\FileSave.xaml.cs">
       <DependentUpon>FileSave.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\NavBar.xaml.cs">
-      <DependentUpon>NavBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\NavBarButton.xaml.cs">
-      <DependentUpon>NavBarButton.xaml</DependentUpon>
+    <Compile Include="UserControls\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AppSettingsViewModel.cs" />
     <Compile Include="ViewModels\NewConfigurationViewModel.cs" />
@@ -148,10 +145,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\NavBarButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,7 +169,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\NavBar.xaml">
+    <Page Include="UserControls\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
