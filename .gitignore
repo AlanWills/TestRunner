@@ -3,3 +3,4 @@ Debug/
 Release/
 *.TMP
 *.tmp
+.vs/
