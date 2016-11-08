@@ -41,10 +41,6 @@ namespace TestRunner
             WindowState = WindowState.Maximized;
             InitializeComponent();
             Frame.Navigate(new HomeView());
-
-            string iconFile = Properties.Resources.Icon.Substring(1, Properties.Resources.Icon.Length - 2);     // Remove escaped characters
-            Icon = new BitmapImage(new Uri(iconFile));
-            SystemTrayIcon.Icon = new System.Drawing.Icon(iconFile);
         }
 
         protected override void OnClosing(CancelEventArgs e)

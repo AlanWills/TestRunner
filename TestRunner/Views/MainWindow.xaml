@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow"
         d:DesignWidth="1920"
-        d:DesignHeight="1080">
+        d:DesignHeight="1080"
+        Icon="pack://application:,,,/TestRunner;component/Images/Logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -16,7 +17,8 @@
         </Grid.RowDefinitions>
         <controls:NavBar Grid.Row="0" />
         <Frame x:Name="Frame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
-        <tb:TaskbarIcon x:Name="SystemTrayIcon" 
+        <tb:TaskbarIcon x:Name="SystemTrayIcon"
+                        IconSource="pack://application:,,,/TestRunner;component/Images/Logo.ico"
                         TrayLeftMouseDown="SystemTrayIcon_TrayLeftMouseDown"
                         TrayRightMouseDown="SystemTrayIcon_TrayRightMouseDown"/>
     </Grid>

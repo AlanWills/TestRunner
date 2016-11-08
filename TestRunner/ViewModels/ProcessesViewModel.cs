@@ -16,26 +16,8 @@ namespace TestRunner
         #region Properties and Fields
         
         public ObservableCollection<string> Processes { get; private set; }
-
-        public List<string> Frequencies
-        {
-            get
-            {
-                List<string> freqList = new List<string>();
-
-                foreach (TestRunFrequency f in Enum.GetValues(typeof(TestRunFrequency)))
-                {
-                    freqList.Add(f.ToDisplayString());
-                }
-
-                return freqList;
-            }
-        }
-
+        
         public ObservableCollection<CustomTabItem> Tabs { get; private set; }
-
-        public TestRunFrequency Frequency { get; set; }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -51,26 +33,25 @@ namespace TestRunner
 
         public void UpdateUIWithProcessData(ulong processId, string clickedProcessName)
         {
-            if (Tabs.Any(x => x.Name == (clickedProcessName + "Tab")))
+            string tabName = clickedProcessName.Replace(' ', '_') + "Tab";
+            CustomTabItem tabItem = null;
+
+            if (Tabs.Any(x => x.Name == tabName))
             {
                 // Tab already exists so select it and then exit - no need to create a new one
-                Tabs.First(x => x.Name == (clickedProcessName + "Tab")).IsSelected = true;
-                return;
+                tabItem = Tabs.First(x => x.Name == tabName);
+            }
+            else
+            {
+                tabItem = new CustomTabItem();
+                tabItem.Name = tabName;
+                tabItem.Header = clickedProcessName;
+
+                Tabs.Add(tabItem);
             }
 
-            // How do we use the name to get the process ID - store a map in the Service - it will have to generate a name if one does not exist;  Or maybe we could enforce a name is provided
-
-            string selectedProcessConfigDataPath = TestRunnerProcessManager.GetProcessConfigFilePath(processId);
-            TestRunConfigData data = TestRunConfigData.Deserialize(selectedProcessConfigDataPath);
-            Frequency = data.Frequency;
-
-            CustomTabItem newItem = new CustomTabItem();
-            newItem.Name = clickedProcessName + "Tab";
-            newItem.Header = clickedProcessName;
-            newItem.IsSelected = true;
-            newItem.BuildFileContents.Text = TestRunnerProcessManager.GetProcessOutput(processId);
-
-            Tabs.Add(newItem);
+            tabItem.IsSelected = true;
+            tabItem.BuildFileContents.Text = TestRunnerProcessManager.GetProcessOutput(processId);
         }
 
         private void GetProcesses()
