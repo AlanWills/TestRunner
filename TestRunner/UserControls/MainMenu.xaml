@@ -9,7 +9,7 @@
 
     <DockPanel>
         <Menu x:Name="Menus" DockPanel.Dock="Top" Style="{StaticResource ColourTheme}">
-            <MenuItem Header="_File" Style="{StaticResource ColourTheme}" Background="#FF102372" Template="{StaticResource MenuItemControlTemplate}">
+            <MenuItem Header="_File" Template="{StaticResource MenuItemControlTemplate}" Style="{StaticResource ColourTheme}" >
                 <MenuItem Header="_New" Style="{StaticResource ColourTheme}"/>
                 <MenuItem Header="_Save" Style="{StaticResource ColourTheme}"/>
                 <Separator Background="White" Foreground="White"/>
