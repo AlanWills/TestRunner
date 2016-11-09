@@ -42,30 +42,14 @@ namespace TestRunner
             InitializeComponent();
             Frame.Navigate(new HomeView());
         }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-#if !DEBUG
-            if (!ForceClose)
-
-            {
-                e.Cancel = true;
-
-                Hide();
-            }
-#endif
-            base.OnClosing(e);
-        }
-
+        
         private void SystemTrayIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
             Show();
         }
 
-        private void SystemTrayIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
+        private void SystemTrayIcon_TrayMiddleMouseDown(object sender, RoutedEventArgs e)
         {
-            ForceClose = true;
-
             Close();
         }
 

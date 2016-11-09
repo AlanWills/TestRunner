@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="TestRunner.UserControls.MainMenu"
+    x:Class="TestRunner.UserControls.MainMenuView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:TestRunner.UserControls"
@@ -9,11 +9,12 @@
 
     <DockPanel>
         <Menu x:Name="Menus" DockPanel.Dock="Top" Style="{StaticResource ColourTheme}">
-            <MenuItem Header="_File" Template="{StaticResource MenuItemControlTemplate}" Style="{StaticResource ColourTheme}" >
-                <MenuItem Header="_New" Style="{StaticResource ColourTheme}"/>
-                <MenuItem Header="_Save" Style="{StaticResource ColourTheme}"/>
+            <MenuItem Header="_File" Width="40" Height="20" Template="{StaticResource MenuItemControlTemplate}" Style="{StaticResource ColourTheme}">
+                <MenuItem Header="_New" Style="{StaticResource ColourTheme}" Click="New_Click"/>
+                <MenuItem Header="_Save" Style="{StaticResource ColourTheme}" Click="Save_Click"/>
                 <Separator Background="White" Foreground="White"/>
-                <MenuItem Header="_Exit" Style="{StaticResource ColourTheme}"/>
+                <MenuItem Header="_Minimize" Style="{StaticResource ColourTheme}" Click="Minimize_Click"/>
+                <MenuItem Header="_Exit" Style="{StaticResource ColourTheme}" Click="Exit_Click"/>
             </MenuItem>
         </Menu>
     </DockPanel>

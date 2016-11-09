@@ -115,9 +115,10 @@
     <Compile Include="UserControls\FileSave.xaml.cs">
       <DependentUpon>FileSave.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MainMenu.xaml.cs">
-      <DependentUpon>MainMenu.xaml</DependentUpon>
+    <Compile Include="UserControls\MainMenu\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MainMenu\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\AppSettingsViewModel.cs" />
     <Compile Include="ViewModels\NewConfigurationViewModel.cs" />
     <Compile Include="ViewModels\ProcessesViewModel.cs" />
@@ -169,7 +170,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\MainMenu.xaml">
+    <Page Include="UserControls\MainMenu\MainMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
