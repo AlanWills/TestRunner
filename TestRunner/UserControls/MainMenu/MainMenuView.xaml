@@ -8,8 +8,13 @@
     mc:Ignorable="d">
 
     <DockPanel>
-        <Menu x:Name="Menus" DockPanel.Dock="Top" Style="{StaticResource ColourTheme}">
-            <MenuItem Header="_File" Width="40" Height="20" Template="{StaticResource MenuItemControlTemplate}" Style="{StaticResource ColourTheme}">
+        <Menu x:Name="Menus" DockPanel.Dock="Top" Style="{StaticResource ColourTheme}" VerticalAlignment="Stretch">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="_File" HorizontalAlignment="Center" VerticalAlignment="Top" Template="{StaticResource MenuItemControlTemplate}" Style="{StaticResource ColourTheme}">
                 <MenuItem Header="_New" Style="{StaticResource ColourTheme}" Click="New_Click"/>
                 <MenuItem Header="_Save" Style="{StaticResource ColourTheme}" Click="Save_Click"/>
                 <Separator Background="White" Foreground="White"/>

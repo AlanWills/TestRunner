@@ -11,7 +11,7 @@ using TestRunnerServiceLibrary;
 
 namespace TestRunner
 {
-    public class NewConfigurationViewModel : INotifyPropertyChanged
+    public class NewProjectDialogViewModel : INotifyPropertyChanged
     {
         #region Properties and Fields
 
@@ -166,7 +166,7 @@ namespace TestRunner
 
         #endregion
 
-        public NewConfigurationViewModel()
+        public NewProjectDialogViewModel()
         {
             Data = new TestRunConfigData();
         }

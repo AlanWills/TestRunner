@@ -119,17 +119,10 @@
       <DependentUpon>MainMenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MainMenu\MainMenuViewModel.cs" />
-    <Compile Include="ViewModels\AppSettingsViewModel.cs" />
-    <Compile Include="ViewModels\NewConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\NewProjectDialogViewModel.cs" />
     <Compile Include="ViewModels\ProcessesViewModel.cs" />
-    <Compile Include="Views\AppSettingsView.xaml.cs">
-      <DependentUpon>AppSettingsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\HomeView.xaml.cs">
-      <DependentUpon>HomeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\NewConfigurationView.xaml.cs">
-      <DependentUpon>NewConfigurationView.xaml</DependentUpon>
+    <Compile Include="Views\NewProjectDialogView.xaml.cs">
+      <DependentUpon>NewProjectDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProcessesView.xaml.cs">
       <DependentUpon>ProcessesView.xaml</DependentUpon>
@@ -143,10 +136,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\CustomTabItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,11 +163,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AppSettingsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\NewConfigurationView.xaml">
+    <Page Include="Views\NewProjectDialogView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

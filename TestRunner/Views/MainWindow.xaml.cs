@@ -40,7 +40,7 @@ namespace TestRunner
 
             WindowState = WindowState.Maximized;
             InitializeComponent();
-            Frame.Navigate(new HomeView());
+            Frame.Navigate(new ProcessesView());
         }
         
         private void SystemTrayIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
