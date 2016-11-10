@@ -12,8 +12,10 @@
 
 		<Feature Id="ProductFeature" Title="Test Runner Installer" Level="1">
 			<ComponentGroupRef Id="ProductComponents"/>
-      <ComponentGroupRef Id="Resources"/>
+      <!--<ComponentGroupRef Id="Resources"/>-->
 		</Feature>
+  
+    <Icon Id="Icon" SourceFile="$(var.TestRunner.ProjectDir)Images\Logo.ico" />
 	</Product>
 
 	<Fragment>
@@ -32,6 +34,11 @@
         <File Id="TestRunner.exe" Source="$(var.TestRunner.TargetPath)" KeyPath="yes" />
         <File Id="TestRunner.exe.manifest" Source="$(var.TestRunner.TargetDir)TestRunner.exe.manifest" KeyPath="no"/>
         <File Id="TestRunner.exe.config" Source="$(var.TestRunner.TargetDir)TestRunner.exe.config" KeyPath="no"/>
+        <ProgId Id="TestRunner.frp" Description="Flash Test Project">
+          <Extension Id="frp" ContentType="application/text">
+            <Verb Id="open" Command="open" TargetFile="TestRunner.exe" Argument="&quot;%1&quot;"/>
+          </Extension>
+        </ProgId>
       </Component>
       <Component Id="TestRunnerLibrary.dll" Win64="yes">
         <File Id="TestRunnerLibrary.dll" Source="$(var.TestRunnerLibrary.TargetPath)" KeyPath="yes" />
@@ -60,10 +67,10 @@
         <ServiceControl Id="TestRunnerService" Start="install" Stop="both" Remove="uninstall" Name="TestRunnerService" Wait="yes" />
       </Component>-->
 		</ComponentGroup>
-    <ComponentGroup Id="Resources" Directory="ImagesFolder">
+    <!--<ComponentGroup Id="Resources" Directory="ImagesFolder">
       <Component Id="Logo.ico" Win64="yes">
         <File Id="Logo.exe" Source="$(var.TestRunner.ProjectDir)Images\Logo.ico" KeyPath="yes" />
       </Component>
-    </ComponentGroup>
+    </ComponentGroup>-->
 	</Fragment>
 </Wix>
