@@ -79,6 +79,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -109,6 +110,9 @@
     <Compile Include="UserControls\CustomTabItem.xaml.cs">
       <DependentUpon>CustomTabItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\DirectoryOpen.xaml.cs">
+      <DependentUpon>DirectoryOpen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FileOpen.xaml.cs">
       <DependentUpon>FileOpen.xaml</DependentUpon>
     </Compile>
@@ -138,6 +142,10 @@
     <Page Include="UserControls\CustomTabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DirectoryOpen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

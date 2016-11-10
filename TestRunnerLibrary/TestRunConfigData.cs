@@ -17,7 +17,9 @@ namespace TestRunnerLibrary
 
     public class TestRunConfigData
     {
-        public string ProcessName { get; set; }
+        public const string FileExtension = ".frp";
+
+        public string ProjectName { get; set; }
 
         public DateTime StartTime { get; set; }
 

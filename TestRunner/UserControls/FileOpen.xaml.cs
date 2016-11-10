@@ -20,16 +20,6 @@ namespace TestRunner.UserControls
             get { return (string)GetValue(filePathProperty); }
             set
             {
-                string shortenedPath = value;
-                if (shortenedPath.Length > 50)
-                {
-                    shortenedPath = shortenedPath.Substring(shortenedPath.Length - 50);
-
-                    int delimIndex = Math.Max(shortenedPath.IndexOf('\\'), 0);
-                    shortenedPath = "..." + shortenedPath.Substring(delimIndex);
-                }
-
-                // Set the value of the property to be the full path, but only display the shortened path
                 SetValue(filePathProperty, value);
                 Path.Text = value;
             }

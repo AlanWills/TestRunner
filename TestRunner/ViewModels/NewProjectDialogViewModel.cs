@@ -1,13 +1,10 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows;
+using System.IO;
 using TestRunner.Converters;
 using TestRunner.Extensions;
-using TestRunner.TestRunnerService;
 using TestRunnerLibrary;
-using TestRunnerServiceLibrary;
 
 namespace TestRunner
 {
@@ -15,19 +12,31 @@ namespace TestRunner
     {
         #region Properties and Fields
 
-        private TestRunConfigData Data { get; set; }
-
-        public string ProcessName
+        private string projectSaveLocation;
+        public string ProjectSaveLocation
         {
-            get { return Data.ProcessName; }
+            get { return projectSaveLocation; }
             set
             {
-                bool changed = Data.ProcessName != value;
-                Data.ProcessName = value;
-
-                if (changed)
+                if (projectSaveLocation != value)
                 {
-                    OnPropertyChanged("ProcessName");
+                    projectSaveLocation = value;
+                    OnPropertyChanged("ProjectSaveLocation");
+                }
+            }
+        }
+
+        private TestRunConfigData Data { get; set; }
+
+        public string ProjectName
+        {
+            get { return Data.ProjectName; }
+            set
+            {
+                if (Data.ProjectName != value)
+                {
+                    Data.ProjectName = value;
+                    OnPropertyChanged("ProjectName");
                 }
             }
         }
@@ -40,52 +49,14 @@ namespace TestRunner
             }
             set
             {
-                bool changed = Data.FullPathToDll != value;
-                Data.FullPathToDll = value;
-
-                if (changed)
+                if (Data.FullPathToDll != value)
                 {
+                    Data.FullPathToDll = value;
                     OnPropertyChanged("FullPathToDll");
                 }
             }
         }
-
-        public string OutputFileFullPath
-        {
-            get
-            {
-                return Data.OutputFileFullPath;
-            }
-            set
-            {
-                bool changed = Data.OutputFileFullPath != value;
-                Data.OutputFileFullPath = value;
-
-                if (changed)
-                {
-                    OnPropertyChanged("OutputFileFullPath");
-                }
-            }
-        }
-
-        public string ErrorFileFullPath
-        {
-            get
-            {
-                return Data.ErrorFileFullPath;
-            }
-            set
-            {
-                bool changed = Data.ErrorFileFullPath != value;
-                Data.ErrorFileFullPath = value;
-
-                if (changed)
-                {
-                    OnPropertyChanged("ErrorFileFullPath");
-                }
-            }
-        }
-
+        
         public List<string> Frequencies
         {
             get
@@ -109,11 +80,9 @@ namespace TestRunner
             }
             set
             {
-                bool changed = Data.Frequency != value;
-                Data.Frequency = value;
-
-                if (changed)
+                if (Data.Frequency != value)
                 {
+                    Data.Frequency = value;
                     OnPropertyChanged("Frequency");
                 }
             }
@@ -144,11 +113,9 @@ namespace TestRunner
             }
             set
             {
-                bool changed = Data.Platform != value;
-                Data.Platform = value;
-
-                if (changed)
+                if (Data.Platform != value)
                 {
+                    Data.Platform = value;
                     OnPropertyChanged("Platform");
                 }
             }
@@ -158,7 +125,7 @@ namespace TestRunner
         {
             get
             {
-                return !string.IsNullOrEmpty(FullPathToDll) && !string.IsNullOrEmpty(OutputFileFullPath) && !string.IsNullOrEmpty(ErrorFileFullPath);
+                return !string.IsNullOrEmpty(FullPathToDll) && !string.IsNullOrEmpty(ProjectSaveLocation);
             }
         }
 
@@ -171,44 +138,12 @@ namespace TestRunner
             Data = new TestRunConfigData();
         }
 
-        public void CreateTestRunConfiguration()
+        public void CreateProject()
         {
-            SaveFileDialog filePicker = new SaveFileDialog();
-            filePicker.CreatePrompt = true;
-            filePicker.OverwritePrompt = true;
-            filePicker.DefaultExt = ".xml";
-
-            bool? result = filePicker.ShowDialog();
-
-            if (result.HasValue && result.Value)
-            {
-                Data.Serialize(filePicker.FileName);
-                TestRunnerProcessManager.CreateProcess(filePicker.FileName);
-
-                MessageBox.Show("Test Process started", "", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            // Don't want to serialize out a name with spaces in it
+            Data.Serialize(Path.Combine(ProjectSaveLocation, ProjectName.Replace(" ","") + TestRunConfigData.FileExtension));
         }
-
-        public void LoadTestRunConfiguration()
-        {
-            OpenFileDialog filePicker = new OpenFileDialog();
-            filePicker.DefaultExt = ".xml";
-
-            bool? result = filePicker.ShowDialog();
-
-            if (result.HasValue && result.Value)
-            {
-                TestRunConfigData data = TestRunConfigData.Deserialize(filePicker.FileName);
-
-                ProcessName = data.ProcessName;
-                Frequency = data.Frequency;
-                Platform = data.Platform;
-                FullPathToDll = data.FullPathToDll;
-                OutputFileFullPath = data.OutputFileFullPath;
-                ErrorFileFullPath = data.ErrorFileFullPath;
-            }
-        }
-
+        
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using TestRunner.Views;
 
 namespace TestRunner.UserControls
@@ -15,7 +10,7 @@ namespace TestRunner.UserControls
         public void New()
         {
             NewProjectDialogView newDialog = new NewProjectDialogView();
-            newDialog.ShowDialog();
+            bool? result = newDialog.ShowDialog();
         }
 
         public void Minimize()

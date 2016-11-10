@@ -42,7 +42,7 @@ namespace TestRunnerServiceLibrary
             ConfigFilePath = configDataFilePath;
             Data = TestRunConfigData.Deserialize(configDataFilePath);
 
-            Name = Data.ProcessName;
+            Name = Data.ProjectName;
             EnableRaisingEvents = true;
 
             StartInfo = CreateCmdLineProcessStartInfo(Path.GetDirectoryName(Data.FullPathToDll), Path.GetFileName(Data.FullPathToDll));

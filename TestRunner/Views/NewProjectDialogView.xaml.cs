@@ -14,15 +14,15 @@ namespace TestRunner.Views
     {
         #region Properties and Fields
 
-        private NewProjectDialogViewModel NewConfig { get; set; }
+        private NewProjectDialogViewModel NewProject { get; set; }
 
         #endregion
 
         public NewProjectDialogView()
         {
-            NewConfig = new NewProjectDialogViewModel();
-            NewConfig.PropertyChanged += NewConfig_PropertyChanged;
-            DataContext = NewConfig;
+            NewProject = new NewProjectDialogViewModel();
+            NewProject.PropertyChanged += NewConfig_PropertyChanged;
+            DataContext = NewProject;
 
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
@@ -33,23 +33,28 @@ namespace TestRunner.Views
         {
             if (e.PropertyName == FullPathToDll.Name)
             {
-                if (e.PropertyName == FullPathToDll.Name)
-                {
-                    FullPathToDll.FilePath = NewConfig.FullPathToDll;
-                }
-
-                StartButton.IsEnabled = NewConfig.IsConfigurationValid;
+                FullPathToDll.FilePath = NewProject.FullPathToDll;
             }
+            else if (e.PropertyName == ProjectSaveLocation.Name)
+            {
+                ProjectSaveLocation.DirectoryPath = NewProject.ProjectSaveLocation;
+            }
+
+            CreateButton.IsEnabled = NewProject.IsConfigurationValid;
         }
 
-        private void CreateTestRunConfiguration(object sender, RoutedEventArgs e)
+        private void CreateProject(object sender, RoutedEventArgs e)
         {
-            NewConfig.CreateTestRunConfiguration();
+            NewProject.CreateProject();
+
+            DialogResult = true;
+            Close();
         }
 
-        private void LoadTestRunConfiguration(object sender, RoutedEventArgs e)
+        private void CloseDialog(object sender, RoutedEventArgs e)
         {
-            NewConfig.LoadTestRunConfiguration();
+            DialogResult = false;
+            Close();
         }
     }
 }

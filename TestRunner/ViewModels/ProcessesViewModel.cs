@@ -60,7 +60,7 @@ namespace TestRunner
             {
                 TestRunConfigData data = TestRunConfigData.Deserialize(procConfigFile);
 
-                Processes.Add(data.ProcessName != null ? data.ProcessName : "Unidentified Test Process");
+                Processes.Add(data.ProjectName != null ? data.ProjectName : "Unidentified Test Process");
             }
         }
 

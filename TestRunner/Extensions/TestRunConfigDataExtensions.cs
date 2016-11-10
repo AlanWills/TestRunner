@@ -7,7 +7,8 @@ namespace TestRunner
     public static class TestRunConfigDataExtensions
     {
         /// <summary>
-        /// Serializes the data out into the file path
+        /// Serializes the data out into the file path.
+        /// The file will be created if not already there and overwritten if it does already exist.
         /// </summary>
         /// <param name="data"></param>
         /// <param name="fileToSaveInto"></param>

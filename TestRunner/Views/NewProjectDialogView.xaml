@@ -28,13 +28,15 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Process Name"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Project Name"/>
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Text="StartTime"/>
         <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Frequency"/>
         <TextBlock Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Platform"/>
-        <TextBlock Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Test Project Dll"/>
-        <TextBox Grid.Column="1" Grid.Row="0" x:Name="ProcessName" Text="{Binding ProcessName, Mode=TwoWay}" MaxHeight="20" Margin="20,0,10,0"/>
+        <TextBlock Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" Text="DLL To Test"/>
+        <TextBlock Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Save Location"/>
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="ProjectName" Text="{Binding ProjectName, Mode=TwoWay}" MaxHeight="20" Margin="20,0,10,0"/>
         <TextBlock Grid.Column="1" Grid.Row="1" x:Name="StartTime" Text="Midnight" TextAlignment="Center" VerticalAlignment="Center"/>
         <ComboBox Grid.Column="1" Grid.Row="2" x:Name="Frequency" 
                           ItemsSource="{Binding Frequencies, Mode=OneTime}" SelectedItem="{Binding Frequency, Mode=TwoWay, Converter={StaticResource FrequencyConverter}}"
@@ -42,26 +44,25 @@
         <ComboBox Grid.Column="1" Grid.Row="3" x:Name="Platform" 
                           ItemsSource="{Binding Platforms, Mode=OneTime}" SelectedItem="{Binding Platform, Mode=TwoWay, Converter={StaticResource DefaultConverter}}"
                           Width="150" MaxHeight="20"/>
-        <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
-            <controls:FileOpen Grid.Column="1" Grid.Row="4" 
+        <controls:FileOpen Grid.Column="1" Grid.Row="4" 
                                x:Name="FullPathToDll" FilePath="{Binding FullPathToDll, Mode=TwoWay}" FileExtension=".dll"
                                Width="554"/>
-        </StackPanel>
-        <StackPanel Grid.ColumnSpan="2" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Button 
-                        x:Name="StartButton" 
-                        Content="Start" 
-                        Width="80"
-                        Margin="0,0,10,0"
-                        Click="CreateTestRunConfiguration"
-                        ToolTipService.ToolTip="Launch a Test Run process on the service with these configurations."/>
-            <Button 
-                        x:Name="LoadButton" 
-                        Content="Load" 
-                        Width="80"
-                        Margin="10,0,0,0"
-                        Click="LoadTestRunConfiguration"
-                        ToolTipService.ToolTip="Load a configuration file."/>
+        <controls:DirectoryOpen Grid.Column="1" Grid.Row="5" 
+                               x:Name="ProjectSaveLocation" DirectoryPath="{Binding ProjectSaveLocation, Mode=TwoWay}"
+                               Width="554"/>
+        <StackPanel Grid.ColumnSpan="2" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Button x:Name="CreateButton" 
+                    Content="Create" 
+                    Width="80"
+                    Margin="0,0,10,0"
+                    Click="CreateProject"
+                    ToolTipService.ToolTip="Launch a Test Run process on the service with these configurations."/>
+            <Button x:Name="CloseButton" 
+                    Content="Close" 
+                    Width="80"
+                    Margin="10,0,0,0"
+                    Click="CloseDialog"
+                    ToolTipService.ToolTip="Load a configuration file."/>
         </StackPanel>
     </Grid>
 </Window>
