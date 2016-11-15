@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows.Controls;
-using TestRunner.Extensions;
+using TestRunner.Commands;
 using TestRunner.UserControls;
-using TestRunnerLibrary;
-using TestRunnerServiceLibrary;
 
 namespace TestRunner
 {
@@ -15,7 +10,7 @@ namespace TestRunner
     {
         #region Properties and Fields
         
-        public ObservableCollection<string> Processes { get; private set; }
+        public ObservableCollection<Project> Projects { get; private set; }
         
         public ObservableCollection<CustomTabItem> Tabs { get; private set; }
 
@@ -25,10 +20,15 @@ namespace TestRunner
 
         public ProcessesViewModel()
         {
-            Processes = new ObservableCollection<string>();
+            Projects = new ObservableCollection<Project>();
             Tabs = new ObservableCollection<CustomTabItem>();
 
-            GetProcesses();
+            OpenProjectCommand.ProjectLoaded += ProjectLoaded;
+        }
+
+        private void ProjectLoaded(Project projectLoaded)
+        {
+            Projects.Add(projectLoaded);
         }
 
         public void UpdateUIWithProcessData(ulong processId, string clickedProcessName)
@@ -51,19 +51,9 @@ namespace TestRunner
             }
 
             tabItem.IsSelected = true;
-            tabItem.BuildFileContents.Text = TestRunnerProcessManager.GetProcessOutput(processId);
+            //tabItem.BuildFileContents.Text = TestRunnerProcessManager.GetProcessOutput(processId);
         }
-
-        private void GetProcesses()
-        {
-            foreach (string procConfigFile in TestRunnerProcessManager.GetAllConfigFilePaths())
-            {
-                TestRunConfigData data = TestRunConfigData.Deserialize(procConfigFile);
-
-                Processes.Add(data.ProjectName != null ? data.ProjectName : "Unidentified Test Process");
-            }
-        }
-
+        
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

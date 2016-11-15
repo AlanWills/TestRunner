@@ -14,7 +14,7 @@ namespace TestRunner.Views
     {
         #region Properties and Fields
 
-        private NewProjectDialogViewModel NewProject { get; set; }
+        public NewProjectDialogViewModel NewProject { get; private set; }
 
         #endregion
 

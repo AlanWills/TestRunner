@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Windows.Data;
 using TestRunner.Extensions;
-using TestRunnerLibrary;
 
 namespace TestRunner.Converters
 {

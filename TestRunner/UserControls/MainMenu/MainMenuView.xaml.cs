@@ -27,9 +27,14 @@ namespace TestRunner.UserControls
             MainMenuViewModel.New();
         }
 
+        private void Open_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuViewModel.Open();
+        }
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-
+            MainMenuViewModel.Save();
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e)

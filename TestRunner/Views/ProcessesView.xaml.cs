@@ -24,13 +24,13 @@ namespace TestRunner.Views
             DataContext = ProcessesViewModel;
             InitializeComponent();
 
-            Processes.AddHandler(Control.MouseDoubleClickEvent, new RoutedEventHandler(HandleDoubleClick));
+            ProjectsTree.AddHandler(Control.MouseDoubleClickEvent, new RoutedEventHandler(HandleDoubleClick));
         }
         
-        private void ProcessSelected(string selectedProcessName)
+        private void ProcessSelected(string selectedProjectName)
         {
             // Need to get process ID somehow
-            ProcessesViewModel.UpdateUIWithProcessData(0, selectedProcessName);
+            ProcessesViewModel.UpdateUIWithProcessData(0, selectedProjectName);
         }
 
         private void HandleDoubleClick(object sender, RoutedEventArgs e)
@@ -41,14 +41,14 @@ namespace TestRunner.Views
                 // go up the visual hierarchy until we find the list view item the click came from  
                 // the click might have been on the grid or column headers so we need to cater for this  
                 DependencyObject current = depObj;
-                while (current != null && current != Processes)
+                while (current != null && current != ProjectsTree)
                 {
                     ListViewItem lvi = current as ListViewItem;
                     if (lvi != null)
                     {
                         // this is the list view item  
                         // do something with it here
-                        ProcessSelected(lvi.DataContext as string);
+                        ProcessSelected((lvi.DataContext as Project).Name);
       
                         // break out of loop  
                         return;

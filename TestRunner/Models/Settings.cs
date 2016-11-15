@@ -1,6 +1,6 @@
-﻿namespace TestRunnerLibrary
+﻿namespace TestRunner
 {
-    public static class ServiceSettings
+    public static class Settings
     {
         #region Properties and Fields
 
@@ -8,7 +8,7 @@
 
         #endregion
 
-        static ServiceSettings()
+        static Settings()
         {
             VSTestPath = @"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Vstest.console.exe";
         }

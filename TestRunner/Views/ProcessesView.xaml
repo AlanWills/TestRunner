@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:TestRunner.UserControls"
     xmlns:converters="clr-namespace:TestRunner.Converters"
+    xmlns:local="clr-namespace:TestRunner"
     mc:Ignorable="d"
     d:DesignWidth="1920"
     d:DesignHeight="1080">
@@ -25,8 +26,34 @@
         <TabControl x:Name="BuildFileTabControl" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     ItemsSource="{Binding Tabs, Mode=OneWay}"/>
         <GridSplitter Grid.Column="1" Grid.RowSpan="2" Width="5" HorizontalAlignment="Stretch"/>
-        <ListView x:Name="Processes" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                          ItemsSource="{Binding Processes}" Background="White"/>
+        <TreeView x:Name="ProjectsTree" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                          ItemsSource="{Binding Projects}" Background="White">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type local:Project}">
+                    <StackPanel Orientation="Horizontal" >
+                        <!--<Image Source="/WpfTutorialSamples;component/Images/group.png" Margin="0,0,5,0" />-->
+                        <TextBlock Text="{Binding Name}"/>
+                        <StackPanel.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem 
+                                    Header="Run"
+                                    Command="{x:Static local:ProjectManager.RunProjectCommand}"
+                                    CommandParameter="{Binding }"/>
+                            </ContextMenu>
+                        </StackPanel.ContextMenu>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <!--<DataTemplate DataType="{x:Type self:FamilyMember}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/WpfTutorialSamples;component/Images/user.png" Margin="0,0,5,0" />
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text=" (" Foreground="Green" />
+                        <TextBlock Text="{Binding Age}" Foreground="Green" />
+                        <TextBlock Text=" years)" Foreground="Green" />
+                    </StackPanel>
+                </DataTemplate>-->
+            </TreeView.Resources>
+        </TreeView>
 
     </Grid>
 </Page>

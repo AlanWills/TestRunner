@@ -1,5 +1,5 @@
-﻿using System.Diagnostics;
-using TestRunnerLibrary;
+﻿using System;
+using System.Diagnostics;
 
 namespace TestRunner.Extensions
 {
@@ -26,6 +26,19 @@ namespace TestRunner.Extensions
                 default:
                     Debug.Fail("Unhandled frequency type");
                     return TestRunFrequency.Daily;
+            }
+        }
+
+        public static TimeSpan ToTimeSpan(this TestRunFrequency frequency)
+        {
+            switch (frequency)
+            {
+                case TestRunFrequency.Daily:
+                    return TimeSpan.FromDays(1);
+
+                default:
+                    Debug.Assert(false, "Unhandled TestRunFrequency value");
+                    return TimeSpan.FromMilliseconds(-1);
             }
         }
     }

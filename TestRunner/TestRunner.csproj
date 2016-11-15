@@ -98,10 +98,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\NewProjectCommand.cs" />
+    <Compile Include="Commands\OpenProjectCommand.cs" />
+    <Compile Include="Commands\RunProjectCommand.cs" />
     <Compile Include="Converters\DefaultEnumConverter.cs" />
     <Compile Include="Converters\TestRunFrequencyValueConverter.cs" />
-    <Compile Include="Extensions\TestRunConfigDataExtensions.cs" />
     <Compile Include="Extensions\TestRunFrequencyExtensions.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\ProjectManager.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\TestRunnerProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Models\TestRunnerProcessManager.cs" />
     <Compile Include="Service References\TestRunnerService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -221,16 +230,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TestRunnerLibrary\TestRunnerLibrary.csproj">
-      <Project>{3e7da3e3-3a64-46c5-a191-0e670a44b4be}</Project>
-      <Name>TestRunnerLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TestRunnerServiceLibrary\TestRunnerServiceLibrary.csproj">
-      <Project>{e803e4dc-a82d-4e89-aa3f-7801a9d90b44}</Project>
-      <Name>TestRunnerServiceLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

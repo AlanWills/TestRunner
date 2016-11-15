@@ -16,6 +16,7 @@
             </Menu.ItemsPanel>
             <MenuItem Header="_File" HorizontalAlignment="Center" VerticalAlignment="Top" Template="{StaticResource MenuItemControlTemplate}" Style="{StaticResource ColourTheme}">
                 <MenuItem Header="_New" Style="{StaticResource ColourTheme}" Click="New_Click"/>
+                <MenuItem Header="_Open" Style="{StaticResource ColourTheme}" Click="Open_Click"/>
                 <MenuItem Header="_Save" Style="{StaticResource ColourTheme}" Click="Save_Click"/>
                 <Separator Background="White" Foreground="White"/>
                 <MenuItem Header="_Minimize" Style="{StaticResource ColourTheme}" Click="Minimize_Click"/>

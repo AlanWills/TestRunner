@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.IO;
 using TestRunner.Converters;
 using TestRunner.Extensions;
-using TestRunnerLibrary;
 
 namespace TestRunner
 {
@@ -26,16 +25,16 @@ namespace TestRunner
             }
         }
 
-        private TestRunConfigData Data { get; set; }
+        public Project Project { get; private set; }
 
         public string ProjectName
         {
-            get { return Data.ProjectName; }
+            get { return Project.Name; }
             set
             {
-                if (Data.ProjectName != value)
+                if (Project.Name != value)
                 {
-                    Data.ProjectName = value;
+                    Project.Name = value;
                     OnPropertyChanged("ProjectName");
                 }
             }
@@ -45,13 +44,13 @@ namespace TestRunner
         {
             get
             {
-                return Data.FullPathToDll;
+                return Project.FullPathToDll;
             }
             set
             {
-                if (Data.FullPathToDll != value)
+                if (Project.FullPathToDll != value)
                 {
-                    Data.FullPathToDll = value;
+                    Project.FullPathToDll = value;
                     OnPropertyChanged("FullPathToDll");
                 }
             }
@@ -76,13 +75,13 @@ namespace TestRunner
         {
             get
             {
-                return Data.Frequency;
+                return Project.Frequency;
             }
             set
             {
-                if (Data.Frequency != value)
+                if (Project.Frequency != value)
                 {
-                    Data.Frequency = value;
+                    Project.Frequency = value;
                     OnPropertyChanged("Frequency");
                 }
             }
@@ -109,13 +108,13 @@ namespace TestRunner
         {
             get
             {
-                return Data.Platform;
+                return Project.Platform;
             }
             set
             {
-                if (Data.Platform != value)
+                if (Project.Platform != value)
                 {
-                    Data.Platform = value;
+                    Project.Platform = value;
                     OnPropertyChanged("Platform");
                 }
             }
@@ -135,13 +134,14 @@ namespace TestRunner
 
         public NewProjectDialogViewModel()
         {
-            Data = new TestRunConfigData();
+            Project = new Project();
         }
 
         public void CreateProject()
         {
             // Don't want to serialize out a name with spaces in it
-            Data.Serialize(Path.Combine(ProjectSaveLocation, ProjectName.Replace(" ","") + TestRunConfigData.FileExtension));
+            Project.FilePath = Path.Combine(ProjectSaveLocation, ProjectName.Replace(" ", "") + Project.FileExtension);
+            Project.Save();
         }
         
         private void OnPropertyChanged(string propertyName)
