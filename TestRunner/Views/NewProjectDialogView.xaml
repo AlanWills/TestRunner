@@ -56,6 +56,7 @@
                     Width="80"
                     Margin="0,0,10,0"
                     Click="CreateProject"
+                    IsEnabled="{Binding IsConfigurationValid}"
                     ToolTipService.ToolTip="Launch a Test Run process on the service with these configurations."/>
             <Button x:Name="CloseButton" 
                     Content="Close" 

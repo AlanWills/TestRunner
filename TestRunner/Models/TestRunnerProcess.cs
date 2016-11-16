@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using TestRunner.Extensions;
@@ -35,6 +36,27 @@ namespace TestRunner
             StartInfo = CreateCmdLineProcessStartInfo(Path.GetDirectoryName(Project.FullPathToDll), Path.GetFileName(Project.FullPathToDll));
 
             Timer = new Timer(RerunTestProcess, 0, TimeSpan.FromMilliseconds(0), Project.Frequency.ToTimeSpan());
+            Exited += MoveResultsFile;
+        }
+
+        private void MoveResultsFile(object sender, EventArgs e)
+        {
+            string testResultsDirectoryPath = Path.Combine(Directory.GetParent(Project.FullPathToDll).FullName, "TestResults");
+            DirectoryInfo info = new DirectoryInfo(testResultsDirectoryPath);
+            FileInfo testResults = info.GetFiles("*.trx", SearchOption.AllDirectories).OrderByDescending(x => x.LastWriteTime).First();
+
+            // Copy to the project folder
+            testResultsDirectoryPath = Path.Combine(Directory.GetParent(Project.FilePath).FullName, Project.Name + "TestResults");
+            DirectoryInfo projectResults = Directory.CreateDirectory(testResultsDirectoryPath);
+
+            string testResultNewFileName = Project.Name + Project.StartTime.ToLongDateString() + Project.StartTime.ToLongTimeString() + TestResult.FileExtension;
+            testResultNewFileName = testResultNewFileName.Replace(":", "_");
+
+            string testResultsNewPath = Path.Combine(projectResults.FullName, testResultNewFileName);
+            testResults.MoveTo(testResultsNewPath);
+
+            Project.TestResults.Add(new TestResult(testResultsNewPath));
+            Project.Save();
         }
 
         private void RerunTestProcess(object state)

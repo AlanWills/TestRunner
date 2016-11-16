@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace TestRunner
@@ -16,11 +18,11 @@ namespace TestRunner
         x64,
     }
 
-    public class Project
+    public class Project : IXmlSerializable
     {
         #region Properties and Fields
 
-        public const string FileExtension = ".frp";
+        public const string FileExtension = ".ftp";
 
         public string FilePath { get; set; }
 
@@ -33,8 +35,15 @@ namespace TestRunner
         public string FullPathToDll { get; set; }
 
         public Platform Platform { get; set; }
+
+        public List<TestResult> TestResults { get; private set; }
         
         #endregion
+
+        public Project()
+        {
+            TestResults = new List<TestResult>();
+        }
 
         /// <summary>
         /// Creates a test run process using this project
@@ -42,6 +51,7 @@ namespace TestRunner
         public void Run()
         {
             TestRunnerProcessManager.CreateProcess(this);
+            StartTime = DateTime.Now;
         }
 
         /// <summary>
@@ -57,5 +67,49 @@ namespace TestRunner
                 serializer.Serialize(writer, this);
             }
         }
+
+        #region ISerializable Interface
+
+        public XmlSchema GetSchema()
+        {
+            // Apparently this is legit
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            reader.Read();
+            Name = reader.ReadElementContentAsString();
+            StartTime = DateTime.Parse(reader.ReadElementContentAsString());
+            Frequency = (TestRunFrequency)Enum.Parse(typeof(TestRunFrequency), reader.ReadElementContentAsString());
+            FullPathToDll = reader.ReadElementContentAsString();
+            Platform = (Platform)Enum.Parse(typeof(Platform), reader.ReadElementContentAsString());
+
+            reader.Read();
+
+            while (reader.Name == "TestResult")
+            {
+                TestResults.Add(new TestResult(reader.ReadElementContentAsString()));
+            }
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteElementString("Name", Name);
+            writer.WriteElementString("StartTime", StartTime.ToLongDateString());
+            writer.WriteElementString("Frequency", Frequency.ToString());
+            writer.WriteElementString("FullPathToDll", FullPathToDll);
+            writer.WriteElementString("Platform", Platform.ToString());
+            writer.WriteStartElement("TestResults");
+
+            foreach (TestResult result in TestResults)
+            {
+                writer.WriteElementString("TestResult", result.FilePath);
+            }
+
+            writer.WriteEndElement();
+        }
+
+        #endregion
     }
 }

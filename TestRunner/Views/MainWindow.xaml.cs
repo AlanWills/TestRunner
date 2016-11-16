@@ -40,6 +40,8 @@ namespace TestRunner
 
             WindowState = WindowState.Maximized;
             InitializeComponent();
+
+            ProjectManager.Initialize();
             Frame.Navigate(new ProcessesView());
         }
         

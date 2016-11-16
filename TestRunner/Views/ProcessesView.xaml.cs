@@ -27,10 +27,10 @@ namespace TestRunner.Views
             ProjectsTree.AddHandler(Control.MouseDoubleClickEvent, new RoutedEventHandler(HandleDoubleClick));
         }
         
-        private void ProcessSelected(string selectedProjectName)
+        private void TestResultSelected(TestResult testResult)
         {
             // Need to get process ID somehow
-            ProcessesViewModel.UpdateUIWithProcessData(0, selectedProjectName);
+            ProcessesViewModel.UpdateUIWithTestResult(0, testResult);
         }
 
         private void HandleDoubleClick(object sender, RoutedEventArgs e)
@@ -38,17 +38,17 @@ namespace TestRunner.Views
             DependencyObject depObj = e.OriginalSource as DependencyObject;
             if (depObj != null)
             {
-                // go up the visual hierarchy until we find the list view item the click came from  
+                // go up the visual hierarchy until we find the tree view item the click came from  
                 // the click might have been on the grid or column headers so we need to cater for this  
                 DependencyObject current = depObj;
                 while (current != null && current != ProjectsTree)
                 {
-                    ListViewItem lvi = current as ListViewItem;
-                    if (lvi != null)
+                    TreeViewItem lvi = current as TreeViewItem;
+                    if (lvi != null && (lvi.DataContext is TestResult))
                     {
-                        // this is the list view item  
+                        // this is the tree view item  
                         // do something with it here
-                        ProcessSelected((lvi.DataContext as Project).Name);
+                        TestResultSelected(lvi.DataContext as TestResult);
       
                         // break out of loop  
                         return;

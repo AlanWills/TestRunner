@@ -29,9 +29,8 @@
         <TreeView x:Name="ProjectsTree" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                           ItemsSource="{Binding Projects}" Background="White">
             <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type local:Project}">
+                <HierarchicalDataTemplate DataType="{x:Type local:Project}" ItemsSource="{Binding TestResults}">
                     <StackPanel Orientation="Horizontal" >
-                        <!--<Image Source="/WpfTutorialSamples;component/Images/group.png" Margin="0,0,5,0" />-->
                         <TextBlock Text="{Binding Name}"/>
                         <StackPanel.ContextMenu>
                             <ContextMenu>
@@ -43,15 +42,11 @@
                         </StackPanel.ContextMenu>
                     </StackPanel>
                 </HierarchicalDataTemplate>
-                <!--<DataTemplate DataType="{x:Type self:FamilyMember}">
+                <DataTemplate DataType="{x:Type local:TestResult}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/WpfTutorialSamples;component/Images/user.png" Margin="0,0,5,0" />
-                        <TextBlock Text="{Binding Name}" />
-                        <TextBlock Text=" (" Foreground="Green" />
-                        <TextBlock Text="{Binding Age}" Foreground="Green" />
-                        <TextBlock Text=" years)" Foreground="Green" />
+                        <TextBlock Text="{Binding Name}"/>
                     </StackPanel>
-                </DataTemplate>-->
+                </DataTemplate>
             </TreeView.Resources>
         </TreeView>
 

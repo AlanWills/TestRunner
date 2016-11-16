@@ -1,6 +1,4 @@
-﻿using System.Xml;
-using System.Xml.Serialization;
-using TestRunner.Commands;
+﻿using TestRunner.Commands;
 
 namespace TestRunner
 {
@@ -8,7 +6,7 @@ namespace TestRunner
     {
         #region Properties and Fields
 
-        private static Project CurrentProject { get; set; }
+        public static Project CurrentProject { get; private set; }
 
         private static NewProjectCommand newProjectCommand;
         public static NewProjectCommand NewProjectCommand
@@ -37,11 +35,17 @@ namespace TestRunner
             }
         }
 
+        private static bool Initialized { get; set; }
+
         #endregion
 
-        static ProjectManager()
+        public static void Initialize()
         {
-            OpenProjectCommand.ProjectLoaded += ProjectLoaded;
+            if (!Initialized)
+            {
+                OpenProjectCommand.ProjectLoaded += ProjectLoaded;
+                Initialized = true;
+            }
         }
 
         private static void ProjectLoaded(Project loadedProject)

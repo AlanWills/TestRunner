@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using TestRunner.Commands;
 using TestRunner.UserControls;
@@ -31,9 +32,10 @@ namespace TestRunner
             Projects.Add(projectLoaded);
         }
 
-        public void UpdateUIWithProcessData(ulong processId, string clickedProcessName)
+        public void UpdateUIWithTestResult(ulong processId, TestResult testResult)
         {
-            string tabName = clickedProcessName.Replace(' ', '_') + "Tab";
+            // Names cannot have spaces in
+            string tabName = testResult.Name.Replace(" ", "") + "Tab";
             CustomTabItem tabItem = null;
 
             if (Tabs.Any(x => x.Name == tabName))
@@ -45,13 +47,13 @@ namespace TestRunner
             {
                 tabItem = new CustomTabItem();
                 tabItem.Name = tabName;
-                tabItem.Header = clickedProcessName;
+                tabItem.Header = testResult.Name;
 
                 Tabs.Add(tabItem);
             }
 
             tabItem.IsSelected = true;
-            //tabItem.BuildFileContents.Text = TestRunnerProcessManager.GetProcessOutput(processId);
+            tabItem.BuildFileContents.Text = File.ReadAllText(testResult.FilePath);
         }
         
         private void OnPropertyChanged(string propertyName)

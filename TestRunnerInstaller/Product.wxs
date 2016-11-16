@@ -16,6 +16,7 @@
 		</Feature>
   
     <Icon Id="Icon" SourceFile="$(var.TestRunner.ProjectDir)Images\Logo.ico" />
+    <Property Id="ARPPRODUCTICON" Value="Icon" />
 	</Product>
 
 	<Fragment>
@@ -34,43 +35,20 @@
         <File Id="TestRunner.exe" Source="$(var.TestRunner.TargetPath)" KeyPath="yes" />
         <File Id="TestRunner.exe.manifest" Source="$(var.TestRunner.TargetDir)TestRunner.exe.manifest" KeyPath="no"/>
         <File Id="TestRunner.exe.config" Source="$(var.TestRunner.TargetDir)TestRunner.exe.config" KeyPath="no"/>
-        <ProgId Id="TestRunner.frp" Description="Flash Test Project">
-          <Extension Id="frp" ContentType="application/text">
-            <Verb Id="open" Command="open" TargetFile="TestRunner.exe" Argument="&quot;%1&quot;"/>
+        <ProgId Id=".ftp" Description="Flash Test Project" Advertise="yes" Icon="Icon">
+          <Extension Id="ftp" ContentType="application/text">
+            <Verb Id="Open With Flash" Command="Open With Flash" Argument="&quot;%1&quot;"/>
           </Extension>
         </ProgId>
-      </Component>
-      <Component Id="TestRunnerLibrary.dll" Win64="yes">
-        <File Id="TestRunnerLibrary.dll" Source="$(var.TestRunnerLibrary.TargetPath)" KeyPath="yes" />
-      </Component>
-      <Component Id="TestRunnerServiceLibrary.dll" Win64="yes">
-        <File Id="TestRunnerServiceLibrary.dll" Source="$(var.TestRunnerServiceLibrary.TargetPath)" KeyPath="yes" />
-        <File Id="TestRunnerServiceLibrary.dll.config" Source="$(var.TestRunnerServiceLibrary.TargetDir)TestRunnerServiceLibrary.dll.config"/>
+        <ProgId Id=".ftr" Description="Flash Test Result" Advertise="yes" Icon="Icon">
+          <Extension Id="ftr" ContentType="application/text">
+            <Verb Id="Open With Flash" Command="Open With Flash" Argument="&quot;%1&quot;"/>
+          </Extension>
+        </ProgId>
       </Component>
       <Component Id="TaskbarNotification.dll" Win64="yes">
         <File Id="TaskbarNotification.dll" Source="$(var.TestRunner.ProjectDir)..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll" KeyPath="yes" />
       </Component>
-      <!--<Component Id="TestRunnerServiceHost.exe" Win64="yes">
-        <File Id="TestRunnerServiceHost.exe" Source="$(var.TestRunnerServiceHost.TargetPath)" KeyPath="yes" />
-        <File Id="TestRunnerServiceHost.exe.config" Source="$(var.TestRunnerServiceHost.TargetDir)TestRunnerServiceHost.exe.config" KeyPath="no"/>
-        <ServiceInstall
-          Id="TestRunnerServiceHostInstaller"
-          Type="ownProcess"
-          Vital="yes"
-          Name="TestRunnerService"
-          DisplayName="Test Runner Service"
-          Start="auto"
-          Account="LocalSystem"
-          ErrorControl="ignore"
-          Interactive="no">
-        </ServiceInstall>
-        <ServiceControl Id="TestRunnerService" Start="install" Stop="both" Remove="uninstall" Name="TestRunnerService" Wait="yes" />
-      </Component>-->
 		</ComponentGroup>
-    <!--<ComponentGroup Id="Resources" Directory="ImagesFolder">
-      <Component Id="Logo.ico" Win64="yes">
-        <File Id="Logo.exe" Source="$(var.TestRunner.ProjectDir)Images\Logo.ico" KeyPath="yes" />
-      </Component>
-    </ComponentGroup>-->
 	</Fragment>
 </Wix>

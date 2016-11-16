@@ -107,6 +107,7 @@
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectManager.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\TestResult.cs" />
     <Compile Include="Models\TestRunnerProcess.cs">
       <SubType>Component</SubType>
     </Compile>
