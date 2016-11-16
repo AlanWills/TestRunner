@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using TestRunner;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestRunnerUnitTests
 {

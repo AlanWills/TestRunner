@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using TestRunner.Extensions;
 
 namespace TestRunner
 {
@@ -79,17 +80,31 @@ namespace TestRunner
         public void ReadXml(XmlReader reader)
         {
             reader.Read();
+
+            reader.SkipWhiteSpace();
             Name = reader.ReadElementContentAsString();
+
+            reader.SkipWhiteSpace();
             StartTime = DateTime.Parse(reader.ReadElementContentAsString());
+
+            reader.SkipWhiteSpace();
             Frequency = (TestRunFrequency)Enum.Parse(typeof(TestRunFrequency), reader.ReadElementContentAsString());
+
+            reader.SkipWhiteSpace();
             FullPathToDll = reader.ReadElementContentAsString();
+
+            reader.SkipWhiteSpace();
             Platform = (Platform)Enum.Parse(typeof(Platform), reader.ReadElementContentAsString());
 
             reader.Read();
+            reader.Read();  // This is the TestResults node
+            reader.SkipWhiteSpace();
 
             while (reader.Name == "TestResult")
             {
+                reader.SkipWhiteSpace();
                 TestResults.Add(new TestResult(reader.ReadElementContentAsString()));
+                reader.SkipWhiteSpace();
             }
         }
 
