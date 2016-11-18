@@ -41,5 +41,16 @@ namespace TestRunner.Extensions
                     return TimeSpan.FromMilliseconds(-1);
             }
         }
+
+        public static TestRunFrequency ToTestRunFrequency(this TimeSpan timeSpan)
+        {
+            if (timeSpan == TimeSpan.FromDays(1))
+            {
+                return TestRunFrequency.Daily;
+            }
+
+            // Should probably put custom here
+            return TestRunFrequency.Daily;
+        }
     }
 }

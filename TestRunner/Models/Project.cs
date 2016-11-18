@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Input;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using TestRunner.Extensions;
 
 namespace TestRunner
 {
@@ -30,7 +32,7 @@ namespace TestRunner
 
         public DateTime StartTime { get; set; }
 
-        public TestRunFrequency Frequency { get; set; }
+        public TimeSpan Frequency { get; set; }
 
         public string FullPathToDll { get; set; }
 
@@ -81,7 +83,21 @@ namespace TestRunner
             reader.Read();
             Name = reader.ReadElementContentAsString();
             StartTime = DateTime.Parse(reader.ReadElementContentAsString());
-            Frequency = (TestRunFrequency)Enum.Parse(typeof(TestRunFrequency), reader.ReadElementContentAsString());
+
+            TestRunFrequency resultEnum;
+            if (Enum.TryParse(reader.ReadElementContentAsString(), out resultEnum))
+            {
+                Frequency = resultEnum.ToTimeSpan();
+            }
+            else
+            {
+                TimeSpan resultTimeSpan;
+                bool result = TimeSpan.TryParse(reader.ReadElementContentAsString(), out resultTimeSpan);
+                Debug.Assert(result, "Failed to read the timespan for the project");
+
+                Frequency = resultTimeSpan;
+            }
+
             FullPathToDll = reader.ReadElementContentAsString();
             Platform = (Platform)Enum.Parse(typeof(Platform), reader.ReadElementContentAsString());
 

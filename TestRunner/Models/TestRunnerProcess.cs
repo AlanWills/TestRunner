@@ -35,7 +35,7 @@ namespace TestRunner
 
             StartInfo = CreateCmdLineProcessStartInfo(Path.GetDirectoryName(Project.FullPathToDll), Path.GetFileName(Project.FullPathToDll));
 
-            Timer = new Timer(RerunTestProcess, 0, TimeSpan.FromMilliseconds(0), Project.Frequency.ToTimeSpan());
+            Timer = new Timer(RerunTestProcess, 0, TimeSpan.FromMilliseconds(0), Project.Frequency);
             Exited += MoveResultsFile;
         }
 

@@ -75,13 +75,13 @@ namespace TestRunner
         {
             get
             {
-                return Project.Frequency;
+                return Project.Frequency.ToTestRunFrequency();
             }
             set
             {
-                if (Project.Frequency != value)
+                if (Project.Frequency != value.ToTimeSpan())
                 {
-                    Project.Frequency = value;
+                    Project.Frequency = value.ToTimeSpan();
                     OnPropertyChanged("Frequency");
                 }
             }

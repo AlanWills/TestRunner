@@ -32,8 +32,15 @@ namespace TestRunner
         {
             return GetProcess(processID).HasExited;
         }
+
+        public static void RemoveProcess(ulong processID)
+        {
+            Debug.Assert(Processes.ContainsKey(processID));
+
+            Processes.Remove(processID);
+        }
         
-        private static TestRunnerProcess GetProcess(ulong processID)
+        public static TestRunnerProcess GetProcess(ulong processID)
         {
             // Make sure the requested process exists in our dictionary, otherwise we are in trouble!
             Debug.Assert(Processes.ContainsKey(processID));
