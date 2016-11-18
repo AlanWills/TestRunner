@@ -10,7 +10,6 @@ namespace TestRunner.Commands
         public bool CanExecute(object parameter)
         {
             return true;
-            //return parameter is Project;
         }
 
         public void Execute(object parameter)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using TestRunner.Converters;
 using TestRunner.Extensions;
@@ -139,6 +140,8 @@ namespace TestRunner
 
         public void CreateProject()
         {
+            Debug.Assert(IsConfigurationValid, "Configuration is not valid.  Check that the UI is set up correctly so we cannot create without a valid configuration");
+
             // Don't want to serialize out a name with spaces in it
             Project.FilePath = Path.Combine(ProjectSaveLocation, ProjectName.Replace(" ", "") + Project.FileExtension);
             Project.Save();

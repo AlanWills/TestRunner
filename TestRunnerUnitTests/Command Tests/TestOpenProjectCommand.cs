@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using TestExtensions;
 using TestRunner;
 using TestRunner.Commands;
 
@@ -65,7 +67,14 @@ namespace TestRunnerUnitTests
             Assert.IsTrue(Path.GetFileName(expectedFileName) == Path.GetFileName(loaded.FullPathToDll));
             Assert.AreEqual(3, loaded.TestResults.Count);
 
-            // Check test results here - may need test extensions library
+            List<TestResult> expected = new List<TestResult>()
+            {
+                new TestResult(@"C:\Users\alawi\Source\Repos\TestRunner\TestRunnerUnitTests\Resources\TestResult1.ftr"),
+                new TestResult(@"C:\Users\alawi\Source\Repos\TestRunner\TestRunnerUnitTests\Resources\TestResult2.ftr"),
+                new TestResult(@"C:\Users\alawi\Source\Repos\TestRunner\TestRunnerUnitTests\Resources\TestResult3.ftr"),
+            };
+
+            AssertExt.ContentsEqual<List<TestResult>, TestResult>(expected, loaded.TestResults, TestRunnerEqualityFunctions.TestResultEquality);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Input;
 using System.Xml;
 using System.Xml.Schema;
@@ -32,7 +31,7 @@ namespace TestRunner
 
         public DateTime StartTime { get; set; }
 
-        public TimeSpan Frequency { get; set; }
+        public TestRunFrequency Frequency { get; set; }
 
         public string FullPathToDll { get; set; }
 
@@ -81,31 +80,31 @@ namespace TestRunner
         public void ReadXml(XmlReader reader)
         {
             reader.Read();
+
+            reader.SkipWhiteSpace();
             Name = reader.ReadElementContentAsString();
+
+            reader.SkipWhiteSpace();
             StartTime = DateTime.Parse(reader.ReadElementContentAsString());
 
-            TestRunFrequency resultEnum;
-            if (Enum.TryParse(reader.ReadElementContentAsString(), out resultEnum))
-            {
-                Frequency = resultEnum.ToTimeSpan();
-            }
-            else
-            {
-                TimeSpan resultTimeSpan;
-                bool result = TimeSpan.TryParse(reader.ReadElementContentAsString(), out resultTimeSpan);
-                Debug.Assert(result, "Failed to read the timespan for the project");
+            reader.SkipWhiteSpace();
+            Frequency = (TestRunFrequency)Enum.Parse(typeof(TestRunFrequency), reader.ReadElementContentAsString());
 
-                Frequency = resultTimeSpan;
-            }
-
+            reader.SkipWhiteSpace();
             FullPathToDll = reader.ReadElementContentAsString();
+
+            reader.SkipWhiteSpace();
             Platform = (Platform)Enum.Parse(typeof(Platform), reader.ReadElementContentAsString());
 
             reader.Read();
+            reader.Read();  // This is the TestResults node
+            reader.SkipWhiteSpace();
 
             while (reader.Name == "TestResult")
             {
+                reader.SkipWhiteSpace();
                 TestResults.Add(new TestResult(reader.ReadElementContentAsString()));
+                reader.SkipWhiteSpace();
             }
         }
 
