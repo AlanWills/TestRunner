@@ -6,7 +6,7 @@ using System.IO;
 namespace TestRunnerUnitTests
 {
     [TestClass]
-    public class TestTestRunnerProcess
+    public class TestRunnerProcessUnitTests
     {
         #region Properties and Fields
 
@@ -34,7 +34,7 @@ namespace TestRunnerUnitTests
         }
 
         [TestMethod]
-        public void TestRunnerProcess_Constructor()
+        public void Constructor_ValidProject()
         {
             TestRunnerProcess process = new TestRunnerProcess(DummyProject);
             process.WaitForExit();

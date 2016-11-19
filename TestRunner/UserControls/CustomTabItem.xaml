@@ -7,8 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="20" d:DesignWidth="100">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <TextBlock x:Name="BuildFileContents" Text="{Binding SelectedProcessOutput}" TextWrapping="Wrap"
-                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <ItemsControl x:Name="TestResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </ScrollViewer>
 </TabItem>
     

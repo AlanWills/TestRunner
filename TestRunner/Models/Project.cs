@@ -31,7 +31,7 @@ namespace TestRunner
 
         public DateTime StartTime { get; set; }
 
-        public TestRunFrequency Frequency { get; set; }
+        public TimeSpan Frequency { get; set; }
 
         public string FullPathToDll { get; set; }
 
@@ -88,7 +88,7 @@ namespace TestRunner
             StartTime = DateTime.Parse(reader.ReadElementContentAsString());
 
             reader.SkipWhiteSpace();
-            Frequency = (TestRunFrequency)Enum.Parse(typeof(TestRunFrequency), reader.ReadElementContentAsString());
+            Frequency = TimeSpan.Parse(reader.ReadElementContentAsString());
 
             reader.SkipWhiteSpace();
             FullPathToDll = reader.ReadElementContentAsString();
@@ -110,18 +110,35 @@ namespace TestRunner
 
         public void WriteXml(XmlWriter writer)
         {
+            string indent = "\t";
+
+            writer.WriteWhitespace("\n" + indent);
             writer.WriteElementString("Name", Name);
+
+            writer.WriteWhitespace("\n" + indent);
             writer.WriteElementString("StartTime", StartTime.ToLongDateString());
+
+            writer.WriteWhitespace("\n" + indent);
             writer.WriteElementString("Frequency", Frequency.ToString());
+
+            writer.WriteWhitespace("\n" + indent);
             writer.WriteElementString("FullPathToDll", FullPathToDll);
+
+            writer.WriteWhitespace("\n" + indent);
             writer.WriteElementString("Platform", Platform.ToString());
+
+            writer.WriteWhitespace("\n" + indent);
             writer.WriteStartElement("TestResults");
 
+            indent += "\r";
             foreach (TestResult result in TestResults)
             {
+                writer.WriteWhitespace("\n" + indent);
                 writer.WriteElementString("TestResult", result.FilePath);
             }
+            indent = indent.Remove(indent.Length - 1);
 
+            writer.WriteWhitespace("\n" + indent);
             writer.WriteEndElement();
         }
 

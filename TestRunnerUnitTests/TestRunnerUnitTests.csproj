@@ -50,10 +50,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Resources\Resources.cs" />
     <Compile Include="TestNewProjectDialogViewModel.cs" />
     <Compile Include="TestProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Command Tests\TestOpenProjectCommand.cs" />
+    <Compile Include="TestResultUnitTests.cs" />
+    <Compile Include="TestRunnerProcessUnitTests.cs" />
     <Compile Include="Utilities\TestRunnerEqualityFunctions.cs" />
   </ItemGroup>
   <ItemGroup>

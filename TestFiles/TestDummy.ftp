@@ -1,1 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Project><Name>Test Dummy</Name><StartTime>15 November 2016</StartTime><Frequency>Daily</Frequency><FullPathToDll>C:\Users\alawi\Source\Repos\TestRunner\DummyTestProjectsForTesting\DummyCSharpTestProject\bin\Debug\DummyCSharpTestProject.dll</FullPathToDll><Platform>x86</Platform><TestResults><TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy131237253290088934</TestResult><TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy15 November 2016</TestResult><TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\TestDummy15November201623_30_41.ftr</TestResult></TestResults></Project>
+﻿<?xml version="1.0" encoding="utf-8"?><Project>
+	<Name>Test Dummy</Name>
+	<StartTime>19 November 2016</StartTime>
+	<Frequency>00:00:00</Frequency>
+	<FullPathToDll>C:\Users\alawi\Source\Repos\TestRunner\DummyTestProjectsForTesting\DummyCSharpTestProject\bin\Debug\DummyCSharpTestProject.dll</FullPathToDll>
+	<Platform>x86</Platform>
+	<TestResults>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201615_34_47.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201615_49_28.ftr</TestResult>
+	</TestResults></Project>

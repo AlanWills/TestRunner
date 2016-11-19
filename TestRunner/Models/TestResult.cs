@@ -1,4 +1,8 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Xml;
+using TestRunner.Models;
 
 namespace TestRunner
 {
@@ -18,11 +22,69 @@ namespace TestRunner
         /// </summary>
         public string FilePath { get; private set; }
 
+        /// <summary>
+        /// True if all of the tests passed.  Otherwise false.
+        /// </summary>
+        public bool Passed { get; private set; }
+
+        public List<UnitTestResult> UnitTests { get; private set; }
+
         #endregion
 
         public TestResult(string testResultFilePath)
         {
+            Debug.Assert(File.Exists(testResultFilePath), "Results file path does not exist");
             FilePath = testResultFilePath;
+
+            UnitTests = new List<UnitTestResult>();
+
+            ReadTestFile();
+        }
+
+        private void ReadTestFile()
+        {
+            XmlDocument document = new XmlDocument();
+            document.Load(FilePath);
+
+            ReadOutcome(document);
+            ReadUnitTests(document);
+        }
+
+        private void ReadOutcome(XmlDocument document)
+        {
+            XmlNodeList nodeList = document.GetElementsByTagName("ResultSummary");
+            Debug.Assert(nodeList.Count == 1, "Multiple test result nodes found");
+
+            XmlNode resultsNode = nodeList.Item(0);
+            Debug.Assert(resultsNode.HasChildNodes);
+
+            XmlNode countersNode = resultsNode.FirstChild;
+
+            XmlNode totalAttribute = countersNode.Attributes.GetNamedItem("total");
+            string totalTestsString = totalAttribute.Value;
+
+            XmlNode passedAttribute = countersNode.Attributes.GetNamedItem("passed");
+            string passedTestsString = passedAttribute.Value;
+
+            Passed = totalTestsString == passedTestsString;
+        }
+
+        private void ReadUnitTests(XmlDocument document)
+        {
+            XmlNodeList nodeList = document.GetElementsByTagName("Results");
+            Debug.Assert(nodeList.Count == 1, "Multiple test result nodes found");
+
+            XmlNode resultsNode = nodeList.Item(0);
+            Debug.Assert(resultsNode.HasChildNodes);
+
+            foreach (XmlNode unitTestResult in resultsNode)
+            {
+                string testName = unitTestResult.Attributes.GetNamedItem("testName").Value;
+                bool passed = unitTestResult.Attributes.GetNamedItem("outcome").Value == "Passed";
+
+                UnitTestResult result = new UnitTestResult(testName, passed);
+                UnitTests.Add(result);
+            }
         }
     }
 }

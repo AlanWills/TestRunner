@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using TestRunner.Models;
 
 namespace TestRunner.UserControls
 {
@@ -30,6 +20,18 @@ namespace TestRunner.UserControls
         private void CloseTab(object sender, MouseButtonEventArgs e)
         {
             (Parent as TabControl).Items.Remove(this);
+        }
+
+        public void UpdateUIWithTestResult(TestResult testResult)
+        {
+            foreach (UnitTestResult unitTestResult in testResult.UnitTests)
+            {
+                TextBlock unitTestName = new TextBlock();
+                unitTestName.Text = unitTestResult.Name;
+                unitTestName.Foreground = unitTestResult.Passed ? Brushes.LawnGreen : Brushes.Red;
+
+                TestResults.Items.Add(unitTestName);
+            }
         }
     }
 }

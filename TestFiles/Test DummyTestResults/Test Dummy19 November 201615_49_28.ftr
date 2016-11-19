@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<TestRun id="3c747ec8-d0f6-41e9-90cc-e380aafad1f6" name="alawi@DESKTOP-F3MK7KH 2016-11-15 23:30:43" runUser="DESKTOP-F3MK7KH\alawi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
-  <Times creation="2016-11-15T23:30:43.4137616+00:00" queuing="2016-11-15T23:30:43.4137616+00:00" start="2016-11-15T23:30:43.2601261+00:00" finish="2016-11-15T23:30:43.4734199+00:00" />
-  <TestSettings name="default" id="39b39a70-2d8c-44de-b9bc-31ddd797a436">
+<TestRun id="40a46730-6625-4eca-96f5-2a7eb9a02825" name="alawi@DESKTOP-F3MK7KH 2016-11-19 15:49:29" runUser="DESKTOP-F3MK7KH\alawi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2016-11-19T15:49:29.8414475+00:00" queuing="2016-11-19T15:49:29.8414475+00:00" start="2016-11-19T15:49:29.6394047+00:00" finish="2016-11-19T15:49:29.9201446+00:00" />
+  <TestSettings name="default" id="e063af0e-97cc-4b2f-8541-906de8ba3cd2">
     <Execution>
       <TestTypeSpecific />
     </Execution>
-    <Deployment runDeploymentRoot="alawi_DESKTOP-F3MK7KH 2016-11-15 23_30_43" />
+    <Deployment runDeploymentRoot="alawi_DESKTOP-F3MK7KH 2016-11-19 15_49_29" />
     <Properties />
   </TestSettings>
   <Results>
-    <UnitTestResult executionId="06e31294-5a65-4f57-b712-4348ac37fd48" testId="fd295b22-3ed0-ae03-ac17-f4b93ebd1da3" testName="TestMethod1" computerName="DESKTOP-F3MK7KH" duration="00:00:00.0024734" startTime="2016-11-15T23:30:43.2601261+00:00" endTime="2016-11-15T23:30:43.2818395+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06e31294-5a65-4f57-b712-4348ac37fd48" />
+    <UnitTestResult executionId="103256cf-cbe2-4043-92fa-c66af1ce97f8" testId="fd295b22-3ed0-ae03-ac17-f4b93ebd1da3" testName="TestMethod1" computerName="DESKTOP-F3MK7KH" duration="00:00:00.0027354" startTime="2016-11-19T15:49:29.6394047+00:00" endTime="2016-11-19T15:49:29.6764954+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="103256cf-cbe2-4043-92fa-c66af1ce97f8" />
   </Results>
   <TestDefinitions>
     <UnitTest name="TestMethod1" storage="c:\users\alawi\source\repos\testrunner\dummytestprojectsfortesting\dummycsharptestproject\bin\debug\dummycsharptestproject.dll" id="fd295b22-3ed0-ae03-ac17-f4b93ebd1da3">
-      <Execution id="06e31294-5a65-4f57-b712-4348ac37fd48" />
+      <Execution id="103256cf-cbe2-4043-92fa-c66af1ce97f8" />
       <TestMethod codeBase="C:\Users\alawi\Source\Repos\TestRunner\DummyTestProjectsForTesting\DummyCSharpTestProject\bin\Debug\DummyCSharpTestProject.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter" className="DummyCSharpTestProject.UnitTest1" name="TestMethod1" />
     </UnitTest>
   </TestDefinitions>
   <TestEntries>
-    <TestEntry testId="fd295b22-3ed0-ae03-ac17-f4b93ebd1da3" executionId="06e31294-5a65-4f57-b712-4348ac37fd48" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fd295b22-3ed0-ae03-ac17-f4b93ebd1da3" executionId="103256cf-cbe2-4043-92fa-c66af1ce97f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
   </TestEntries>
   <TestLists>
     <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />

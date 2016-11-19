@@ -113,6 +113,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\TestRunnerProcessManager.cs" />
+    <Compile Include="Models\UnitTestResult.cs" />
     <Compile Include="Service References\TestRunnerService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -266,6 +267,12 @@
   <ItemGroup>
     <Resource Include="Images\Logo.ico" />
     <Resource Include="Images\Logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cross.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

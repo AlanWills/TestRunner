@@ -48,12 +48,13 @@ namespace TestRunner
                 tabItem = new CustomTabItem();
                 tabItem.Name = tabName;
                 tabItem.Header = testResult.Name;
+                tabItem.ToolTip = testResult.Name;
 
                 Tabs.Add(tabItem);
             }
 
             tabItem.IsSelected = true;
-            tabItem.BuildFileContents.Text = File.ReadAllText(testResult.FilePath);
+            tabItem.UpdateUIWithTestResult(testResult);
         }
         
         private void OnPropertyChanged(string propertyName)

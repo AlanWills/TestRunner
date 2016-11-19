@@ -44,7 +44,7 @@ namespace TestRunnerUnitTests
 
             Assert.AreEqual("No Test Results", loaded.Name);
             Assert.AreEqual(Platform.x86, loaded.Platform);
-            Assert.AreEqual(TestRunFrequency.Daily, loaded.Frequency);
+            Assert.AreEqual(TimeSpan.Zero, loaded.Frequency);
             
             string expectedFileName = Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "DummyTestProjectsForTesting", "DummyCSharpTestProject", "bin", "Debug", "DummyCSharpTestProject.dll");
             Assert.IsTrue(Path.GetFileName(expectedFileName) == Path.GetFileName(loaded.FullPathToDll));
@@ -61,7 +61,7 @@ namespace TestRunnerUnitTests
 
             Assert.AreEqual("Test Results", loaded.Name);
             Assert.AreEqual(Platform.x86, loaded.Platform);
-            Assert.AreEqual(TestRunFrequency.Daily, loaded.Frequency);
+            Assert.AreEqual(TimeSpan.Zero, loaded.Frequency);
 
             string expectedFileName = Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "DummyTestProjectsForTesting", "DummyCSharpTestProject", "bin", "Debug", "DummyCSharpTestProject.dll");
             Assert.IsTrue(Path.GetFileName(expectedFileName) == Path.GetFileName(loaded.FullPathToDll));

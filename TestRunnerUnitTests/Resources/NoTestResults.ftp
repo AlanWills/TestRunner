@@ -1,1 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Project><Name>No Test Results</Name><StartTime>15 November 2016</StartTime><Frequency>Daily</Frequency><FullPathToDll>C:\Users\alawi\Source\Repos\TestRunner\DummyTestProjectsForTesting\DummyCSharpTestProject\bin\Debug\DummyCSharpTestProject.dll</FullPathToDll><Platform>x86</Platform></Project>
+﻿<?xml version="1.0" encoding="utf-8"?><Project>
+	<Name>No Test Results</Name>
+	<StartTime>01 January 0001</StartTime>
+	<Frequency>00:00:00</Frequency>
+	<FullPathToDll>C:\Users\alawi\Source\Repos\TestRunner\DummyTestProjectsForTesting\DummyCSharpTestProject\bin\Debug\DummyCSharpTestProject.dll</FullPathToDll>
+	<Platform>x86</Platform>
+	<TestResults>
+	</TestResults></Project>
