@@ -1,9 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Windows;
+using System.Windows.Threading;
 using TestRunner.Commands;
 using TestRunner.UserControls;
+using TestRunner.ViewModels;
 
 namespace TestRunner
 {
@@ -11,7 +15,7 @@ namespace TestRunner
     {
         #region Properties and Fields
         
-        public ObservableCollection<Project> Projects { get; private set; }
+        public ObservableCollection<TreeItemProjectViewModel> Projects { get; private set; }
         
         public ObservableCollection<CustomTabItem> Tabs { get; private set; }
 
@@ -21,7 +25,7 @@ namespace TestRunner
 
         public ProcessesViewModel()
         {
-            Projects = new ObservableCollection<Project>();
+            Projects = new ObservableCollection<TreeItemProjectViewModel>();
             Tabs = new ObservableCollection<CustomTabItem>();
 
             OpenProjectCommand.ProjectLoaded += ProjectLoaded;
@@ -29,7 +33,13 @@ namespace TestRunner
 
         private void ProjectLoaded(Project projectLoaded)
         {
-            Projects.Add(projectLoaded);
+            projectLoaded.ProjectChanged += ProjectChanged;
+            Projects.Add(new TreeItemProjectViewModel(projectLoaded));
+        }
+
+        private void ProjectChanged(Project project)
+        {
+            OnPropertyChanged("Projects");
         }
 
         public void UpdateUIWithTestResult(ulong processId, TestResult testResult)

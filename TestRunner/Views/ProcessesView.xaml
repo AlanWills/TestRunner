@@ -7,6 +7,7 @@
     xmlns:controls="clr-namespace:TestRunner.UserControls"
     xmlns:converters="clr-namespace:TestRunner.Converters"
     xmlns:local="clr-namespace:TestRunner"
+    xmlns:viewmodels="clr-namespace:TestRunner.ViewModels"
     mc:Ignorable="d"
     d:DesignWidth="1920"
     d:DesignHeight="1080">
@@ -26,10 +27,15 @@
         <TabControl x:Name="BuildFileTabControl" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     ItemsSource="{Binding Tabs, Mode=OneWay}"/>
         <GridSplitter Grid.Column="1" Grid.RowSpan="2" Width="5" HorizontalAlignment="Stretch"/>
-        <TreeView x:Name="ProjectsTree" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+        <TreeView x:Name="Projects" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                           ItemsSource="{Binding Projects}" Background="White">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                </Style>
+            </TreeView.ItemContainerStyle>
             <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type local:Project}" ItemsSource="{Binding TestResults}">
+                <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeItemProjectViewModel}" ItemsSource="{Binding TestResults}">
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="{Binding Name}"/>
                         <StackPanel.ContextMenu>
@@ -37,7 +43,7 @@
                                 <MenuItem 
                                     Header="Run"
                                     Command="{x:Static local:ProjectManager.RunProjectCommand}"
-                                    CommandParameter="{Binding }"/>
+                                    CommandParameter="{Binding Project}"/>
                             </ContextMenu>
                         </StackPanel.ContextMenu>
                     </StackPanel>

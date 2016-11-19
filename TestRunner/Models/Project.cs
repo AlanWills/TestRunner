@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
 using System.Xml;
 using System.Xml.Schema;
@@ -8,6 +9,8 @@ using TestRunner.Extensions;
 
 namespace TestRunner
 {
+    public delegate void ProjectChangedEvent(Project project);
+
     public enum TestRunFrequency
     {
         Daily,
@@ -38,6 +41,8 @@ namespace TestRunner
         public Platform Platform { get; set; }
 
         public List<TestResult> TestResults { get; private set; }
+
+        public event ProjectChangedEvent ProjectChanged;
         
         #endregion
 
@@ -53,6 +58,20 @@ namespace TestRunner
         {
             TestRunnerProcessManager.CreateProcess(this);
             StartTime = DateTime.Now;
+        }
+
+        /// <summary>
+        /// Adds the inputted test result to this project and saves the file.
+        /// Will also fire the ProjectChanged event.
+        /// </summary>
+        /// <param name="testResult"></param>
+        public void AddTestResult(TestResult testResult)
+        {
+            TestResults.Add(testResult);
+            Save();
+
+            // Make sure to invoke the ProjectChanged event on the UI thread as it will be used to update UI.
+            Application.Current.Dispatcher.Invoke(() => ProjectChanged?.Invoke(this));
         }
 
         /// <summary>

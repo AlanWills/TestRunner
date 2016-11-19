@@ -55,8 +55,7 @@ namespace TestRunner
             string testResultsNewPath = Path.Combine(projectResults.FullName, testResultNewFileName);
             testResults.MoveTo(testResultsNewPath);
 
-            Project.TestResults.Add(new TestResult(testResultsNewPath));
-            Project.Save();
+            Project.AddTestResult(new TestResult(testResultsNewPath));
         }
 
         private void RerunTestProcess(object state)

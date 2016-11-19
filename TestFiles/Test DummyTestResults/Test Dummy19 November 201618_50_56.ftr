@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e2f8b75c-e9c2-4ec9-aa19-2db744fd90f1" name="alawi@DESKTOP-F3MK7KH 2016-11-19 18:50:57" runUser="DESKTOP-F3MK7KH\alawi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2016-11-19T18:50:57.5204540+00:00" queuing="2016-11-19T18:50:57.5204540+00:00" start="2016-11-19T18:50:57.3958618+00:00" finish="2016-11-19T18:50:57.5638989+00:00" />
+  <TestSettings name="default" id="c11e5229-af46-42c6-9580-60a6a3814dca">
+    <Execution>
+      <TestTypeSpecific />
+    </Execution>
+    <Deployment runDeploymentRoot="alawi_DESKTOP-F3MK7KH 2016-11-19 18_50_57" />
+    <Properties />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="8a1d2175-2b2c-4c3d-91ac-fc5b276cbadf" testId="fd295b22-3ed0-ae03-ac17-f4b93ebd1da3" testName="TestMethod1" computerName="DESKTOP-F3MK7KH" duration="00:00:00.0027425" startTime="2016-11-19T18:50:57.3958618+00:00" endTime="2016-11-19T18:50:57.4204287+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8a1d2175-2b2c-4c3d-91ac-fc5b276cbadf" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="TestMethod1" storage="c:\users\alawi\source\repos\testrunner\dummytestprojectsfortesting\dummycsharptestproject\bin\debug\dummycsharptestproject.dll" id="fd295b22-3ed0-ae03-ac17-f4b93ebd1da3">
+      <Execution id="8a1d2175-2b2c-4c3d-91ac-fc5b276cbadf" />
+      <TestMethod codeBase="C:\Users\alawi\Source\Repos\TestRunner\DummyTestProjectsForTesting\DummyCSharpTestProject\bin\Debug\DummyCSharpTestProject.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter" className="DummyCSharpTestProject.UnitTest1" name="TestMethod1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="fd295b22-3ed0-ae03-ac17-f4b93ebd1da3" executionId="8a1d2175-2b2c-4c3d-91ac-fc5b276cbadf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+</TestRun>
