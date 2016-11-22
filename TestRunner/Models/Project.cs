@@ -9,11 +9,27 @@ using TestRunner.Extensions;
 
 namespace TestRunner
 {
-    public delegate void ProjectChangedEvent(Project project);
+    public delegate void ProjectChangedEvent(ProjectChangedEventArgs projectChangedArgs);
+
+    public class ProjectChangedEventArgs : EventArgs
+    {
+        public Project ChangedProject { get; private set; }
+        public List<TestResult> AddedTests { get; private set; }
+        public List<TestResult> RemovedTests { get; private set; }
+
+        public ProjectChangedEventArgs(Project project, List<TestResult> addedTests, List<TestResult> removedTests)
+        {
+            ChangedProject = project;
+            AddedTests = addedTests;
+            RemovedTests = removedTests;
+        }
+    }
 
     public enum TestRunFrequency
     {
         Daily,
+        Hourly,
+        Continuously
     }
 
     public enum Platform
@@ -70,8 +86,10 @@ namespace TestRunner
             TestResults.Add(testResult);
             Save();
 
+            ProjectChangedEventArgs args = new ProjectChangedEventArgs(this, new List<TestResult>() { testResult }, new List<TestResult>());
+
             // Make sure to invoke the ProjectChanged event on the UI thread as it will be used to update UI.
-            Application.Current.Dispatcher.Invoke(() => ProjectChanged?.Invoke(this));
+            Application.Current.Dispatcher.Invoke(() => ProjectChanged?.Invoke(args));
         }
 
         /// <summary>
@@ -115,7 +133,7 @@ namespace TestRunner
             reader.SkipWhiteSpace();
             Platform = (Platform)Enum.Parse(typeof(Platform), reader.ReadElementContentAsString());
 
-            reader.Read();
+            reader.SkipWhiteSpace();
             reader.Read();  // This is the TestResults node
             reader.SkipWhiteSpace();
 
@@ -149,7 +167,7 @@ namespace TestRunner
             writer.WriteWhitespace("\n" + indent);
             writer.WriteStartElement("TestResults");
 
-            indent += "\r";
+            indent += "\t";
             foreach (TestResult result in TestResults)
             {
                 writer.WriteWhitespace("\n" + indent);

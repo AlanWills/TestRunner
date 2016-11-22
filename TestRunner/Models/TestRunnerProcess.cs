@@ -37,6 +37,12 @@ namespace TestRunner
 
             Timer = new Timer(RerunTestProcess, 0, TimeSpan.FromMilliseconds(0), Project.Frequency);
             Exited += MoveResultsFile;
+
+            // If we are specifying continuous building, we need to add an extra event to fire up the process again
+            if (Project.Frequency == TimeSpan.FromMilliseconds(-1))
+            {
+                Exited += ContinuousBuilding;
+            }
         }
 
         private void MoveResultsFile(object sender, EventArgs e)
@@ -46,10 +52,10 @@ namespace TestRunner
             FileInfo testResults = info.GetFiles("*.trx", SearchOption.AllDirectories).OrderByDescending(x => x.LastWriteTime).First();
 
             // Copy to the project folder
-            testResultsDirectoryPath = Path.Combine(Directory.GetParent(Project.FilePath).FullName, Project.Name + "TestResults");
+            testResultsDirectoryPath = Path.Combine(Directory.GetParent(Project.FilePath).FullName, Project.Name + " TestResults");
             DirectoryInfo projectResults = Directory.CreateDirectory(testResultsDirectoryPath);
 
-            string testResultNewFileName = Project.Name + Project.StartTime.ToLongDateString() + Project.StartTime.ToLongTimeString() + TestResult.FileExtension;
+            string testResultNewFileName = Project.Name + " " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + TestResult.FileExtension;
             testResultNewFileName = testResultNewFileName.Replace(":", "_");
 
             string testResultsNewPath = Path.Combine(projectResults.FullName, testResultNewFileName);
@@ -62,6 +68,14 @@ namespace TestRunner
         {
             bool startResult = Start();
             Debug.Assert(startResult);
+        }
+
+        private void ContinuousBuilding(object sender, EventArgs e)
+        {
+            // Just sleep for a minute between continuous builds to let everything wash through
+            Thread.Sleep(60000);
+
+            RerunTestProcess(null);
         }
 
         /// <summary>

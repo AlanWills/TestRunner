@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Project>
+	<Name>Live Test</Name>
+	<StartTime>22 November 2016</StartTime>
+	<Frequency>-00:00:00.0010000</Frequency>
+	<FullPathToDll>C:\Users\alawi\Source\Repos\TestRunner\TestRunnerUnitTests\bin\Debug\TestRunnerUnitTests.dll</FullPathToDll>
+	<Platform>x86</Platform>
+	<TestResults>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Live Test TestResults\Live Test 22 November 2016 22_52_22.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Live Test TestResults\Live Test 22 November 2016 22_52_25.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Live Test TestResults\Live Test 22 November 2016 22_55_19.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Live Test TestResults\Live Test 22 November 2016 22_57_54.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Live Test TestResults\Live Test 22 November 2016 22_57_57.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Live Test TestResults\Live Test 22 November 2016 23_11_11.ftr</TestResult>
+	</TestResults></Project>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Project>
+	<Name>Continuous Testing</Name>
+	<StartTime>22 November 2016</StartTime>
+	<Frequency>-00:00:00.0010000</Frequency>
+	<FullPathToDll>C:\Users\alawi\Source\Repos\TestRunner\DummyTestProjectsForTesting\DummyCSharpTestProject\bin\Debug\DummyCSharpTestProject.dll</FullPathToDll>
+	<Platform>x86</Platform>
+	<TestResults>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Continuous TestingTestResults\Continuous Testing 22 November 2016 21_00_40.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Continuous TestingTestResults\Continuous Testing 22 November 2016 21_00_43.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Continuous TestingTestResults\Continuous Testing 22 November 2016 21_00_45.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Continuous TestingTestResults\Continuous Testing 22 November 2016 21_00_47.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Continuous TestingTestResults\Continuous Testing 22 November 2016 21_00_49.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Continuous TestingTestResults\Continuous Testing 22 November 2016 21_00_51.ftr</TestResult>
+	</TestResults></Project>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Project>
 	<Name>Test Dummy</Name>
-	<StartTime>19 November 2016</StartTime>
+	<StartTime>22 November 2016</StartTime>
 	<Frequency>00:00:00</Frequency>
 	<FullPathToDll>C:\Users\alawi\Source\Repos\TestRunner\DummyTestProjectsForTesting\DummyCSharpTestProject\bin\Debug\DummyCSharpTestProject.dll</FullPathToDll>
 	<Platform>x86</Platform>
@@ -35,4 +35,26 @@
 <TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_50_56.ftr</TestResult>
 	
 <TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201619_18_37.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy22 November 201620_49_57.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy 22 November 2016 20_55_00.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy 22 November 2016 20_55_33.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_10_54.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_12_27.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_12_36.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_13_32.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_20_51.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_48_04.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_48_13.ftr</TestResult>
+	
+<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_48_52.ftr</TestResult>
 	</TestResults></Project>

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 using TestRunner.Commands;
 using TestRunner.UserControls;
@@ -37,12 +39,20 @@ namespace TestRunner
             Projects.Add(new TreeItemProjectViewModel(projectLoaded));
         }
 
-        private void ProjectChanged(Project project)
+        private void ProjectChanged(ProjectChangedEventArgs args)
         {
+            for (int i = 0; i < Projects.Count; ++i)
+            {
+                if (Projects[i].Project == args.ChangedProject)
+                {
+                    Projects[i].RefreshOnProjectChanged(args);
+                }
+            }
+
             OnPropertyChanged("Projects");
         }
 
-        public void UpdateUIWithTestResult(ulong processId, TestResult testResult)
+        public void UpdateUIWithTestResult(ulong processId, TreeItemTestResultViewModel testResult)
         {
             // Names cannot have spaces in
             string tabName = testResult.Name.Replace(" ", "") + "Tab";
@@ -59,6 +69,7 @@ namespace TestRunner
                 tabItem.Name = tabName;
                 tabItem.Header = testResult.Name;
                 tabItem.ToolTip = testResult.Name;
+                tabItem.MouseRightButtonDown += CloseTab;
 
                 Tabs.Add(tabItem);
             }
@@ -66,7 +77,12 @@ namespace TestRunner
             tabItem.IsSelected = true;
             tabItem.UpdateUIWithTestResult(testResult);
         }
-        
+
+        private void CloseTab(object sender, MouseButtonEventArgs e)
+        {
+            Tabs.Remove(sender as CustomTabItem);
+        }
+
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

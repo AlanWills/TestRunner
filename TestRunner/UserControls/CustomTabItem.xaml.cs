@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using System.Windows.Media;
 using TestRunner.Models;
+using TestRunner.ViewModels;
 
 namespace TestRunner.UserControls
 {
@@ -17,12 +18,7 @@ namespace TestRunner.UserControls
             MaxWidth = 100;
         }
 
-        private void CloseTab(object sender, MouseButtonEventArgs e)
-        {
-            (Parent as TabControl).Items.Remove(this);
-        }
-
-        public void UpdateUIWithTestResult(TestResult testResult)
+        public void UpdateUIWithTestResult(TreeItemTestResultViewModel testResult)
         {
             foreach (UnitTestResult unitTestResult in testResult.UnitTests)
             {

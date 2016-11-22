@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="c0bba35e-60eb-41c4-81e9-e2fd166892cb" name="alawi@DESKTOP-F3MK7KH 2016-11-22 22:52:07" runUser="DESKTOP-F3MK7KH\alawi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2016-11-22T22:52:07.2723607+00:00" queuing="2016-11-22T22:52:07.2723607+00:00" start="2016-11-22T22:52:05.8716650+00:00" finish="2016-11-22T22:52:22.3681668+00:00" />
+  <TestSettings name="default" id="5c5332e5-e42e-400d-bb84-01046f02f538">
+    <Execution>
+      <TestTypeSpecific />
+    </Execution>
+    <Deployment runDeploymentRoot="alawi_DESKTOP-F3MK7KH 2016-11-22 22_52_07" />
+    <Properties />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="f2aaff6e-0671-478b-8d2b-318ea6ce0aab" testId="f5593b97-9c20-3c36-8abe-bf4f79a95512" testName="IsConfigurationValid_ShouldBeFalse" computerName="DESKTOP-F3MK7KH" duration="00:00:00.0048221" startTime="2016-11-22T22:52:05.8716650+00:00" endTime="2016-11-22T22:52:05.8992388+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f2aaff6e-0671-478b-8d2b-318ea6ce0aab" />
+    <UnitTestResult executionId="69246f59-b094-427d-9bb7-02d2965ce9be" testId="6511a080-23a6-f5d9-8012-888a88df9f9b" testName="IsConfigurationValid_ShouldBeTrue" computerName="DESKTOP-F3MK7KH" duration="00:00:00.0001975" startTime="2016-11-22T22:52:05.9077610+00:00" endTime="2016-11-22T22:52:05.9082624+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="69246f59-b094-427d-9bb7-02d2965ce9be" />
+    <UnitTestResult executionId="c3b19088-7300-44f0-805c-d63f4deb075d" testId="013c0210-c82a-5e54-3efd-e62d8da5aa72" testName="CreateProject_WithValidConfiguration" computerName="DESKTOP-F3MK7KH" duration="00:00:00.0144928" startTime="2016-11-22T22:52:05.9082624+00:00" endTime="2016-11-22T22:52:05.9232573+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c3b19088-7300-44f0-805c-d63f4deb075d" />
+    <UnitTestResult executionId="61d46ea8-4b07-4a32-98c0-b12cdea4d8ac" testId="db8f614d-010b-83ed-7701-4d3b0ac8cd60" testName="CreateProject_WithInvalidConfiguration_RaisesDebugAssertion" computerName="DESKTOP-F3MK7KH" duration="00:00:00.0463292" startTime="2016-11-22T22:52:05.9232573+00:00" endTime="2016-11-22T22:52:05.9704964+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="61d46ea8-4b07-4a32-98c0-b12cdea4d8ac" />
+    <UnitTestResult executionId="313f09a8-ff2e-4288-b6ff-07a603561b52" testId="7cf31c35-2b3c-eeb8-49b6-5afbcca35286" testName="Open_CallsOnLoadedEvent" computerName="DESKTOP-F3MK7KH" duration="00:00:00.0223194" startTime="2016-11-22T22:52:05.9704964+00:00" endTime="2016-11-22T22:52:05.9950934+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="313f09a8-ff2e-4288-b6ff-07a603561b52" />
+    <UnitTestResult executionId="96dca44e-09f3-4d43-8f6e-240e8b7452ec" testId="837566c2-b45d-9acb-1bac-160dace9a483" testName="OpenSimple_ProjectHasNoTestResults" computerName="DESKTOP-F3MK7KH" duration="00:00:00.0060752" startTime="2016-11-22T22:52:05.9950934+00:00" endTime="2016-11-22T22:52:06.0026134+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="96dca44e-09f3-4d43-8f6e-240e8b7452ec" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="IsConfigurationValid_ShouldBeFalse" storage="c:\users\alawi\source\repos\testrunner\testrunnerunittests\bin\debug\testrunnerunittests.dll" id="f5593b97-9c20-3c36-8abe-bf4f79a95512">
+      <Execution id="f2aaff6e-0671-478b-8d2b-318ea6ce0aab" />
+      <TestMethod codeBase="C:\Users\alawi\Source\Repos\TestRunner\TestRunnerUnitTests\bin\Debug\TestRunnerUnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter" className="TestRunnerUnitTests.TestNewProjectDialogViewModel" name="IsConfigurationValid_ShouldBeFalse" />
+    </UnitTest>
+    <UnitTest name="IsConfigurationValid_ShouldBeTrue" storage="c:\users\alawi\source\repos\testrunner\testrunnerunittests\bin\debug\testrunnerunittests.dll" id="6511a080-23a6-f5d9-8012-888a88df9f9b">
+      <Execution id="69246f59-b094-427d-9bb7-02d2965ce9be" />
+      <TestMethod codeBase="C:\Users\alawi\Source\Repos\TestRunner\TestRunnerUnitTests\bin\Debug\TestRunnerUnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter" className="TestRunnerUnitTests.TestNewProjectDialogViewModel" name="IsConfigurationValid_ShouldBeTrue" />
+    </UnitTest>
+    <UnitTest name="CreateProject_WithValidConfiguration" storage="c:\users\alawi\source\repos\testrunner\testrunnerunittests\bin\debug\testrunnerunittests.dll" id="013c0210-c82a-5e54-3efd-e62d8da5aa72">
+      <Execution id="c3b19088-7300-44f0-805c-d63f4deb075d" />
+      <TestMethod codeBase="C:\Users\alawi\Source\Repos\TestRunner\TestRunnerUnitTests\bin\Debug\TestRunnerUnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter" className="TestRunnerUnitTests.TestNewProjectDialogViewModel" name="CreateProject_WithValidConfiguration" />
+    </UnitTest>
+    <UnitTest name="CreateProject_WithInvalidConfiguration_RaisesDebugAssertion" storage="c:\users\alawi\source\repos\testrunner\testrunnerunittests\bin\debug\testrunnerunittests.dll" id="db8f614d-010b-83ed-7701-4d3b0ac8cd60">
+      <Execution id="61d46ea8-4b07-4a32-98c0-b12cdea4d8ac" />
+      <TestMethod codeBase="C:\Users\alawi\Source\Repos\TestRunner\TestRunnerUnitTests\bin\Debug\TestRunnerUnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter" className="TestRunnerUnitTests.TestNewProjectDialogViewModel" name="CreateProject_WithInvalidConfiguration_RaisesDebugAssertion" />
+    </UnitTest>
+    <UnitTest name="Open_CallsOnLoadedEvent" storage="c:\users\alawi\source\repos\testrunner\testrunnerunittests\bin\debug\testrunnerunittests.dll" id="7cf31c35-2b3c-eeb8-49b6-5afbcca35286">
+      <Execution id="313f09a8-ff2e-4288-b6ff-07a603561b52" />
+      <TestMethod codeBase="C:\Users\alawi\Source\Repos\TestRunner\TestRunnerUnitTests\bin\Debug\TestRunnerUnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter" className="TestRunnerUnitTests.TestOpenProjectCommand" name="Open_CallsOnLoadedEvent" />
+    </UnitTest>
+    <UnitTest name="OpenSimple_ProjectHasNoTestResults" storage="c:\users\alawi\source\repos\testrunner\testrunnerunittests\bin\debug\testrunnerunittests.dll" id="837566c2-b45d-9acb-1bac-160dace9a483">
+      <Execution id="96dca44e-09f3-4d43-8f6e-240e8b7452ec" />
+      <TestMethod codeBase="C:\Users\alawi\Source\Repos\TestRunner\TestRunnerUnitTests\bin\Debug\TestRunnerUnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter" className="TestRunnerUnitTests.TestOpenProjectCommand" name="OpenSimple_ProjectHasNoTestResults" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="f5593b97-9c20-3c36-8abe-bf4f79a95512" executionId="f2aaff6e-0671-478b-8d2b-318ea6ce0aab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6511a080-23a6-f5d9-8012-888a88df9f9b" executionId="69246f59-b094-427d-9bb7-02d2965ce9be" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="013c0210-c82a-5e54-3efd-e62d8da5aa72" executionId="c3b19088-7300-44f0-805c-d63f4deb075d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="db8f614d-010b-83ed-7701-4d3b0ac8cd60" executionId="61d46ea8-4b07-4a32-98c0-b12cdea4d8ac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7cf31c35-2b3c-eeb8-49b6-5afbcca35286" executionId="313f09a8-ff2e-4288-b6ff-07a603561b52" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="837566c2-b45d-9acb-1bac-160dace9a483" executionId="96dca44e-09f3-4d43-8f6e-240e8b7452ec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="6" executed="6" passed="6" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-F3MK7KH" outcome="Error" timestamp="2016-11-22T22:52:22.3601581+00:00">
+        <Text>The active Test Run was aborted because the execution process exited unexpectedly. To investigate further, enable local crash dumps either at the machine level or for process vstest.executionengine.x86.exe. Go to more details: http://go.microsoft.com/fwlink/?linkid=232477</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

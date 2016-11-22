@@ -137,7 +137,10 @@
     <Compile Include="UserControls\MainMenu\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\NewProjectDialogViewModel.cs" />
     <Compile Include="ViewModels\ProcessesViewModel.cs" />
+    <Compile Include="ViewModels\Project\TreeItemBaseViewModel.cs" />
+    <Compile Include="ViewModels\Project\TreeItemFolderViewModel.cs" />
     <Compile Include="ViewModels\Project\TreeItemProjectViewModel.cs" />
+    <Compile Include="ViewModels\Project\TreeItemTestResultViewModel.cs" />
     <Compile Include="Views\NewProjectDialogView.xaml.cs">
       <DependentUpon>NewProjectDialogView.xaml</DependentUpon>
     </Compile>

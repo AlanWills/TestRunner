@@ -35,7 +35,7 @@
                 </Style>
             </TreeView.ItemContainerStyle>
             <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeItemProjectViewModel}" ItemsSource="{Binding TestResults}">
+                <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeItemProjectViewModel}" ItemsSource="{Binding TestFolders}">
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="{Binding Name}"/>
                         <StackPanel.ContextMenu>
@@ -48,7 +48,12 @@
                         </StackPanel.ContextMenu>
                     </StackPanel>
                 </HierarchicalDataTemplate>
-                <DataTemplate DataType="{x:Type local:TestResult}">
+                <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeItemFolderViewModel}" ItemsSource="{Binding TestResults}">
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:TreeItemTestResultViewModel}">
                     <StackPanel Orientation="Horizontal">
                         <Image x:Name="TestResultImage" Source="pack://application:,,,/TestRunner;component/Images/Cross.jpg"
                                Width="17" Height="17" Margin="0,0,5,0"/>

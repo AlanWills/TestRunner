@@ -3,6 +3,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Linq;
 using System.ComponentModel;
+using System.Diagnostics;
+using TestRunner.ViewModels;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,7 +31,7 @@ namespace TestRunner.Views
             Projects.AddHandler(Control.MouseDoubleClickEvent, new RoutedEventHandler(HandleDoubleClick));
         }
 
-        private void TestResultSelected(TestResult testResult)
+        private void TestResultSelected(TreeItemTestResultViewModel testResult)
         {
             // Need to get process ID somehow
             ProcessesViewModel.UpdateUIWithTestResult(0, testResult);
@@ -46,17 +48,19 @@ namespace TestRunner.Views
                 while (current != null && current != Projects)
                 {
                     TreeViewItem lvi = current as TreeViewItem;
-                    if (lvi != null && (lvi.DataContext is TestResult))
+                    if (lvi != null && (lvi.DataContext is TreeItemTestResultViewModel))
                     {
                         // this is the tree view item  
                         // do something with it here
-                        TestResultSelected(lvi.DataContext as TestResult);
+                        TestResultSelected(lvi.DataContext as TreeItemTestResultViewModel);
       
                         // break out of loop  
                         return;
                     }
                     current = VisualTreeHelper.GetParent(current);
                 }
+
+                Debug.Assert(current != null, "Couldn't find Test result in hierarchy");
             }
         }
 

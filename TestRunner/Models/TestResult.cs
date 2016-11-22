@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Xml;
@@ -11,6 +12,8 @@ namespace TestRunner
         #region Properties and Fields
 
         public const string FileExtension = ".ftr";
+
+        public DateTime DateOfTesting { get; private set; }
 
         public string Name
         {
@@ -33,7 +36,7 @@ namespace TestRunner
 
         public TestResult(string testResultFilePath)
         {
-            Debug.Assert(File.Exists(testResultFilePath), "Results file path does not exist");
+            Debug.Assert(File.Exists(testResultFilePath), "Results file path: " + testResultFilePath + " does not exist");
             FilePath = testResultFilePath;
 
             UnitTests = new List<UnitTestResult>();
@@ -47,6 +50,7 @@ namespace TestRunner
             document.Load(FilePath);
 
             ReadOutcome(document);
+            ReadDate(document);
             ReadUnitTests(document);
         }
 
@@ -67,6 +71,21 @@ namespace TestRunner
             string passedTestsString = passedAttribute.Value;
 
             Passed = totalTestsString == passedTestsString;
+        }
+
+        private void ReadDate(XmlDocument document)
+        {
+            XmlNodeList nodeList = document.GetElementsByTagName("Times");
+            Debug.Assert(nodeList.Count == 1, "Multiple times nodes found");
+
+            XmlNode timesNode = nodeList.Item(0);
+            XmlNode createdAttribute = timesNode.Attributes.GetNamedItem("creation");
+
+            DateTime datetime;
+            bool result = DateTime.TryParse(createdAttribute.Value, out datetime);
+            Debug.Assert(result, "Failed to parse time of creation");
+
+            DateOfTesting = datetime;
         }
 
         private void ReadUnitTests(XmlDocument document)

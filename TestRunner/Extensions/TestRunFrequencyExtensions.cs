@@ -11,6 +11,10 @@ namespace TestRunner.Extensions
             {
                 case TestRunFrequency.Daily:
                     return "Daily";
+                case TestRunFrequency.Hourly:
+                    return "Hourly";
+                case TestRunFrequency.Continuously:
+                    return "Continuously";
                 default:
                     Debug.Fail("Unhandled frequency type");
                     return "";
@@ -23,6 +27,10 @@ namespace TestRunner.Extensions
             {
                 case "Daily":
                     return TestRunFrequency.Daily;
+                case "Hourly":
+                    return TestRunFrequency.Hourly;
+                case "Continuously":
+                    return TestRunFrequency.Continuously;
                 default:
                     Debug.Fail("Unhandled frequency type");
                     return TestRunFrequency.Daily;
@@ -35,7 +43,10 @@ namespace TestRunner.Extensions
             {
                 case TestRunFrequency.Daily:
                     return TimeSpan.FromDays(1);
-
+                case TestRunFrequency.Hourly:
+                    return TimeSpan.FromHours(1);
+                case TestRunFrequency.Continuously:
+                    return TimeSpan.FromMilliseconds(-1);
                 default:
                     Debug.Assert(false, "Unhandled TestRunFrequency value");
                     return TimeSpan.FromMilliseconds(-1);
@@ -47,6 +58,14 @@ namespace TestRunner.Extensions
             if (timeSpan == TimeSpan.FromDays(1))
             {
                 return TestRunFrequency.Daily;
+            }
+            else if (timeSpan == TimeSpan.FromHours(1))
+            {
+                return TestRunFrequency.Hourly;
+            }
+            else if (timeSpan == TimeSpan.FromMilliseconds(-1))
+            {
+                return TestRunFrequency.Continuously;
             }
 
             // Should probably put custom here
