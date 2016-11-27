@@ -5,6 +5,7 @@ using System.Linq;
 using System.ComponentModel;
 using System.Diagnostics;
 using TestRunner.ViewModels;
+using System.Windows.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -17,24 +18,24 @@ namespace TestRunner.Views
     {
         #region Properties and Fields
 
-        private ProjectsViewModel ProcessesViewModel { get; set; }
+        private ProjectsViewModel ProjectsViewModel { get; set; }
 
         #endregion
 
         public ProjectsView()
         {
-            ProcessesViewModel = new ProjectsViewModel();
-            DataContext = ProcessesViewModel;
+            ProjectsViewModel = new ProjectsViewModel();
+            DataContext = ProjectsViewModel;
             InitializeComponent();
 
-            ProcessesViewModel.PropertyChanged += ProcessesViewModel_PropertyChanged;
+            ProjectsViewModel.PropertyChanged += ProcessesViewModel_PropertyChanged;
             Projects.AddHandler(Control.MouseDoubleClickEvent, new RoutedEventHandler(HandleDoubleClick));
         }
 
         private void TestResultSelected(TreeItemTestResultViewModel testResultViewModel)
         {
             // Need to get process ID somehow
-            ProcessesViewModel.UpdateUIWithTestResult(0, testResultViewModel.TestResult);
+            ProjectsViewModel.UpdateUIWithTestResult(testResultViewModel.TestResult);
         }
 
         private void HandleDoubleClick(object sender, RoutedEventArgs e)
@@ -75,6 +76,11 @@ namespace TestRunner.Views
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             Projects.Items.Refresh();
+        }
+
+        private void TabItem_RightMouseButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ProjectsViewModel.CloseTab((sender as TabItem).DataContext as TestResultTabViewModel);
         }
     }
 }

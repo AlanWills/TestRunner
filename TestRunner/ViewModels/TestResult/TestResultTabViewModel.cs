@@ -11,15 +11,20 @@ namespace TestRunner.ViewModels
 
         public ObservableCollection<UnitTestResultTextViewModel> UnitTestResults { get; private set; }
         
+        public string Name { get { return TestResult.Name.Replace(" ", "") + "Tab"; } }
+
         public string Header { get { return TestResult.Name; } }
 
         public string ToolTip { get { return TestResult.Name; } }
+
+        public bool IsSelected { get; set; }
 
         #endregion
 
         public TestResultTabViewModel(TestResult testResult)
         {
             TestResult = testResult;
+            IsSelected = true;
 
             UnitTestResults = new ObservableCollection<UnitTestResultTextViewModel>();
 

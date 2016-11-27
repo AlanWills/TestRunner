@@ -119,9 +119,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\TestResultTabView.xaml.cs">
-      <DependentUpon>TestResultTabView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\DirectoryOpen.xaml.cs">
       <DependentUpon>DirectoryOpen.xaml</DependentUpon>
     </Compile>
@@ -154,10 +151,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ResourceDictionaries\TestRunnerStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\TestResultTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

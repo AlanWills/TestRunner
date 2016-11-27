@@ -25,7 +25,25 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TabControl x:Name="BuildFileTabControl" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    ItemsSource="{Binding Tabs, Mode=OneWay}"/>
+                    ItemsSource="{Binding Tabs, Mode=OneWay}">
+            <TabControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:TestResultTabViewModel}">
+                    <TabItem Header="{Binding Header}" ToolTip="{Binding ToolTip}" IsSelected="{Binding IsSelected}"
+                             MouseRightButtonDown="TabItem_RightMouseButtonDown">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ItemsControl x:Name="TestResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                          ItemsSource="{Binding UnitTestResults}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type viewmodels:UnitTestResultTextViewModel}">
+                                        <TextBlock Text="{Binding UnitTestName}" Foreground="{Binding TextColour}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </TabItem>
+                </DataTemplate>
+            </TabControl.Resources>
+        </TabControl>
         <GridSplitter Grid.Column="1" Grid.RowSpan="2" Width="5" HorizontalAlignment="Stretch"/>
         <StackPanel Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Vertical">
             <Button x:Name="RefreshButton" Content="Refresh" Click="RefreshButton_Click"/>

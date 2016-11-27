@@ -19,7 +19,7 @@ namespace TestRunner
         
         public ObservableCollection<TreeItemProjectViewModel> Projects { get; private set; }
         
-        public ObservableCollection<TestResultTabView> Tabs { get; private set; }
+        public ObservableCollection<TestResultTabViewModel> Tabs { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -28,7 +28,7 @@ namespace TestRunner
         public ProjectsViewModel()
         {
             Projects = new ObservableCollection<TreeItemProjectViewModel>();
-            Tabs = new ObservableCollection<TestResultTabView>();
+            Tabs = new ObservableCollection<TestResultTabViewModel>();
 
             OpenProjectCommand.ProjectLoaded += ProjectLoaded;
         }
@@ -52,11 +52,11 @@ namespace TestRunner
             OnPropertyChanged("Projects");
         }
 
-        public void UpdateUIWithTestResult(ulong processId, TestResult testResult)
+        public void UpdateUIWithTestResult(TestResult testResult)
         {
             // Names cannot have spaces in
             string tabName = testResult.Name.Replace(" ", "") + "Tab";
-            TestResultTabView tabItem = null;
+            TestResultTabViewModel tabItem = null;
 
             if (Tabs.Any(x => x.Name == tabName))
             {
@@ -65,18 +65,16 @@ namespace TestRunner
             }
             else
             {
-                tabItem = new TestResultTabView(testResult);
-                tabItem.MouseRightButtonDown += CloseTab;
-
+                tabItem = new TestResultTabViewModel(testResult);
                 Tabs.Add(tabItem);
             }
 
             tabItem.IsSelected = true;
         }
 
-        private void CloseTab(object sender, MouseButtonEventArgs e)
+        public void CloseTab(TestResultTabViewModel testResultViewModel)
         {
-            Tabs.Remove(sender as TestResultTabView);
+            Tabs.Remove(testResultViewModel);
         }
 
         private void OnPropertyChanged(string propertyName)
