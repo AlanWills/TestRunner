@@ -125,8 +125,8 @@ namespace TestRunner
         {
             get
             {
-                return !string.IsNullOrEmpty(FullPathToDll) && !string.IsNullOrEmpty(ProjectSaveLocation) &&
-                       File.Exists(FullPathToDll) && Directory.Exists(ProjectSaveLocation);
+                return !string.IsNullOrEmpty(FullPathToDll) && File.Exists(FullPathToDll) && Path.GetExtension(FullPathToDll) == ".dll" &&
+                       !string.IsNullOrEmpty(ProjectSaveLocation) && Directory.Exists(ProjectSaveLocation);
             }
         }
 

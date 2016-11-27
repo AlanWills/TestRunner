@@ -17,10 +17,7 @@ namespace TestRunner.ViewModels
 
         public string DisplayString { get; private set; }
 
-        public string TimeUntilNextRunDisplayString
-        {
-            get { return TimeUntilNextRun.ToString(); }
-        }
+        public string TimeUntilNextRunDisplayString { get; private set; }
 
         private TimeSpan TimeUntilNextRun { get; set; }
 
@@ -34,6 +31,7 @@ namespace TestRunner.ViewModels
         {
             Project = project;
             DisplayString = Project.Name + "  (" + project.Frequency.ToTestRunFrequency().ToDisplayString() + ")";
+            TimeUntilNextRunDisplayString = "";
             TestFolders = new ObservableCollection<TreeItemFolderViewModel>();
 
             Dictionary<DateTime, List<TestResult>> datesAndTests = new Dictionary<DateTime, List<TestResult>>();
@@ -52,17 +50,34 @@ namespace TestRunner.ViewModels
                 TestFolders.Add(new TreeItemFolderViewModel(dateTestPair));
             }
 
-            Timer = new Timer(UpdateTimeText, null, 0, 1000);
+            Timer = new Timer(UpdateTimeText, null, Timeout.Infinite, 1000);
         }
 
         private void UpdateTimeText(object state)
         {
             TimeUntilNextRun -= TimeSpan.FromSeconds(1);
+            TimeUntilNextRunDisplayString = TimeUntilNextRun.ToString();
         }
 
         public override void RefreshOnProjectChanged(ProjectChangedEventArgs args)
         {
             TimeUntilNextRun = Project.Frequency;
+            Timer.Change(0, 1000);
+
+            HashSet<DateTime> currentDates = new HashSet<DateTime>();
+            foreach (TreeItemFolderViewModel folder in TestFolders)
+            {
+                currentDates.Add(folder.Date.Date);
+            }
+
+            foreach (TestResult result in args.AddedTests)
+            {
+                if (!currentDates.Contains(result.DateOfTesting.Date))
+                {
+                    currentDates.Add(result.DateOfTesting.Date);
+                    TestFolders.Add(new TreeItemFolderViewModel(result.DateOfTesting, new List<TestResult>()));
+                }
+            }
 
             foreach (TreeItemFolderViewModel folder in TestFolders)
             {

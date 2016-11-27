@@ -35,7 +35,7 @@ namespace TestRunner.Views
         private void TestResultSelected(TreeItemTestResultViewModel testResultViewModel)
         {
             // Need to get process ID somehow
-            ProjectsViewModel.UpdateUIWithTestResult(testResultViewModel.TestResult);
+            ProjectsViewModel.CreateOrFocusTestResultTab(testResultViewModel.TestResult);
         }
 
         private void HandleDoubleClick(object sender, RoutedEventArgs e)

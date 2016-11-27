@@ -52,7 +52,7 @@ namespace TestRunner
             OnPropertyChanged("Projects");
         }
 
-        public void UpdateUIWithTestResult(TestResult testResult)
+        public void CreateOrFocusTestResultTab(TestResult testResult)
         {
             // Names cannot have spaces in
             string tabName = testResult.Name.Replace(" ", "") + "Tab";

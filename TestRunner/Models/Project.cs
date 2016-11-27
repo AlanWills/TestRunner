@@ -65,6 +65,7 @@ namespace TestRunner
         public Project()
         {
             TestResults = new List<TestResult>();
+            Frequency = TestRunFrequency.Daily.ToTimeSpan();
         }
 
         /// <summary>
@@ -72,7 +73,7 @@ namespace TestRunner
         /// </summary>
         public void Run()
         {
-            TestProcessManager.CreateProcess(this);
+            TestProcessManager.StartProcess(this);
             StartTime = DateTime.Now;
         }
 

@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestRunner.ViewModels
 {
@@ -12,7 +8,7 @@ namespace TestRunner.ViewModels
     {
         #region Properties and Fields
 
-        private DateTime Date { get; set; }
+        public DateTime Date { get; private set; }
 
         public string Name
         {
@@ -46,7 +42,7 @@ namespace TestRunner.ViewModels
         {
             foreach (TestResult added in args.AddedTests)
             {
-                if (added.DateOfTesting.Date == Date)
+                if (added.DateOfTesting.Date == Date.Date)
                 {
                     TestResults.Add(new TreeItemTestResultViewModel(added));
                 }

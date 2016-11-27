@@ -15,15 +15,21 @@ namespace TestRunner
         #endregion
 
         /// <summary>
-        /// Adds a test process for the inputted project and stores it in our dictionary.
+        /// Adds a test process for the inputted project if it does not exist and stores it in our dictionary.
+        /// Then starts a process to run the unit tests in the project's dll.
         /// </summary>
         /// <param name="project"></param>
-        public static void CreateProcess(Project project)
+        public static void StartProcess(Project project)
         {
             Debug.Assert(project != null);
 
-            // Add our process to our dictionary and then return the ID so we can obtain it again later
-            Processes.Add(project, new TestProcess(project));
+            if (!Processes.ContainsKey(project))
+            {
+                // Add our process to our dictionary and then return the ID so we can obtain it again later
+                Processes.Add(project, new TestProcess(project));
+            }
+
+            GetProcess(project).Start();
         }
 
         /// <summary>
