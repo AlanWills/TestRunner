@@ -71,5 +71,10 @@ namespace TestRunner.Views
                 Projects.Items.Refresh();
             }
         }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            Projects.Items.Refresh();
+        }
     }
 }

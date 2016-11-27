@@ -27,51 +27,54 @@
         <TabControl x:Name="BuildFileTabControl" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     ItemsSource="{Binding Tabs, Mode=OneWay}"/>
         <GridSplitter Grid.Column="1" Grid.RowSpan="2" Width="5" HorizontalAlignment="Stretch"/>
-        <TreeView x:Name="Projects" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                          ItemsSource="{Binding Projects}" Background="White">
-            <TreeView.ItemContainerStyle>
-                <Style TargetType="{x:Type TreeViewItem}">
-                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
-                </Style>
-            </TreeView.ItemContainerStyle>
-            <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeItemProjectViewModel}" ItemsSource="{Binding TestFolders}">
-                    <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="{Binding Name}"/>
-                        <StackPanel.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem 
-                                    Header="Run"
-                                    Command="{x:Static local:ProjectManager.RunProjectCommand}"
-                                    CommandParameter="{Binding Project}"/>
-                            </ContextMenu>
-                        </StackPanel.ContextMenu>
-                    </StackPanel>
-                </HierarchicalDataTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeItemFolderViewModel}" ItemsSource="{Binding TestResults}">
-                    <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="{Binding Name}"/>
-                    </StackPanel>
-                </HierarchicalDataTemplate>
-                <DataTemplate DataType="{x:Type viewmodels:TreeItemTestResultViewModel}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image x:Name="TestResultImage" Source="pack://application:,,,/TestRunner;component/Images/Cross.jpg"
-                               Width="17" Height="17" Margin="0,0,5,0"/>
-                        <TextBlock x:Name="TestResultName" Text="{Binding Name}" Foreground="Red"/>
-                    </StackPanel>
-                    <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Path=DataContext.Passed, RelativeSource={RelativeSource TemplatedParent}}" 
-                                             Value="True">
-                            <Setter Property="Foreground" TargetName="TestResultName" Value="LawnGreen"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=DataContext.Passed, RelativeSource={RelativeSource TemplatedParent}}" 
-                                             Value="True">
-                            <Setter Property="Source" TargetName="TestResultImage" Value="pack://application:,,,/TestRunner;component/Images/Tick.png"/>
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
-                </DataTemplate>
-            </TreeView.Resources>
-        </TreeView>
-
+        <StackPanel Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Vertical">
+            <Button x:Name="RefreshButton" Content="Refresh" Click="RefreshButton_Click"/>
+            <TreeView x:Name="Projects" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                              ItemsSource="{Binding Projects}" Background="White">
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    </Style>
+                </TreeView.ItemContainerStyle>
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeItemProjectViewModel}" ItemsSource="{Binding TestFolders}">
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{Binding DisplayString}"/>
+                            <TextBlock Text="{Binding TimeUntilNextRunDisplayString}" Margin="10,0,0,0"/>
+                            <StackPanel.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem 
+                                        Header="Run"
+                                        Command="{x:Static local:ProjectManager.RunProjectCommand}"
+                                        CommandParameter="{Binding Project}"/>
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeItemFolderViewModel}" ItemsSource="{Binding TestResults}">
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{Binding Name}"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:TreeItemTestResultViewModel}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="TestResultImage" Source="pack://application:,,,/TestRunner;component/Images/Cross.jpg"
+                                   Width="17" Height="17" Margin="0,0,5,0"/>
+                            <TextBlock x:Name="TestResultName" Text="{Binding Name}" Foreground="Red"/>
+                        </StackPanel>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Path=DataContext.Passed, RelativeSource={RelativeSource TemplatedParent}}" 
+                                                 Value="True">
+                                <Setter Property="Foreground" TargetName="TestResultName" Value="LawnGreen"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=DataContext.Passed, RelativeSource={RelativeSource TemplatedParent}}" 
+                                                 Value="True">
+                                <Setter Property="Source" TargetName="TestResultImage" Value="pack://application:,,,/TestRunner;component/Images/Tick.png"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </TreeView.Resources>
+            </TreeView>
+        </StackPanel>
     </Grid>
 </Page>
