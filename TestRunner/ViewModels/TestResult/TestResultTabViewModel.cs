@@ -9,7 +9,7 @@ namespace TestRunner.ViewModels
 
         private TestResult TestResult { get; set; }
 
-        public ObservableCollection<UnitTestResult> UnitTestResults { get; private set; }
+        public ObservableCollection<UnitTestResultTextViewModel> UnitTestResults { get; private set; }
         
         public string Header { get { return TestResult.Name; } }
 
@@ -21,8 +21,12 @@ namespace TestRunner.ViewModels
         {
             TestResult = testResult;
 
-            // Need a VM for this
-            UnitTestResults = new ObservableCollection<UnitTestResult>(testResult.UnitTests);
+            UnitTestResults = new ObservableCollection<UnitTestResultTextViewModel>();
+
+            foreach (UnitTestResult unitTestResult in testResult.UnitTests)
+            {
+                UnitTestResults.Add(new UnitTestResultTextViewModel(unitTestResult));
+            }
         }
     }
 }

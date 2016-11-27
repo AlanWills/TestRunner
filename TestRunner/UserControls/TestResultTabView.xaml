@@ -4,12 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TestRunner.UserControls"
+             xmlns:viewmodels="clr-namespace:TestRunner.ViewModels"
              mc:Ignorable="d"
              Header="{Binding Header}"
              ToolTip="{Binding ToolTip}"
              d:DesignHeight="20" d:DesignWidth="100">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <ItemsControl x:Name="TestResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <ItemsControl x:Name="TestResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      ItemsSource="{Binding UnitTestResults}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:UnitTestResultTextViewModel}">
+                    <TextBlock Text="{Binding UnitTestName}" Foreground="{Binding TextColour}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </ScrollViewer>
 </TabItem>
     

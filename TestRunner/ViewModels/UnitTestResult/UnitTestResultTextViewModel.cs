@@ -11,7 +11,7 @@ namespace TestRunner.ViewModels
 
         public string UnitTestName { get { return UnitTestResult.Name; } }
 
-        public Brush ForegroundColour
+        public Brush TextColour
         {
             get
             {
