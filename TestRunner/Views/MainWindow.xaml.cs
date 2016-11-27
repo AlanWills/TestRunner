@@ -22,7 +22,7 @@ namespace TestRunner
             InitializeComponent();
 
             ProjectManager.Initialize();
-            Frame.Navigate(new ProcessesView());
+            Frame.Navigate(new ProjectsView());
         }
         
         private void SystemTrayIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)

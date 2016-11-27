@@ -8,7 +8,7 @@ namespace TestRunner.ViewModels
     {
         #region Properties and Fields
 
-        private TestResult TestResult { get; set; }
+        public TestResult TestResult { get; private set; }
 
         public string Name
         {

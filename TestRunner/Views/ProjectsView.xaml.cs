@@ -13,17 +13,17 @@ namespace TestRunner.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ProcessesView : Page
+    public sealed partial class ProjectsView : Page
     {
         #region Properties and Fields
 
-        private ProcessesViewModel ProcessesViewModel { get; set; }
+        private ProjectsViewModel ProcessesViewModel { get; set; }
 
         #endregion
 
-        public ProcessesView()
+        public ProjectsView()
         {
-            ProcessesViewModel = new ProcessesViewModel();
+            ProcessesViewModel = new ProjectsViewModel();
             DataContext = ProcessesViewModel;
             InitializeComponent();
 
@@ -31,10 +31,10 @@ namespace TestRunner.Views
             Projects.AddHandler(Control.MouseDoubleClickEvent, new RoutedEventHandler(HandleDoubleClick));
         }
 
-        private void TestResultSelected(TreeItemTestResultViewModel testResult)
+        private void TestResultSelected(TreeItemTestResultViewModel testResultViewModel)
         {
             // Need to get process ID somehow
-            ProcessesViewModel.UpdateUIWithTestResult(0, testResult);
+            ProcessesViewModel.UpdateUIWithTestResult(0, testResultViewModel.TestResult);
         }
 
         private void HandleDoubleClick(object sender, RoutedEventArgs e)

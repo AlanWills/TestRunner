@@ -2,16 +2,14 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using TestRunner.Extensions;
 
 namespace TestRunner
 {
     // Extension of the process class which reroutes output and povides extra custom functionality for running tests
     // Also wraps up all of the process logic for starting, reading output/error and writing to the output files
     // It should only be created from the TestRunnerProcessManager class
-    public class TestRunnerProcess : Process
+    public class TestProcess : Process
     {
         #region Properties and Fields
 
@@ -26,7 +24,7 @@ namespace TestRunner
 
         #endregion
 
-        public TestRunnerProcess(Project projectToTest)
+        public TestProcess(Project projectToTest)
         {
             Project = projectToTest;
 

@@ -13,22 +13,22 @@ using TestRunner.ViewModels;
 
 namespace TestRunner
 {
-    public class ProcessesViewModel : INotifyPropertyChanged
+    public class ProjectsViewModel : INotifyPropertyChanged
     {
         #region Properties and Fields
         
         public ObservableCollection<TreeItemProjectViewModel> Projects { get; private set; }
         
-        public ObservableCollection<CustomTabItem> Tabs { get; private set; }
+        public ObservableCollection<TestResultTabView> Tabs { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
 
-        public ProcessesViewModel()
+        public ProjectsViewModel()
         {
             Projects = new ObservableCollection<TreeItemProjectViewModel>();
-            Tabs = new ObservableCollection<CustomTabItem>();
+            Tabs = new ObservableCollection<TestResultTabView>();
 
             OpenProjectCommand.ProjectLoaded += ProjectLoaded;
         }
@@ -52,11 +52,11 @@ namespace TestRunner
             OnPropertyChanged("Projects");
         }
 
-        public void UpdateUIWithTestResult(ulong processId, TreeItemTestResultViewModel testResult)
+        public void UpdateUIWithTestResult(ulong processId, TestResult testResult)
         {
             // Names cannot have spaces in
             string tabName = testResult.Name.Replace(" ", "") + "Tab";
-            CustomTabItem tabItem = null;
+            TestResultTabView tabItem = null;
 
             if (Tabs.Any(x => x.Name == tabName))
             {
@@ -65,22 +65,18 @@ namespace TestRunner
             }
             else
             {
-                tabItem = new CustomTabItem();
-                tabItem.Name = tabName;
-                tabItem.Header = testResult.Name;
-                tabItem.ToolTip = testResult.Name;
+                tabItem = new TestResultTabView(testResult);
                 tabItem.MouseRightButtonDown += CloseTab;
 
                 Tabs.Add(tabItem);
             }
 
             tabItem.IsSelected = true;
-            tabItem.UpdateUIWithTestResult(testResult);
         }
 
         private void CloseTab(object sender, MouseButtonEventArgs e)
         {
-            Tabs.Remove(sender as CustomTabItem);
+            Tabs.Remove(sender as TestResultTabView);
         }
 
         private void OnPropertyChanged(string propertyName)

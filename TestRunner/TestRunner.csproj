@@ -109,18 +109,18 @@
     <Compile Include="Models\ProjectManager.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\TestResult.cs" />
-    <Compile Include="Models\TestRunnerProcess.cs">
+    <Compile Include="Models\TestProcess.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Models\TestRunnerProcessManager.cs" />
+    <Compile Include="Models\TestProcessManager.cs" />
     <Compile Include="Models\UnitTestResult.cs" />
     <Compile Include="Service References\TestRunnerService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CustomTabItem.xaml.cs">
-      <DependentUpon>CustomTabItem.xaml</DependentUpon>
+    <Compile Include="UserControls\TestResultTabView.xaml.cs">
+      <DependentUpon>TestResultTabView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\DirectoryOpen.xaml.cs">
       <DependentUpon>DirectoryOpen.xaml</DependentUpon>
@@ -136,16 +136,21 @@
     </Compile>
     <Compile Include="UserControls\MainMenu\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\NewProjectDialogViewModel.cs" />
-    <Compile Include="ViewModels\ProcessesViewModel.cs" />
+    <Compile Include="ViewModels\ProjectsViewModel.cs" />
     <Compile Include="ViewModels\Project\TreeItemBaseViewModel.cs" />
     <Compile Include="ViewModels\Project\TreeItemFolderViewModel.cs" />
     <Compile Include="ViewModels\Project\TreeItemProjectViewModel.cs" />
     <Compile Include="ViewModels\Project\TreeItemTestResultViewModel.cs" />
+    <Compile Include="ViewModels\TestResult\TestResultTabViewModel.cs" />
+    <Compile Include="UserControls\UnitTestResultTextView.xaml.cs">
+      <DependentUpon>UnitTestResultTextView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\UnitTestResult\UnitTestResultTextViewModel.cs" />
     <Compile Include="Views\NewProjectDialogView.xaml.cs">
       <DependentUpon>NewProjectDialogView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProcessesView.xaml.cs">
-      <DependentUpon>ProcessesView.xaml</DependentUpon>
+    <Compile Include="Views\ProjectsView.xaml.cs">
+      <DependentUpon>ProjectsView.xaml</DependentUpon>
     </Compile>
     <Page Include="ResourceDictionaries\Icons.xaml">
       <SubType>Designer</SubType>
@@ -155,13 +160,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\CustomTabItem.xaml">
+    <Page Include="UserControls\TestResultTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\DirectoryOpen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\UnitTestResultTextView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -191,7 +200,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ProcessesView.xaml">
+    <Page Include="Views\ProjectsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -278,6 +287,7 @@
   <ItemGroup>
     <Resource Include="Images\Cross.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

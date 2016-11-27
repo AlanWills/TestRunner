@@ -72,7 +72,7 @@ namespace TestRunner
         /// </summary>
         public void Run()
         {
-            TestRunnerProcessManager.CreateProcess(this);
+            TestProcessManager.CreateProcess(this);
             StartTime = DateTime.Now;
         }
 

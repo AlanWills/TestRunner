@@ -36,7 +36,7 @@ namespace TestRunnerUnitTests
         [TestMethod]
         public void Constructor_ValidProject()
         {
-            TestRunnerProcess process = new TestRunnerProcess(DummyProject);
+            TestProcess process = new TestProcess(DummyProject);
             process.WaitForExit();
         }
     }

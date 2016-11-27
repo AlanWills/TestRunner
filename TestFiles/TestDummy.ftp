@@ -1,60 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Project>
 	<Name>Test Dummy</Name>
-	<StartTime>22 November 2016</StartTime>
+	<StartTime>27 November 2016</StartTime>
 	<Frequency>00:00:00</Frequency>
 	<FullPathToDll>C:\Users\alawi\Source\Repos\TestRunner\DummyTestProjectsForTesting\DummyCSharpTestProject\bin\Debug\DummyCSharpTestProject.dll</FullPathToDll>
 	<Platform>x86</Platform>
 	<TestResults>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201615_34_47.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201615_49_28.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201617_48_08.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_03_16.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_04_44.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_05_03.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_09_51.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_10_06.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_11_15.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_12_51.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_13_03.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_34_25.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_37_10.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_50_56.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201619_18_37.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy22 November 201620_49_57.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy 22 November 2016 20_55_00.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy 22 November 2016 20_55_33.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_10_54.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_12_27.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_12_36.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_13_32.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_20_51.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_48_04.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_48_13.ftr</TestResult>
-	
-<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_48_52.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201615_34_47.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201615_49_28.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201617_48_08.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_03_16.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_04_44.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_05_03.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_09_51.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_10_06.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_11_15.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_12_51.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_13_03.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_34_25.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_37_10.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201618_50_56.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy19 November 201619_18_37.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy22 November 201620_49_57.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy 22 November 2016 20_55_00.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test DummyTestResults\Test Dummy 22 November 2016 20_55_33.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_10_54.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_12_27.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_12_36.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_13_32.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_20_51.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_48_04.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_48_13.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 22 November 2016 22_48_52.ftr</TestResult>
+		<TestResult>C:\Users\alawi\Source\Repos\TestRunner\TestFiles\Test Dummy TestResults\Test Dummy 27 November 2016 14_49_04.ftr</TestResult>
 	</TestResults></Project>
